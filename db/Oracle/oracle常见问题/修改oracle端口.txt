@@ -1,0 +1,37 @@
+分享』Oracle 9i和Oracle 10g如何避开8080端口
+
+Oracle 9i开始，引入了XML Database。这个东东的http服务会占用8080端口，ft服务会占用2100端口。一般情况下也没什么，但如果和Tomcat一起的话，默认设置就有冲突了。当然解决办法之一是更改Tomcat的默认端口，这里提供另外的方法，就是让Oracle避开这个端口。
+
+1、使用sys登录Oracle，利用dbms_xdb修改端口设置
+
+SQL> -- Change the HTTP/WEBDAV port from 8080 to 8081
+SQL> call dbms_xdb.cfg_update(updateXML(dbms_xdb.cfg_get() , '/xdbconfig/sysconfig/protocolconfig/httpconfig/http-port/text()', 8081));
+
+
+Call completed.
+
+SQL> -- Change the FTP port from 2100 to 2111
+SQL> call dbms_xdb.cfg_update(updateXML(dbms_xdb.cfg_get() , '/xdbconfig/sysconfig/protocolconfig/ftpconfig/ftp-port/text()', 2111));
+
+Call completed.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> EXEC dbms_xdb.cfg_refresh;
+
+PL/SQL procedure successfully completed.
+
+
+2、使用OEM console，选择数据库，XML Database，Configuration，更改XDB的有关设置。
+
+3、去掉数据库的初始化参数：
+
+修改这个文件：
+$ORACLE_BASE/admin/$ORA_SID/pfile/init.ora.*
+把
+dispatchers='(PROTOCOL=TCP) (SERVICE=XDB)'
+这一行注释掉，关闭数据库，然后以sys用户（sysdba身份）登陆sqlplus，执行
+SQL>create spfile from pfile='$ORACLE_BASE/admin/$ORA_SID/pfile/inite.ora.*';
+重新启动数据库，就会禁止XDB的http和ftp服务，此方法适合不需要这些服务的应用。

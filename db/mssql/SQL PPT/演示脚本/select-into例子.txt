@@ -1,0 +1,32 @@
+--------------------------
+--select ... intoÀý×Ó1
+--------------------------
+
+use pubs
+go
+select title_id,title,type,pub_id
+	into simple_titles
+	from titles
+	where type='popular_comp'
+go
+select * from simple_titles
+
+
+
+
+
+---------------------------
+--select ... intoÀý×Ó2
+---------------------------
+
+use pubs
+go
+select title_id,title,type,pub_name 
+	into simple_titles
+	from titles t JOIN publishers p
+	ON t.pub_id = p.pub_id
+	where type='popular_comp'
+go
+select * from simple_titles
+
+

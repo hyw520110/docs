@@ -1,0 +1,46 @@
+--------------------------
+--insert ... selectÀý×Ó1
+--------------------------
+
+use pubs
+go
+create table simple_titles(
+	title_id tid,
+	title varchar(80),
+	type char(12),
+	pub_id char(4)
+)
+go
+insert into simple_titles
+	select title_id,title,type,pub_id
+	from titles
+	where type='popular_comp'
+go
+select * from simple_titles
+
+
+
+
+
+---------------------------
+--insert ... selectÀý×Ó2
+---------------------------
+
+use pubs
+go
+create table simple_titles(
+	title_id tid,
+	title varchar(80),
+	type char(12),
+	pub_name varchar(40)
+)
+go
+insert into simple_titles
+	select title_id,title,type,pub_name
+	from titles t JOIN publishers p
+	ON t.pub_id = p.pub_id
+	where type='popular_comp'
+go
+select * from simple_titles
+
+

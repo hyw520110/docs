@@ -1,0 +1,141 @@
+
+¡¡¡¡ÔÚplsqlÏÂÉèÖÃÒÔÏÂÄÚÈÝ£º
+¡¡¡¡
+¡¡¡¡1>. ÒÔsysdbaÉí·Ý½øÈë
+¡¡¡¡2>. update props$ set value$='ZHS16GBK' WHERE NAME='NLS_CHARACTERSET'
+¡¡¡¡valueµÄÖµÈçÏÂ£º
+¡¡¡¡Oracle NLS_CHARACTERSET value
+¡¡¡¡Language
+¡¡¡¡
+¡¡¡¡AR8ISO8859P6
+¡¡¡¡Arabic (ISO)
+¡¡¡¡
+¡¡¡¡AR8MSWIN1256
+¡¡¡¡Arabic (Windows)
+¡¡¡¡
+¡¡¡¡NEE8ISO8859P4
+¡¡¡¡Baltic (ISO)
+¡¡¡¡
+¡¡¡¡BLT8MSWIN1257
+¡¡¡¡Baltic (Windows)
+¡¡¡¡windows-1257
+¡¡¡¡
+¡¡¡¡EE8PC852
+¡¡¡¡Central European (DOS)
+¡¡¡¡
+¡¡¡¡EE8ISO8859P2
+¡¡¡¡Central European (ISO)
+¡¡¡¡
+¡¡¡¡EE8MSWIN1250
+¡¡¡¡Central European (Windows)
+¡¡¡¡
+¡¡¡¡ZHS16CGB231280
+¡¡¡¡Chinese Simplified (GB2312)
+¡¡¡¡gb2312
+¡¡¡¡chinese, csGB2312, csISO58GB231280, GB2312, GB_2312-80, iso-ir-58
+¡¡¡¡
+¡¡¡¡ZHS16GBK
+¡¡¡¡Chinese Simplified (Windows)
+¡¡¡¡windows-9361
+¡¡¡¡windows-936
+¡¡¡¡
+¡¡¡¡ZHT16BIG5
+¡¡¡¡Chinese Traditional
+¡¡¡¡big5
+¡¡¡¡csbig5, x-x-big5
+¡¡¡¡
+¡¡¡¡ZHT16MSWIN950
+¡¡¡¡Chinese Traditional
+¡¡¡¡windows-950
+¡¡¡¡
+¡¡¡¡ISO2022-CN
+¡¡¡¡Chinese
+¡¡¡¡iso-2022-cn2
+¡¡¡¡csISO2022CN
+¡¡¡¡
+¡¡¡¡ZHT32EUC
+¡¡¡¡Chinese Traditional (EUC-TW)
+¡¡¡¡EUC-TW1
+¡¡¡¡
+¡¡¡¡RU8PC866
+¡¡¡¡Cyrillic (DOS)
+¡¡¡¡
+¡¡¡¡CL8ISO8859P5
+¡¡¡¡Cyrillic (ISO)
+¡¡¡¡
+¡¡¡¡CL8KOI8R
+¡¡¡¡Cyrillic (KOI8-R)
+¡¡¡¡
+¡¡¡¡CL8MSWIN1251
+¡¡¡¡Cyrillic Alphabet (Windows)
+¡¡¡¡
+¡¡¡¡EL8ISO8859P7
+¡¡¡¡Greek (ISO)
+¡¡¡¡
+¡¡¡¡EL8MSWIN1253
+¡¡¡¡Greek (Windows)
+¡¡¡¡
+¡¡¡¡IW8ISO8859P8
+¡¡¡¡Hebrew (ISO)
+¡¡¡¡
+¡¡¡¡IW8MSWIN1255
+¡¡¡¡Hebrew (Windows)
+¡¡¡¡
+¡¡¡¡ISO2022-JP
+¡¡¡¡Japanese (JIS)
+¡¡¡¡
+¡¡¡¡JA16EUC
+¡¡¡¡Japanese (EUC)
+¡¡¡¡
+¡¡¡¡JA16SJIS
+¡¡¡¡Japanese (Shift-JIS)
+¡¡¡¡
+¡¡¡¡KO16KSC5601
+¡¡¡¡Korean
+¡¡¡¡
+¡¡¡¡ISO2022-KR
+¡¡¡¡Korean (ISO)
+¡¡¡¡
+¡¡¡¡KO16MSWIN949
+¡¡¡¡Korean (Windows)
+¡¡¡¡
+¡¡¡¡SE8ISO8859P3
+¡¡¡¡South European (ISO)
+¡¡¡¡
+¡¡¡¡TH8TISASCII
+¡¡¡¡Thai
+¡¡¡¡
+¡¡¡¡TR8MSWIN1254
+¡¡¡¡Turkish (Windows)
+¡¡¡¡
+¡¡¡¡WE8ISO8859P9
+¡¡¡¡Turkish (ISO)
+¡¡¡¡
+¡¡¡¡UTF8
+¡¡¡¡Universal (UTF-8)
+¡¡¡¡utf-8
+¡¡¡¡unicode-1-1-utf-8, unicode-2-0-utf-8, x-unicode-2-0-utf-8
+¡¡¡¡
+¡¡¡¡VN8MSWIN1258
+¡¡¡¡Vietnamese (Windows)
+¡¡¡¡
+¡¡¡¡WE8MSWIN1252
+¡¡¡¡Western Alphabet (windows)
+¡¡¡¡
+¡¡¡¡WE8ISO8859P1
+¡¡¡¡Western Alphabet
+¡¡¡¡
+¡¡¡¡WE38PC850
+¡¡¡¡Western Alphabet (DOS)
+¡¡¡¡
+¡¡¡¡3>. Commit
+¡¡¡¡4>. Ö»ÓÐÖØÐÂÆô¶¯Oracle ·þÎñÆ÷¸ÃÉèÖÃ²Å»áÉúÐ§¡£
+¡¡¡¡
+¡¡¡¡
+¡¡¡¡ÐÞ¸Ä¿Í»§¶ËµÄ×Ö·û¼¯£º
+¡¡¡¡1>. Linux / Unix
+¡¡¡¡ÐÞ¸Ä»·¾³±äÁ¿NLS_LANG=AMERICAN_AMERICA.[ÉÏÃæÉèÖÃµÄvalue]
+¡¡¡¡export NLS_LANG=¡­¡­
+¡¡¡¡
+¡¡¡¡2>. Windows
+¡¡¡¡dosÏÂset NLS_LANG=¡­¡­. 

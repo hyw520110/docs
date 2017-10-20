@@ -1,0 +1,143 @@
+
+1.编写PL/SQL块用于将表M_INDENT的第一条记录显示出来.
+set serveroutput on
+declare
+cursor temp_cur 
+is select * from M_INDENT ; 
+wid M_INDENT.EMPLOYEE_ID%type;
+eid M_INDENT.PROVIDER_ID%type;
+nid M_INDENT.INDENT_ID%type;
+did M_INDENT.INDENT_DATE%type;
+begin
+open temp_cur; 
+
+fetch temp_cur into wid,eid,nid,did;
+if temp_cur%found then
+   dbms_output.put_line(wid);
+   dbms_output.put_line(eid);
+   dbms_output.put_line(nid);
+   dbms_output.put_line(did);
+end if;
+close temp_cur;
+end;
+/
+====================================================================================
+
+
+
+2.编写PL/SQL块用于将表M_INDENT的全部记录显示出来.
+SELECT * FROM M_INDENT
+
+=====================================================================================
+
+
+
+3.编写PL/SQL块通过游标完成对表M_INDENT的全部记录的显示出来.
+declare
+cursor temp_cur 
+is select * from M_INDENT; 
+begin
+for temp_employee in temp_cur loop 
+   dbms_output.put_line(temp_cur%rowcount);
+   dbms_output.put_line(temp_employee.EMPLOYEE_ID);
+   dbms_output.put_line(temp_employee.PROVIDER_ID);
+   dbms_output.put_line(temp_employee.INDENT_ID);
+   dbms_output.put_line(temp_employee.INDENT_DATE);
+end loop;
+end;
+/
+=====================================================================================
+
+
+
+4.编写PL/SQL块用于向表M_INDENT中添加记录('E0','S7','OR58','2007-01-22')
+declare 
+
+begin
+ INSERT INTO M_INDENT  
+  VALUES('E0','S7','OR58',TO_DATE('2007-01-22','YYYY-MM-DD'));
+  commit;
+end;
+/
+=====================================================================================
+
+
+
+5.编写PL/SQL块用于将上题4中记录更新为新记录('E0','S9','OR0','2006-01-22')考虑并发处理
+declare
+cursor temp_cur(EMPLOYEE_ID1 CHAR,PROVIDER_ID1 CHAR, INDENT_ID1 CHAR, INDENT_DATE1 DATE) 
+is select * from M_INDENT where EMPLOYEE_ID= EMPLOYEE_ID1 and PROVIDER_ID=PROVIDER_ID1 and INDENT_ID=INDENT_ID1 and INDENT_DATE=INDENT_DATE1 for update of EMPLOYEE_ID,PROVIDER_ID,PROVIDER_ID,INDENT_ID; -- 定义游标
+begin
+for temp_employee in temp_cur('E0','S7','OR58',TO_DATE('2007-01-22','YYYY-MM-DD')) loop 
+   update M_INDENT set EMPLOYEE_ID='E0' ,PROVIDER_ID='S7', M_INDENT.INDENT_ID='OR0',INDENT_DATE=TO_DATE('2006-01-22','YYYY-MM-DD') where current of temp_cur; 
+end loop;
+
+commit;
+end;
+/
+
+=====================================================================================
+
+
+
+6.编写PL/SQL块用于将题5中更新的记录删除,并考虑并发处理.
+declare
+cursor temp_cur(salary1 char) 
+is select * from M_INDENT where EMPLOYEE_ID = salary1 for update of EMPLOYEE_ID; -- 定义游标
+begin
+for temp_employee in temp_cur('E0') loop 
+   delete from M_INDENT where current of temp_cur; 
+end loop;
+commit;
+end;
+/
+=====================================================================================
+
+
+7.编写PL/SQL块用于验证用户(账号,密码) | User (isoftstone,tworacle)是否在userinfo表中
+ 用游标处理并显示代码 0--非法  1--初始化 2--启用中 3--禁用
+declare
+temp_rec userinfo%rowtype;  -- 定义变量为 userinfo 表结构体
+scode varchar2(32);
+spass varchar2(32);
+cursor temp_cur(code varchar2) is         -- 参数为账号 字符串类型
+select * from userinfo where usercode = code;  -- 定义带参数游标
+
+begin
+scode:='&scode';
+spass:='&spass'; -- 提供用户输入值给 账号和密码变量
+
+open temp_cur(scode); -- 打开游标
+
+
+if temp_cur%isopen then  -- 测试游标是否打开成功
+   -- 成功打开后的操作
+   dbms_output.enable;
+   fetch temp_cur into temp_rec; -- 游标取值并存于 temp_rec
+   
+   if temp_cur%found then  -- 测试游标是否取值成功
+      -- 取值成功后的操作
+      if spass=temp_rec.password then
+            dbms_output.put_line('启用中!');
+         else
+            dbms_output.put_line('非法!');
+      end if;
+   else
+      -- 取值失败后的操作
+      dbms_output.put_line('初始化!'); 
+   end if;
+else
+   -- 失败打开时的操作
+   dbms_output.put_line('禁用!'); 
+end if;
+close temp_cur;
+
+exception 
+   when others then
+        dbms_output.put_line('case exception!');
+end;
+/
+=====================================================================================
+
+
+

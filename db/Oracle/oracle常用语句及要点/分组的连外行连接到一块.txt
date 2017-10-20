@@ -1,0 +1,16 @@
+表tTest： 
+col1,col2 
+  1        A 
+  2        B 
+  1        B 
+  2        C 
+  1        C 
+  2        D 
+
+按照col1分组，结果为： 
+col1,col2 
+  1      A,B,C 
+  2      B,C,D 
+
+在oracle中 
+select col1,wmsys.wm_concat(col2) from tTest group by col1

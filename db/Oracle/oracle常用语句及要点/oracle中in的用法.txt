@@ -1,0 +1,2 @@
+and instcode in ( select lowgroupid from pmgrouprelation where upgroupid=''  
+表示instcode再后面查到的表中

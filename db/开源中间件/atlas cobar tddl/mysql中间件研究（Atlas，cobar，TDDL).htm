@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://www.guokr.com/blog/475765/ -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>mysql中间件研究（Atlas，cobar，TDDL） | 日志 | 果壳网 科技有意思</title>
+    <meta name="Keywords" content="旺旺仔果壳,果壳网,科技,泛科技,智趣,生活,科普">
+    <meta name="Description" content="mysql-proxy是官方提供的mysql中间件产品可以实现负载平衡，读写分离，failover等，但其不支持大数据量的分库分表且性能较差。下面介绍几款能代替其的mysql开源中间件产品，Atlas，cobar，tddl，让我们看看它们各自有些什么优点和新特性吧。
+ 
+Atlas
+ 
+Atlas是...">
+    
+<meta http-equiv="mobile-agent" content="format=html5; url=http://m.guokr.com/blog/475765/">
+
+    
+    
+    <link rel="stylesheet" type="text/css" href="./mysql中间件研究（Atlas，cobar，TDDL)_files/gui.css">
+    
+    <link rel="stylesheet" href="http://static.guokr.com/apps/daily/styles/1232eeaf.gbbcode.css">
+    <link rel="stylesheet" href="http://static.guokr.com/skin/blog.css?v=3cf4de84b79a">
+    <link rel="stylesheet" href="http://static.guokr.com/apps/daily/styles/editor/28b56194.skin.css">
+    <noscript>
+        &lt;style&gt;
+            .reply-box { display: none !important; }
+            #replyForm { display: block !important; }
+        &lt;/style&gt;
+    </noscript>
+
+<link rel="stylesheet" href="http://bdimg.share.baidu.com/static/api/css/share_style0_16.css?v=f4b44e79.css"></head>
+<body ryt13048="1">
+    <div class="container ">
+        
+
+<div class="gheader-wrap">
+<div class="gheader-new">
+    <div class="gh-wrap">
+        <div class="gfl">
+            <ul class="gh-nav">
+                
+<li>
+<a href="http://www.guokr.com/"><span class="gnicon-home"></span>首页<b></b></a>
+</li>
+
+                
+<li>
+<a href="http://www.guokr.com/scientific/">科学人<b></b></a>
+</li>
+
+                
+<li>
+<a href="http://www.guokr.com/group/">小组<b></b></a>
+</li>
+
+                
+<li>
+<a href="http://www.guokr.com/ask/">问答<b></b></a>
+</li>
+
+                
+<li>
+<a href="http://mooc.guokr.com/" target="_blank">MOOC 学院</a>
+</li>
+
+                <li id="moreNav">
+                    <a href="javascript:void 0;" class="other">更多<i class="gnarrow-down"></i></a>
+                    <div class="gh-list" style="display: none;">
+                        <ul>
+                            
+<li>
+<a href="http://www.guokr.com/blogs/" target="_blank">日志</a>
+</li>
+
+                            
+<li>
+<a href="http://www.guokr.com/event/home/" target="_blank">活动</a>
+</li>
+
+                            
+<li>
+<a href="http://www.17yjs.com/" target="_blank">研究生</a>
+</li>
+
+                            
+<li>
+<a href="http://sex.guokr.com/" target="_blank">知性</a>
+</li>
+
+                            
+<li>
+<a href="http://www.guokr.com/mobile/" target="_blank">果壳精选</a>
+</li>
+
+                            
+<li>
+<a href="http://www.liuyanbaike.com/" target="_blank">流言百科</a>
+</li>
+
+                            
+<li>
+<a href="http://gate.guokr.com/" target="_blank">任意门</a>
+</li>
+
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <form class="gh-search" id="search" method="get" action="http://www.guokr.com/search/all/">
+                <p id="searchBox">
+                    <input id="searchTxt" class="gh-search-txt" type="text" name="wd" maxlength="30" value="">
+                    <input class="gnicon-search" type="submit" value="搜索">
+                </p>
+            </form>
+        </div>
+        
+    <div class="gh-login">
+        <a href="http://www.guokr.com/sso/?suppress_prompt=1&lazy=y&success=http%3A%2F%2Fwww.guokr.com%2Fblog%2F475765%2F">登录</a>
+        <span class="split">|</span>
+        <a href="https://account.guokr.com/sign_up/?success=http%3A%2F%2Fwww.guokr.com%2Fsso%2F%3Fsuppress_prompt%3D1%26lazy%3Dy%26success%3Dhttp%253A%252F%252Fwww.guokr.com%252Fgroup%252Fuser%252Frecent_replies%252F">注册</a>
+    </div>
+   
+    </div>
+</div>
+</div>
+
+
+
+<div class="sub-nav">
+    <div class="sub-nav-wrap">
+        <h2>
+            <a href="http://www.guokr.com/blogs/"><span class="gnav-logo">果壳</span>日志</a>
+        </h2>
+        <ul class="sub-nav-link gfl">
+            
+<li>
+    <a href="http://www.guokr.com/blogs/">热门日志</a>
+</li>
+
+            
+<li>
+    <a href="http://www.guokr.com/blogs/top/">排行榜</a>
+</li>
+
+            
+        </ul>
+        <a href="http://www.guokr.com/blog/edit/" class="write-blog" data-login="yes">写日志</a>
+    </div>
+</div>
+
+
+<div class="gwrap blog-content-page" id="blogContentPage">
+    <div class="gmain">
+        <div class="post">
+            <div class="group-title-header gclear">
+                <h1 id="articleTitle" class="blog-title">mysql中间件研究（Atlas，cobar，TDDL）</h1>
+                
+            </div>
+            <div class="post-txt">
+                <div class="post-detail gbbcode-content" id="articleContent">
+                    <p>mysql-proxy是官方提供的mysql中间件产品可以实现负载平衡，读写分离，failover等，但其不支持大数据量的分库分表且性能较差。下面介绍几款能代替其的mysql开源中间件产品，Atlas，cobar，tddl，让我们看看它们各自有些什么优点和新特性吧。</p><p>Atlas</p><p>Atlas是由 Qihoo 360, Web平台部基础架构团队开发维护的一个基于MySQL协议的数据中间层项目。它是在mysql-proxy 0.8.2版本的基础上，对其进行了优化，增加了一些新的功能特性。360内部使用Atlas运行的mysql业务，每天承载的读写请求数达几十亿条。<br>Altas架构：<br>Atlas是一个位于应用程序与MySQL之间，它实现了MySQL的客户端与服务端协议，作为服务端与应用程序通讯，同时作为客户端与MySQL通讯。它对应用程序屏蔽了DB的细节，同时为了降低MySQL负担，它还维护了连接池。<br><img src="./mysql中间件研究（Atlas，cobar，TDDL)_files/WLVBWi5qPZk_siOiVGC0EnRa-IIaGh7nEGCbg9VXsaq9AQAAygEAAFBO.png" width="445" height="458" data-hashkey="WLVBWi5qPZk_siOiVGC0EnRa-IIaGh7nEGCbg9VXsaq9AQAAygEAAFBO" data-orig-width="445" data-orig-height="458"><br><img src="./mysql中间件研究（Atlas，cobar，TDDL)_files/dfeZQZdvveHzRj_MWH7Rk8mFUnOwsz0NxzM6a4De_EK9AQAArAEAAFBO.png" width="445" height="428" data-hashkey="dfeZQZdvveHzRj_MWH7Rk8mFUnOwsz0NxzM6a4De_EK9AQAArAEAAFBO" data-orig-width="445" data-orig-height="428"></p><p>以下是一个可以参考的整体架构，LVS前端做负载均衡，两个Altas做HA,防止单点故障。<br><img src="./mysql中间件研究（Atlas，cobar，TDDL)_files/2a_yfNt3OsgfRuMIAuMbHvD9bcFI9Q00jceQiaXv0vrVAQAAPAEAAFBO.png" width="469" height="316" data-hashkey="2a_yfNt3OsgfRuMIAuMbHvD9bcFI9Q00jceQiaXv0vrVAQAAPAEAAFBO" data-orig-width="469" data-orig-height="316"></p><p>Altas的一些新特性：<br>1.主库宕机不影响读<br>主库宕机，Atlas自动将宕机的主库摘除，写操作会失败，读操作不受影响。从库宕机，Atlas自动将宕机的从库摘除，对应用没有影响。在mysql官方的proxy中主库宕机，从库亦不可用。<br>2.通过管理接口，简化管理工作，DB的上下线对应用完全透明，同时可以手动上下线。<br>图1是手动添加一台从库的示例。<br> 图1<br><img src="./mysql中间件研究（Atlas，cobar，TDDL)_files/xpNpLEcln5GsxtkyjVHnYyQKzxr9ueh_BriniGA3soZsAgAABAIAAFBO.png" width="620" height="516" data-hashkey="xpNpLEcln5GsxtkyjVHnYyQKzxr9ueh_BriniGA3soZsAgAABAIAAFBO" data-orig-width="620" data-orig-height="516"></p><p>3.自己实现读写分离<br>（1）为了解决读写分离存在写完马上就想读而这时可能存在主从同步延迟的情况，Altas中可以在SQL语句前增加 /*master*/ 就可以将读请求强制发往主库。<br>（2）如图2中，主库可设置多项，用逗号分隔，从库可设置多项和权重，达到负载均衡。<br> 图2<br><img src="./mysql中间件研究（Atlas，cobar，TDDL)_files/sJkIR4v_1-kMj2OkyVzWKo24-GrfJawQCFVKOgmRf8JHAgAARQAAAFBO.png" width="583" height="69" data-hashkey="sJkIR4v_1-kMj2OkyVzWKo24-GrfJawQCFVKOgmRf8JHAgAARQAAAFBO" data-orig-width="583" data-orig-height="69"><br>4.自己实现分表（图3）<br>（1）需带有分表字段。<br>（2）支持SELECT、INSERT、UPDATE、DELETE、REPLACE语句。<br>（3）支持多个子表查询结果的合并和排序。<br> 图3 <br><img src="./mysql中间件研究（Atlas，cobar，TDDL)_files/2ku_cAVTDAVzF0UbIr3VoFRRLGiyWqglCGNrKF_110nbAgAAmAEAAFBO.png" width="650" height="363" data-hashkey="2ku_cAVTDAVzF0UbIr3VoFRRLGiyWqglCGNrKF_110nbAgAAmAEAAFBO" data-orig-width="731" data-orig-height="408"><br>这里不得不吐槽Atlas的分表功能，不能实现分布式分表，所有的子表必须在同一台DB的同一个database里且所有的子表必须事先建好，Atlas没有自动建表的功能。<br>5.之前官方主要功能逻辑由使用lua脚本编写，效率低，Atlas用C改写，QPS提高，latency降低。<br>6.安全方面的提升<br>（1）通过配置文件中的pwds参数进行连接Atlas的用户的权限控制。<br>（2）通过client-ips参数对有权限连接Atlas的ip进行过滤。<br>（3）日志中记录所有通过Altas处理的SQL语句，包括客户端IP、实际执行该语句的DB、执行成功与否、执行所耗费的时间 ，如下面例子（图4）。<br> 图4<br><img src="./mysql中间件研究（Atlas，cobar，TDDL)_files/5jr6-G21-I8R22Q-honYPQZ_aloYCg8SuIMIkZmiwbP1AgAAWQAAAFBO.png" width="650" height="76" data-hashkey="5jr6-G21-I8R22Q-honYPQZ_aloYCg8SuIMIkZmiwbP1AgAAWQAAAFBO" data-orig-width="757" data-orig-height="89"><br>7.平滑重启<br>通过配置文件中设置lvs-ips参数实现平滑重启功能，否则重启Altas的瞬间那些SQL请求都会失败。该参数前面挂接的lvs的物理网卡的ip，注意不是虚ip。平滑重启的条件是至少有两台配置相同的Atlas且挂在lvs之后。<br>source：<a href="https://github.com/Qihoo360/Atlas" target="_blank">https://github.com/Qihoo360/Atlas</a></p><p>alibaba.cobar</p><p>Cobar是阿里巴巴（B2B）部门开发的一种关系型数据的分布式处理系统，它可以在分布式的环境下看上去像传统数据库一样为您提供海量数据服务。那么具体说说我们为什么要用它，或说cobar--能干什么？以下是我们业务运行中会存在的一些问题：<br>1.随着业务的进行数据库的数据量和访问量的剧增，需要对数据进行水平拆分来降低单库的压力，而且需要高效且相对透明的来屏蔽掉水平拆分的细节。<br>2.为提高访问的可用性，数据源需要备份。<br>3.数据源可用性的检测和failover。<br>4.前台的高并发造成后台数据库连接数过多，降低了性能，怎么解决。 <br>针对以上问题就有了cobar施展自己的空间了，cobar中间件以proxy的形式位于前台应用和实际数据库之间，对前台的开放的接口是mysql通信协议。将前台SQL语句变更并按照数据分布规则转发到合适的后台数据分库，再合并返回结果，模拟单库下的数据库行为。 <br><img src="./mysql中间件研究（Atlas，cobar，TDDL)_files/RWHG3pAD_a4IRrDCHxuGKkaPaX4uBnJdZX1FRcUe2s3JAQAAowEAAFBO.png" width="457" height="419" data-hashkey="RWHG3pAD_a4IRrDCHxuGKkaPaX4uBnJdZX1FRcUe2s3JAQAAowEAAFBO" data-orig-width="457" data-orig-height="419"><br>Cobar应用举例<br>应用架构：<br><img src="./mysql中间件研究（Atlas，cobar，TDDL)_files/J80jGGHTxgJL1wRTcssS5wjzr5u1XMs59dqmQH1yEW-eAgAAywEAAFBO.png" width="650" height="445" data-hashkey="J80jGGHTxgJL1wRTcssS5wjzr5u1XMs59dqmQH1yEW-eAgAAywEAAFBO" data-orig-width="670" data-orig-height="459"><br>应用介绍：<br>1.通过Cobar提供一个名为test的数据库，其中包含t1,t2两张表。后台有3个MySQL实例(ip:port)为其提供服务，分别为：A,B,C。<br>2.期望t1表的数据放置在实例A中，t2表的数据水平拆成四份并在实例B和C中各自放两份。t2表的数据要具备HA功能，即B或者C实例其中一个出现故障，不影响使用且可提供完整的数据服务。<br>cabar优点总结：<br>1.数据和访问从集中式改变为分布：<br>（1）Cobar支持将一张表水平拆分成多份分别放入不同的库来实现表的水平拆分<br>（2）Cobar也支持将不同的表放入不同的库<br>（3） 多数情况下，用户会将以上两种方式混合使用<br>注意！：Cobar不支持将一张表，例如test表拆分成test_1,test_2, test_3.....放在同一个库中，必须将拆分后的表分别放入不同的库来实现分布式。<br>2.解决连接数过大的问题。<br>3.对业务代码侵入性少。<br>4.提供数据节点的failover,HA：<br>(1)Cobar的主备切换有两种触发方式，一种是用户手动触发，一种是Cobar的心跳语句检测到异常后自动触发。那么，当心跳检测到主机异常，切换到备机，如果主机恢复了，需要用户手动切回主机工作，Cobar不会在主机恢复时自动切换回主机，除非备机的心跳也返回异常。<br>(2)Cobar只检查MySQL主备异常，不关心主备之间的数据同步，因此用户需要在使用Cobar之前在MySQL主备上配置双向同步。<br>cobar缺点：<br>开源版本中数据库只支持mysql，并且不支持读写分离。<br>source：<a href="http://code.alibabatech.com/wiki/display/cobar/Home" target="_blank">http://code.alibabatech.com/wiki/display/cobar/Home</a></p><p>TDDL</p><p>淘宝根据自己的业务特点开发了TDDL（Taobao Distributed Data Layer 外号:头都大了 ©_Ob）框架，主要解决了分库分表对应用的透明化以及异构数据库之间的数据复制，它是一个基于集中式配置的 jdbc datasource实现，具有主备，读写分离，动态数据库配置等功能。<br>TDDL所处的位置（tddl通用数据访问层，部署在客户端的jar包，用于将用户的SQL路由到指定的数据库中）：<br><img src="./mysql中间件研究（Atlas，cobar，TDDL)_files/0Y5YjfjQ8eGOzeskpen2mlNIYA_b7DBLbGT0YHyUiLFZAgAAgwEAAFBO.png" width="601" height="387" data-hashkey="0Y5YjfjQ8eGOzeskpen2mlNIYA_b7DBLbGT0YHyUiLFZAgAAgwEAAFBO" data-orig-width="601" data-orig-height="387"></p><p> 淘宝很早就对数据进行过分库的处理， 上层系统连接多个数据库，中间有一个叫做DBRoute的路由来对数据进行统一访问。DBRoute对数据进行多库的操作、数据的整合，让上层系统像操作一个数据库一样操作多个库。但是随着数据量的增长，对于库表的分法有了更高的要求，例如，你的商品数据到了百亿级别的时候，任何一个库都无法存放了，于是分成2个、4个、8个、16个、32个……直到1024个、2048个。好，分成这么多，数据能够存放了，那怎么查询它？这时候，数据查询的中间件就要能够承担这个重任了，它对上层来说，必须像查询一个数据库一样来查询数据，还要像查询一个数据库一样快（每条查询在几毫秒内完成），TDDL就承担了这样一个工作。在外面有些系统也用DAL（数据访问层） 这个概念来命名这个中间件。<br>下图展示了一个简单的分库分表数据查询策略：<br><img src="./mysql中间件研究（Atlas，cobar，TDDL)_files/AplojaLt9KGdFXVjKRGO6zW0-LARpUx_oY4e8s0oN6H9AgAAWAIAAFBO.png" width="650" height="510" data-hashkey="AplojaLt9KGdFXVjKRGO6zW0-LARpUx_oY4e8s0oN6H9AgAAWAIAAFBO" data-orig-width="765" data-orig-height="600"><br>主要优点：<br>1.数据库主备和动态切换<br>2.带权重的读写分离<br>3.单线程读重试<br>4.集中式数据源信息管理和动态变更<br>5.剥离的稳定jboss数据源<br>6.支持mysql和oracle数据库<br>7.基于jdbc规范，很容易扩展支持实现jdbc规范的数据源<br>8.无server,client-jar形式存在，应用直连数据库<br>9.读写次数,并发度流程控制，动态变更<br>10.可分析的日志打印,日志流控，动态变更<br>TDDL必须要依赖diamond配置中心（diamond是淘宝内部使用的一个管理持久配置的系统，目前淘宝内部绝大多数系统的配置，由diamond来进行统一管理，同时diamond也已开源）。<br>TDDL动态数据源使用示例说明：<a href="http://rdc.taobao.com/team/jm/archives/1645" target="_blank">http://rdc.taobao.com/team/jm/archives/1645</a><br>diamond简介和快速使用：<a href="http://jm.taobao.org/tag/diamond%E4%B8%93%E9%A2%98/" target="_blank">http://jm.taobao.org/tag/diamond%E4%B8%93%E9%A2%98/</a><br>TDDL源码：<a href="https://github.com/alibaba/tb_tddl" target="_blank">https://github.com/alibaba/tb_tddl</a> <br>TDDL复杂度相对较高。当前公布的文档较少，只开源动态数据源，分表分库部分还未开源，还需要依赖diamond，不推荐使用。<br>终其所有，我们研究中间件的目的是使数据库实现性能的提高。具体使用哪种还要经过深入的研究，严谨的测试才可决定。</p>
+                </div>
+            </div>
+            <div class="post-do" id="controlPanel">
+                
+                本文由<a href="http://www.guokr.com/i/1071128214/">旺旺仔</a>授权（<a href="http://www.guokr.com/">果壳网</a>）发表，文章著作权为原作者所有。
+            </div>
+        </div>
+        <div class="document-do">
+            <div class="gfl" id="recoWrap">
+                
+                <a href="javascript:void 0;" class="recommend-btn" id="recommendBt" data-login="yes"><i></i>推荐</a>
+                
+                <span class="recom-num" id="recomNum">4人推荐</span>
+                <div class="reco-tooltip" id="recoTooltip">
+                    
+                    
+                    
+                    
+                    
+                    <span class="reco-pic">
+                        <a href="http://www.guokr.com/i/1050049068/" data-title="lubin83" target="_blank">
+                            <img width="30" height="30" src="./mysql中间件研究（Atlas，cobar，TDDL)_files/TL27-S81EuoahCN7pVlXlzCI6I07ORoBQCo7fDv5EUqgAAAAoAAAAFBO.png">
+                        </a>
+                    </span>
+                    
+                    
+                    
+                    
+                    
+                    <span class="reco-pic">
+                        <a href="http://www.guokr.com/i/1982273690/" data-title="zhiying678" target="_blank">
+                            <img width="30" height="30" src="./mysql中间件研究（Atlas，cobar，TDDL)_files/nDMMtfGhXWhWDhbwGZnTHUY5M5qv5KC4X8McNEgpIK-gAAAAoAAAAEpQ.jpg">
+                        </a>
+                    </span>
+                    
+                    
+                    
+                    
+                    
+                    <span class="reco-pic">
+                        <a href="http://www.guokr.com/i/1834134690/" data-title="MrUse" target="_blank">
+                            <img width="30" height="30" src="./mysql中间件研究（Atlas，cobar，TDDL)_files/zxoSitfK3rdgYul8qVfHjpjqaF46Zi6_OaXJat3l2-egAAAAoAAAAEpQ.jpg">
+                        </a>
+                    </span>
+                    
+                    
+                    
+                    
+                    
+                    <span class="reco-pic">
+                        <a href="http://www.guokr.com/i/0640562813/" data-title="ccj67" target="_blank">
+                            <img width="30" height="30" src="./mysql中间件研究（Atlas，cobar，TDDL)_files/GfSJa9zCDJKnDT5mu66HLdD3XpC9LHQJXMZ7wskd4wagAAAAoAAAAEpQ.jpg">
+                        </a>
+                    </span>
+                    
+                    
+                    
+                    <b><s></s></b>
+                </div>
+            </div>
+            <div class="gfr share-wrap bdsharebuttonbox bdshare-button-style0-16" id="shareWrap" data-tag="shareMain" data-bd-bind="1408953849151"><a data-cmd="tsina" class="gicon-share-lsina" href="javascript:void 0;" title="分享到新浪微博" id="sinaShare">新浪微博</a>                                <a href="javascript: void 0;" class="share" id="shareBtn">分享</a>                                <div id="share" class="share-tooltip">                                    <p><a data-cmd="weixin" href="http://www.guokr.com/blog/475765/#" title="分享到微信"><i class="gicon-share-lweixin"></i>微信</a></p>                                    <p><a data-cmd="douban" href="http://www.guokr.com/blog/475765/#" title="分享到豆瓣"><i class="gicon-share-ldb"></i>豆瓣</a></p>                                    <p><a data-cmd="qzone" href="http://www.guokr.com/blog/475765/#" title="分享到QQ空间"><i class="gicon-share-lqzone"></i>QQ空间</a></p>                                    <p><a data-cmd="tqq" href="http://www.guokr.com/blog/475765/#" title="分享到腾讯微博"><i class="gicon-share-lqqmb"></i>腾讯微博</a></p>                                </div></div>
+        </div>
+        
+        <div class="rela-read">
+            
+            <a href="http://www.guokr.com/blog/472369/" id="preRead" class="pre-read">Zabbix监控Mysql优化</a>
+            
+        
+            
+        </div>
+        
+        <div class="cmts" id="comments">
+            <div class="cmts-title">
+                <div class="gfl">1条评论</div>
+                <p class="gfr">
+                    
+                    <span class="cmts-title-page">
+                        
+                        
+                    </span>
+                </p>
+            </div>
+            <ul class="cmts-list">
+                
+                
+                
+                <li id="reply2697113">
+                    <div class="cmt-img cmtImg pt-pic">
+                        <a href="http://www.guokr.com/i/0636004281/" title="monkeycraps" target="_blank">
+                            <img width="48" height="48" src="./mysql中间件研究（Atlas，cobar，TDDL)_files/TL27-S81EuoahCN7pVlXlzCI6I07ORoBQCo7fDv5EUqgAAAAoAAAAFBO.png">
+                        </a>
+                        <span class="cmt-floor">1楼</span>
+                    </div>
+                    <div class="pt-txt">
+                        <span class="cmt-info">2014-05-15 17:33</span>
+                        <a class="cmt-author cmtAuthor" href="http://www.guokr.com/i/0636004281/" target="_blank">monkeycraps</a>
+                        <div class="cmt-content gbbcode-content cmtContent"><p>可是从这里看来，没有一个开源方案是完善的。</p><p>而且各个方案目前都是处于停滞的状态，赶脚只能自己实现了。</p></div>
+                        <span class="cmt-do">
+                            
+                            
+                            <a class="cmt-do-quote" href="javascript:void 0;" data-operation="quoteComment">评论</a>
+                            
+                            
+                        </span>
+                    </div>
+                    </li>
+                
+                
+            </ul>
+            
+
+
+
+            
+            <div class="cmts-do" id="commentsReplyer">
+                <h3 id="replyer">你的评论</h3>
+                <div class="reply-box"><span>回复请先<a href="javascript:void 0;" data-login="yes">登录</a></span></div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="gside">
+        <div class="blog-info">
+            <a href="http://www.guokr.com/i/1071128214/" class="author-pic">
+                <img src="./mysql中间件研究（Atlas，cobar，TDDL)_files/4ZVTLNiXfg6FR5TKo8i66wpV5B4sj9TN6ThrUed3TW-gAAAAoAAAAEpQ.jpg">
+            </a>
+            <span class="author-wrap">
+                <a href="http://www.guokr.com/i/1071128214/" class="author" id="authorName">旺旺仔</a>
+                
+            </span>
+            
+            <span class="author-link">
+                
+                
+                
+                
+                
+                
+            </span>
+            <span class="hr">发表于</span>
+            <span class="publish-time">2013-07-26 16:39</span>
+        </div>
+    </div>
+</div>
+
+        <div class="gbottom">
+    <div class="gbottom-nav">
+        <a href="http://www.guokr.com/about/">关于我们</a>
+        <a href="http://www.guokr.com/zone/job/">加入果壳</a>
+        <a href="http://www.guokr.com/spread/">媒体报道</a>
+        <a href="http://www.guokr.com/question/446161/">帮助中心</a>
+        <a href="http://www.guokr.com/zone/">内容专区</a>
+        <a href="http://www.guokr.com/help/policy/">免责声明</a>
+        <a href="http://www.guokr.com/contact/">联系我们</a>
+        <a href="http://m.guokr.com/">移动版</a>
+        <a href="http://www.guokr.com/mobile/">移动应用</a>
+    </div>
+    <div class="gbottom-i">©2014果壳网&nbsp;京ICP备09043258号-2&nbsp;京公网安备1101052730</div>
+</div>
+    </div>
+    <script type="text/javascript" async="" src="./mysql中间件研究（Atlas，cobar，TDDL)_files/dc.js"></script><script type="text/javascript" async="" src="./mysql中间件研究（Atlas，cobar，TDDL)_files/h.js"></script><script>
+        var g_obj_id = 475765,
+            
+            g_is_admin = false,
+            
+            g_share_data = {
+                    title : "mysql\u4e2d\u95f4\u4ef6\u7814\u7a76\uff08Atlas\uff0ccobar\uff0cTDDL\uff09",
+                    url : "http:\/\/www.guokr.com\/blog\/475765\/",
+                    image : '',
+                    summary : "mysql-proxy\u662f\u5b98\u65b9\u63d0\u4f9b\u7684mysql\u4e2d\u95f4\u4ef6\u4ea7\u54c1\u53ef\u4ee5\u5b9e\u73b0\u8d1f\u8f7d\u5e73\u8861\uff0c\u8bfb\u5199\u5206\u79bb\uff0cfailover\u7b49\uff0c\u4f46\u5176\u4e0d\u652f\u6301\u5927\u6570\u636e\u91cf\u7684\u5206\u5e93\u5206\u8868\u4e14\u6027\u80fd\u8f83\u5dee\u3002\u4e0b\u9762\u4ecb\u7ecd\u51e0\u6b3e\u80fd\u4ee3\u66ff\u5176\u7684mysql\u5f00\u6e90\u4e2d\u95f4\u4ef6\u4ea7\u54c1\uff0cAtlas\uff0ccobar\uff0ctddl\uff0c\u8ba9\u6211\u4eec\u770b\u770b\u5b83\u4eec\u5404\u81ea\u6709\u4e9b\u4ec0\u4e48\u4f18\u70b9\u548c\u65b0\u7279\u6027\u5427\u3002\n \nAtlas\n \nAtlas\u662f..."
+                },
+            date_modified = 1374827941 + 2;  // version 2
+        var tinymceContentCSS = "http:\/\/static.guokr.com\/apps\/daily\/styles\/editor\/c92fb055.content.css";
+    </script>
+    
+    <script>
+        var g_page_name = "blogNewContentPage",
+            GJS_VERSION = 'doom',
+            GJS_PRELOAD = ['ga', 'jQuery', 'GUtils', 'api', 'share'],
+            ukey = null,
+            client_id = 32353,
+            url_signin = "http:\/\/www.guokr.com\/sso\/?suppress_prompt=1&lazy=y&success=http%3A%2F%2Fwww.guokr.com%2Fblog%2F475765%2F",
+            url_signup = "https:\/\/account.guokr.com\/sign_up\/?success=http%3A%2F%2Fwww.guokr.com%2Fsso%2F%3Fsuppress_prompt%3D1%26lazy%3Dy%26success%3Dhttp%253A%252F%252Fwww.guokr.com%252Fgroup%252Fuser%252Frecent_replies%252F",
+            weibo_signin = "https:\/\/account.guokr.com\/weibo\/sign_in\/?success=http%3A%2F%2Fwww.guokr.com%2Fsso%2F%3Fsuppress_prompt%3D1%26lazy%3Dy%26success%3Dhttp%253A%252F%252Fwww.guokr.com%252Fblog%252F475765%252F",
+            renren_signin = "https:\/\/account.guokr.com\/renren\/sign_in\/?success=http%3A%2F%2Fwww.guokr.com%2Fsso%2F%3Fsuppress_prompt%3D1%26lazy%3Dy%26success%3Dhttp%253A%252F%252Fwww.guokr.com%252Fblog%252F475765%252F",
+            qq_signin = "https:\/\/account.guokr.com\/qq\/sign_in\/?success=http%3A%2F%2Fwww.guokr.com%2Fsso%2F%3Fsuppress_prompt%3D1%26lazy%3Dy%26success%3Dhttp%253A%252F%252Fwww.guokr.com%252Fblog%252F475765%252F";
+            douban_signin = "https:\/\/account.guokr.com\/douban\/sign_in\/?success=http%3A%2F%2Fwww.guokr.com%2Fsso%2F%3Fsuppress_prompt%3D1%26lazy%3Dy%26success%3Dhttp%253A%252F%252Fwww.guokr.com%252Fblog%252F475765%252F";
+    </script>
+    <script src="./mysql中间件研究（Atlas，cobar，TDDL)_files/I.js"></script>
+    <script src="./mysql中间件研究（Atlas，cobar，TDDL)_files/main.js"></script>
+    <script src="./mysql中间件研究（Atlas，cobar，TDDL)_files/5d020fd0.editor.js"></script>
+    <script src="./mysql中间件研究（Atlas，cobar，TDDL)_files/blog.js"></script><div id="blockWindow" class="gui-block">                           <div class="gui-block-b">                               <h4 class="gui-block-hd">                                   <span id="blockTitle"></span>                                   <a class="blockClose gui-block-close" href="http://www.guokr.com/blog/475765/#" title="关闭">X</a>                               </h4>                               <div id="blockContent" class="gui-block-bd"></div>                           </div>                       </div>
+    <script src="./mysql中间件研究（Atlas，cobar，TDDL)_files/d2649787.gbbcode.js"></script>
+
+
+<a class="gui-screen-top" href="http://www.guokr.com/blog/475765/#" style="display: none;"><s></s><b></b>返回顶部</a></body></html>

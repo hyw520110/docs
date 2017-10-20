@@ -1,0 +1,22 @@
+oracle中空值的排序默认的是：
+升序排列，默认情况下，null值排后面。
+
+降序排序，默认情况下，null值排前面。
+有几种办法改变这种情况：
+
+（1）用 nvl 函数或decode 函数 将null转换为一特定值
+
+（2）用case语法将null转换为一特定值（oracle9i以后版本支持。和sqlserver类似）：
+order by (case mycol when null then '北京漂客'     else   mycol   end)
+
+（3）使用nulls first 或者nulls last 语法。
+
+这是oracle专门用来null值排序的语法。
+
+nulls first ：将null排在最前面。如：select * from mytb order by mycol nulls first
+
+null last ：将null排在最后面。如：select * from mytb order by mycol nulls last
+
+如:
+order by nvl(allAcptcnyamt,to_number(-1000)) desc
+如果allAcptcnyamt为空的话就把它赋值为-1000后降序排列

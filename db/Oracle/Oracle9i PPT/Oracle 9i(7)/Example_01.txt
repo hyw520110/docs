@@ -1,0 +1,369 @@
+
+
+declare
+i number:=1;
+s number:=0;
+begin
+dbms_output.enable;
+  loop
+    s:=s+i;
+    i:=i+1;
+    exit when i>10;  
+  end loop;
+  dbms_output.put_line('s=' || s);
+end;
+/
+
+
+declare
+i number:=1;
+j number;
+begin
+dbms_output.enable;
+  loop
+    j:=1;
+    loop 
+       if j>i then
+          exit;
+       end if; 
+       
+       dbms_output.put(i);
+       dbms_output.put('*');
+       dbms_output.put(j);
+       dbms_output.put('=');
+       dbms_output.put(i*j);
+       dbms_output.put(' ');
+       j:=j+1;
+       
+    end loop;
+    dbms_output.put_line('');
+    i:=i+1;
+    exit when i>9;  
+  end loop;
+end;
+/
+
+
+declare
+i number:=1;
+j number;
+begin
+dbms_output.enable;
+ while i<10 loop
+    j:=1;
+    loop 
+       if j>i then
+          exit;
+       end if; 
+       
+       dbms_output.put(i);
+       dbms_output.put('*');
+       dbms_output.put(j);
+       dbms_output.put('=');
+       dbms_output.put(i*j);
+       dbms_output.put(' ');
+       j:=j+1;
+       
+    end loop;
+    dbms_output.put_line('');
+    i:=i+1;
+    
+  end loop;
+end;
+/
+
+
+declare
+i number:=1;
+j number;
+begin
+dbms_output.enable;
+ while i<10 loop
+    j:=1;
+    while j<=i loop 
+              
+       dbms_output.put(i);
+       dbms_output.put('*');
+       dbms_output.put(j);
+       dbms_output.put('=');
+       dbms_output.put(i*j);
+       dbms_output.put(' ');
+       j:=j+1;
+       
+    end loop;
+    dbms_output.put_line('');
+    i:=i+1;
+    
+  end loop;
+end;
+/
+
+declare
+i number:=1;
+j number;
+begin
+dbms_output.enable;
+ for i in 1..9 loop
+    
+    for j in 1..i loop 
+              
+       dbms_output.put(i);
+       dbms_output.put('*');
+       dbms_output.put(j);
+       dbms_output.put('=');
+       dbms_output.put(i*j);
+       dbms_output.put(' ');
+      
+    end loop;
+    dbms_output.put_line('');
+    
+  end loop;
+end;
+/
+
+
+declare
+-- i number:=1;
+-- j number;
+begin
+dbms_output.enable;
+ for i in 1..t loop
+    
+    for j in 1..i loop 
+              
+       dbms_output.put(i);
+       dbms_output.put('*');
+       dbms_output.put(j);
+       dbms_output.put('=');
+       dbms_output.put(i*j);
+       dbms_output.put(' ');
+      
+    end loop;
+    dbms_output.put_line('');
+    
+  end loop;
+  exception 
+       when others then
+           dbms_output.put_line('信息提示:发生数据库操作异常!');
+end;
+/
+
+-- 没有进行异常处理时显示
+declare
+-- i number:=1;
+-- j number;
+t number;
+begin
+dbms_output.enable;
+ for i in 1..t loop
+    
+    for j in 1..i loop 
+              
+       dbms_output.put(i);
+       dbms_output.put('*');
+       dbms_output.put(j);
+       dbms_output.put('=');
+       dbms_output.put(i*j);
+       dbms_output.put(' ');
+      
+    end loop;
+    dbms_output.put_line('');
+    
+  end loop;
+  
+end;
+/
+
+
+
+declare
+-- i number:=1;
+-- j number;
+t number;
+begin
+dbms_output.enable;
+ for i in 1..t loop
+    
+    for j in 1..i loop 
+              
+       dbms_output.put(i);
+       dbms_output.put('*');
+       dbms_output.put(j);
+       dbms_output.put('=');
+       dbms_output.put(i*j);
+       dbms_output.put(' ');
+      
+    end loop;
+    dbms_output.put_line('');
+    
+  end loop;
+  exception 
+       when others then
+           dbms_output.put_line('信息提示:发生数据库操作异常!');
+end;
+/
+
+
+-- 用户自定义异常
+
+declare
+too_many exception;
+countrec number:=0;
+begin
+select count(*) into countrec from m_indent;
+if countrec > 8 then
+   raise too_many;
+end if;
+exception 
+    when too_many then
+         dbms_output.put_line('信息提示:查询记录数过多!');
+    when others then
+         dbms_output.put_line('信息提示:发生其他异常!');
+end;
+/
+
+
+-- 游标的简单使用
+declare
+eid m_indent.employee_id%type;
+pid m_indent.provider_id%type;
+iid m_indent.indent_id%type;
+idate m_indent.indent_date%type;
+
+cursor t_cur 
+is 
+select * from m_indent;
+
+begin
+open t_cur;
+fetch t_cur into eid,pid,iid,idate;
+dbms_output.put_line(eid);
+dbms_output.put_line(pid);
+dbms_output.put_line(iid);
+dbms_output.put_line(idate);
+close t_cur;
+
+end;
+/
+
+
+declare
+eid m_indent.employee_id%type;
+pid m_indent.provider_id%type;
+iid m_indent.indent_id%type;
+idate m_indent.indent_date%type;
+
+cursor t_cur 
+is 
+select * from m_indent;
+
+begin
+
+open t_cur;
+if t_cur%ISOPEN then 
+   fetch t_cur into eid,pid,iid,idate;
+   if t_cur%found then
+   dbms_output.put_line(eid);
+   dbms_output.put_line(pid);
+   dbms_output.put_line(iid);
+   dbms_output.put_line(idate);
+   end if;
+close t_cur;
+end if;
+
+end;
+/
+
+-- 带参数的游标
+declare
+eid m_indent.employee_id%type;
+pid m_indent.provider_id%type;
+iid m_indent.indent_id%type;
+idate m_indent.indent_date%type;
+
+id m_indent.employee_id%type;
+
+cursor t_cur(id char) 
+is 
+select * from m_indent where employee_id = id;
+
+begin
+
+id:='&id';
+
+open t_cur(id);
+if t_cur%ISOPEN then 
+   fetch t_cur into eid,pid,iid,idate;
+   if t_cur%found then
+   dbms_output.put_line(eid);
+   dbms_output.put_line(pid);
+   dbms_output.put_line(iid);
+   dbms_output.put_line(idate);
+   end if;
+close t_cur;
+end if;
+
+end;
+/
+
+-- 输出所有记录信息
+
+declare
+eid m_indent.employee_id%type;
+pid m_indent.provider_id%type;
+iid m_indent.indent_id%type;
+idate m_indent.indent_date%type;
+
+id m_indent.employee_id%type;
+
+cursor t_cur(id char) 
+is 
+select * from m_indent where employee_id = id;
+
+begin
+
+id:='&id';
+
+open t_cur(id);
+if t_cur%ISOPEN then 
+   
+   fetch t_cur into eid,pid,iid,idate;
+   while t_cur%found loop
+  
+   dbms_output.put_line(eid);
+   dbms_output.put_line(pid);
+   dbms_output.put_line(iid);
+   dbms_output.put_line(idate);
+   dbms_output.put_line('');
+   
+   fetch t_cur into eid,pid,iid,idate; 
+   
+   end loop;
+close t_cur;
+end if;
+
+end;
+/
+
+
+-- 游标的FOR语句
+declare
+id m_indent.employee_id%type;
+
+cursor t_cur(id char) 
+is 
+select * from m_indent where employee_id = id;
+
+begin
+id:='&id';
+
+   for temp_rec in t_cur(id) loop
+   dbms_output.put_line(temp_rec.employee_id);
+   dbms_output.put_line(temp_rec.provider_id);
+   dbms_output.put_line(temp_rec.indent_id);
+   dbms_output.put_line(temp_rec.indent_date);
+   dbms_output.put_line('');
+   end loop;
+
+end;
+/

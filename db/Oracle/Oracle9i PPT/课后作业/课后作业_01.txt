@@ -1,0 +1,283 @@
+简单查询
+
+
+
+1.从职工关系中检索所有工资
+========================================================
+select 工资 from 职工
+select salary from m_employee;
+
+
+2.检索仓库关系中的所有元组
+========================================================
+select * from m_warehouse;
+
+
+3.检索工资多于1230的职工号
+========================================================
+select employee_id from m_employee where salary > 1230;
+
+
+4.检索哪些仓库有工资多于1210元的职工
+========================================================
+select distinct warehouse_id from m_employee
+where salary>1210;
+
+
+5.给出在仓库"WH1"或"WH2"工作，并且工资少于是1250元的职工号
+========================================================
+select employee_id from m_employee where 
+salary < 1300 
+and
+(warehouse_id = 'WH1' OR warehouse_id = 'WH2')
+;
+
+简单的联接查询
+
+
+6.找出工资多于1230元的职工号和他们所在的城市
+========================================================
+select employee_id,city from m_warehouse,m_employee
+where 
+m_warehouse.warehouse_id = m_employee.warehouse_id 
+and
+salary > 1300
+;
+
+
+7.找出工作在面积大于400的仓库的职工号以及这些职工工作所在的城市。
+========================================================
+select employee_id,city from m_warehouse,m_employee
+where 
+m_warehouse.warehouse_id = m_employee.warehouse_id 
+and
+area > 400
+;
+
+嵌套查询
+
+
+8.哪些城市至少有一个仓库的职工工资为1250元。
+========================================================
+1>.
+select city from m_warehouse,m_employee
+where 
+m_warehouse.warehouse_id = m_employee.warehouse_id 
+and
+salary = 1313
+;
+
+2>.
+select city from m_warehouse 
+where
+warehouse_id in 
+(select warehouse_id from m_employee
+where salary = 1313
+);
+
+
+
+9.查询所有职工的工资都多于1210元的仓库信息。
+========================================================
+select * from m_warehouse
+where warehouse_id 
+not in 
+(select warehouse_id from m_employee
+where salary <= 1271)
+and 
+warehouse_id 
+in 
+(select warehouse_id from m_employee)
+;
+
+
+
+10.找出和职工E4挣相同工资的所有职工
+========================================================
+select * from m_employee where salary =
+(select salary from m_employee where employee_id=E4 );
+
+
+
+几个特殊查询
+
+
+11.查询出工资在1220元到1240元范围内的职工信息。
+========================================================
+select * from m_employee where salary between 1220 and 1240
+
+
+12.供应商关系中检索出全部公司的信息，不要工厂或其他供应商信息。
+===============================================================
+select * from m_provider
+where provider_name like '%公司';
+
+
+13.找出不在北京的全部供应商的信息。
+========================================================
+select distinct * from m_provider
+where provider_address not in ('北京');
+
+
+排序
+
+
+
+14.按职工的工资值升序检索出全部职工信息。
+========================================================
+select * from m_employee
+order by salary ;
+
+
+
+15.先按仓库号排序，再按工资排序并输出全部职工信息。
+========================================================
+select * from m_employee
+order by warehouse_id ,salary;
+
+简单计算查询
+
+
+16.找出供应商所在地的数目。
+========================================================
+select  count(distinct provider_address) from m_provider;
+
+
+
+17.求支付工资的总数。
+========================================================
+select sum(salary) as sum from m_employee;
+
+
+
+18.求北京和上海的仓库职工的工资总和。
+========================================================
+select sum(salary) from m_employee,m_warehouse
+where m_employee.warehouse_id=m_warehouse.warehouse_id
+and city in ('北京','上海');
+
+19.求所有职工工资都多于1210元的仓库的平均面积。
+========================================================
+1.)
+select avg(area) from m_warehouse where warehouse_id in (
+  2  select warehouse_id from m_employee where warehouse_id not in(
+  3  select warehouse_id from m_employee where salary <= 1210)
+  4  );
+
+ AVG(AREA)
+----------
+       200
+
+
+2.
+SQL> select avg(area) from m_warehouse where warehouse_id not in (select warehouse_id from m_employee where salary <= 1210) and warehouse_id in(select warehouse_id from m_employee);
+
+ AVG(AREA)
+----------
+       200
+
+
+
+20.求在WH2仓库工作的职工的最高工资。
+========================================================
+select max(distinct salary) from m_employee
+where warehouse_id='WH2';
+
+分组与计算查询
+
+
+21.求每个仓库的职工的平均工资。
+========================================================
+select warehouse_id,avg(salary) from m_employee
+group by warehouse_id;
+
+
+22.求至少有两个职工的每个仓库的平均工资。
+========================================================
+select warehouse_id,count(*) counter,avg(salary) from m_employee
+group by warehouse_id having count(*) >= 2;
+
+利用空值查询
+
+
+23.找出尚未确定供应商的订购单。
+========================================================
+select indent_id from m_indent
+where provider_id is null;
+
+
+
+24.列出已经确定了供应商的订购单信息。
+========================================================
+select * from m_indent
+where provider_id is not null;
+
+内外层互相关嵌套查询
+
+
+26.列出每个职工经手的具有最高总金额的订购单信息。
+========================================================
+select * from o_indent t1 where t1.all_amount = 
+(select max(all_amount) from o_indent t2 where t2.employee_id = t1.employee_id);
+
+
+
+
+
+使用量词和谓词的查询
+
+
+
+27.检索那些仓库中还没有职工的仓库信息。
+========================================================
+select m_warehouse.warehouse_id,city,area from m_warehouse,m_employee
+where m_employee.warehouse_id=m_warehouse.warehouse_id
+and employee_id is null
+
+
+28.检索那些仓库中至少已经有一个职工的仓库信息。
+========================================================
+select m_employee.warehouse_id,count(m_employee.warehouse_id) from m_warehouse,m_employee
+where m_employee.warehouse_id=m_warehouse.warehouse_id
+group by m_employee.warehouse_id
+having count(m_employee.warehouse_id)>=1;
+
+
+29.检索职工的工资都大于WH1仓库中任何一名职工工资的仓库号。
+================================================================
+select warehouse_id from m_employee 
+where warehouse_id not in 
+(select warehouse_id from m_employee
+where salary <=
+(select min(salary) from m_employee where warehouse_id = 'WH1'))
+;
+
+
+
+
+
+30.检索所有职工的工资都大于WH1仓库中所有职工工资的仓库号。
+========================================================
+select warehouse_id from m_employee 
+where warehouse_id not in 
+(select warehouse_id from m_employee
+where salary <=
+(select max(salary) from m_employee where warehouse_id = 'WH1'))
+;
+
+
+37.将查询结果存放到永久性表中。
+========================================================
+
+
+
+
+
+
+
+
+
+
+
+
+

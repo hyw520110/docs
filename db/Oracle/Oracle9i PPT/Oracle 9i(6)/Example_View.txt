@@ -1,0 +1,258 @@
+Connected to Oracle9i Enterprise Edition Release 9.2.0.1.0 
+Connected as issmis
+
+SQL> desc m_indent;
+Name        Type    Nullable Default Comments 
+----------- ------- -------- ------- -------- 
+EMPLOYEE_ID CHAR(3)                           
+PROVIDER_ID CHAR(3) Y                         
+INDENT_ID   CHAR(4)                           
+INDENT_DATE DATE    Y                         
+
+SQL> 
+SQL> declare
+  2  eid m_indent.employee_id%type;
+  3  pid m_indent.provider_id%type;
+  4  iid m_indent.indent_id%type;
+  5  idate m_indent.indent_date%type;
+  6  tempi varchar2(32);
+  7  begin
+  8  dbms_output.enable;
+  9  eid:='&eid';
+ 10  pid:='&pid';
+ 11  iid:='&iid';
+ 12  tempi:='&tempi';
+ 13  idate:=to_date(tempi,'YYYY-MM-DD');
+ 14  
+ 15  insert into m_indent values
+ 16  (
+ 17  eid,
+ 18  pid,
+ 19  iid,
+ 20  idate
+ 21  );
+ 22  commit;
+ 23  dbms_output.put_line('成功添加信息!');
+ 24  
+ 25  end;
+ 26  /
+
+成功添加信息!
+
+PL/SQL procedure successfully completed
+
+SQL> select * from m_indent;
+
+EMPLOYEE_ID PROVIDER_ID INDENT_ID INDENT_DATE
+----------- ----------- --------- -----------
+E3          S7          OR67      2001-6-23
+E7          S4          OR76      2001-5-25
+E6                      OR77      
+E3          S4          OR79      2001-6-13
+E3                      OR90      
+E3          S3          OR91      2001-7-13
+E1          S4          OR73      2001-7-28
+E1                      OR80      2007-1-9
+E9          S8          OR79      2006-7-9
+
+9 rows selected
+
+SQL> 
+SQL> declare
+  2  tempd m_indent%rowtype;
+  3  tempi varchar2(32);
+  4  begin
+  5  dbms_output.enable;
+  6  tempd.employee_id:='&tempd.employee_id';
+  7  tempd.provider_id:='&tempd.provider_id';
+  8  tempd.indent_id:='&tempd.indent_id';
+  9  tempi:='&tempi';
+ 10  tempd.indent_date:=to_date(tempi,'YYYY-MM-DD');
+ 11  
+ 12  insert into m_indent values
+ 13  (
+ 14  tempd.employee_id,
+ 15  tempd.provider_id,
+ 16  tempd.indent_id,
+ 17  tempd.indent_date
+ 18  );
+ 19  commit;
+ 20  dbms_output.put_line('成功添加信息!');
+ 21  
+ 22  end;
+ 23  /
+
+declare
+tempd m_indent%rowtype;
+tempi varchar2(32);
+begin
+dbms_output.enable;
+tempd.employee_id:='E0employee_id';
+tempd.provider_id:='S0provider_id';
+tempd.indent_id:='OR00indent_id';
+tempi:='2008-07-09';
+tempd.indent_date:=to_date(tempi,'YYYY-MM-DD');
+
+insert into m_indent values
+(
+tempd.employee_id,
+tempd.provider_id,
+tempd.indent_id,
+tempd.indent_date
+);
+commit;
+dbms_output.put_line('成功添加信息!');
+
+end;
+
+ORA-06502: PL/SQL: 数字或值错误 :  字符串缓冲区太小
+ORA-06512: 在line 6
+
+SQL> 
+SQL> declare
+  2  tempd m_indent%rowtype;
+  3  tempi varchar2(32);
+  4  begin
+  5  dbms_output.enable;
+  6  tempd.employee_id:='&tempd';
+  7  tempd.provider_id:='&tempd';
+  8  tempd.indent_id:='&tempd';
+  9  tempi:='&tempi';
+ 10  tempd.indent_date:=to_date(tempi,'YYYY-MM-DD');
+ 11  
+ 12  insert into m_indent values
+ 13  (
+ 14  tempd.employee_id,
+ 15  tempd.provider_id,
+ 16  tempd.indent_id,
+ 17  tempd.indent_date
+ 18  );
+ 19  commit;
+ 20  dbms_output.put_line('成功添加信息!');
+ 21  
+ 22  end;
+ 23  /
+
+成功添加信息!
+
+PL/SQL procedure successfully completed
+
+SQL> select * from m_indent;
+
+EMPLOYEE_ID PROVIDER_ID INDENT_ID INDENT_DATE
+----------- ----------- --------- -----------
+E3          S7          OR67      2001-6-23
+E7          S4          OR76      2001-5-25
+E6                      OR77      
+E3          S4          OR79      2001-6-13
+E3                      OR90      
+E3          S3          OR91      2001-7-13
+E1          S4          OR73      2001-7-28
+E1                      OR80      2007-1-9
+E9          S8          OR79      2006-7-9
+E0          S0          OR00      2008-7-9
+
+10 rows selected
+
+SQL> select * from m_indent where provider_id is null;
+
+EMPLOYEE_ID PROVIDER_ID INDENT_ID INDENT_DATE
+----------- ----------- --------- -----------
+E6                      OR77      
+E3                      OR90      
+E1                      OR80      2007-1-9
+
+SQL> 
+SQL> declare
+  2    uid varchar2(32);
+  3    pwd varchar2(32);
+  4  begin
+  5    uid:='&uid';
+  6    pwd:='&pwd';
+  7    if uid='jdcheng' then
+  8       if pwd='123456' then
+  9          dbms_output.put_line('欢迎进入!');
+ 10       else
+ 11          dbms_output.put_line('密码有误!');
+ 12       end if;
+ 13    else
+ 14        dbms_output.put_line('非法账号!');
+ 15    end if;
+ 16  end;
+ 17  /
+
+欢迎进入!
+
+PL/SQL procedure successfully completed
+
+SQL> 
+SQL> declare
+  2    uid varchar2(32);
+  3    pwd varchar2(32);
+  4    sta varchar2(32);
+  5  begin
+  6    uid:='&uid';
+  7    pwd:='&pwd';
+  8    sta:='&sta';
+  9    if uid='jdcheng' then
+ 10       if pwd='123456' then
+ 11          case sta
+ 12               when '0' then
+ 13                   dbms_output.put_line('账号初始化!');
+ 14               when '2' then
+ 15                   dbms_output.put_line('账号已禁用!');
+ 16               when '1' then
+ 17                   dbms_output.put_line('账号启用中,欢迎进入!');
+ 18               else
+ 19                   dbms_output.put_line('非法状态信息!');
+ 20          end case;
+ 21  
+ 22       else
+ 23          dbms_output.put_line('密码有误!');
+ 24       end if;
+ 25    else
+ 26        dbms_output.put_line('非法账号!');
+ 27    end if;
+ 28  end;
+ 29  /
+
+账号启用中,欢迎进入!
+
+PL/SQL procedure successfully completed
+
+SQL> 
+SQL> declare
+  2    uid varchar2(32);
+  3    pwd varchar2(32);
+  4    sta varchar2(32);
+  5  begin
+  6    uid:='&uid';
+  7    pwd:='&pwd';
+  8    sta:='&sta';
+  9    if uid='jdcheng' then
+ 10       if pwd='123456' then
+ 11          case
+ 12               when sta='0' then
+ 13                   dbms_output.put_line('账号初始化!');
+ 14               when sta='2' then
+ 15                   dbms_output.put_line('账号已禁用!');
+ 16               when sta='1' then
+ 17                   dbms_output.put_line('账号启用中,欢迎进入!');
+ 18               else
+ 19                   dbms_output.put_line('非法状态信息!');
+ 20          end case;
+ 21  
+ 22       else
+ 23          dbms_output.put_line('密码有误!');
+ 24       end if;
+ 25    else
+ 26        dbms_output.put_line('非法账号!');
+ 27    end if;
+ 28  end;
+ 29  /
+
+账号启用中,欢迎进入!
+
+PL/SQL procedure successfully completed
+
+SQL> 

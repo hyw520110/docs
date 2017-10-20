@@ -1,0 +1,7 @@
+数据库连接池性能比对(hikari druid c3p0 dbcp jdbc)
+http://blog.csdn.net/qq_31125793/article/details/51241943
+
+http://blog.csdn.net/a1178016652/article/details/45027619
+
+使用jdbc-pool替代dbcp、c3p0等连接池的原因
+http://blog.csdn.net/u011267070/article/details/52185938?locationNum=4

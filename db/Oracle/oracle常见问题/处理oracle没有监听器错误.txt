@@ -1,0 +1,51 @@
+一、运行监听器
+在CMD中输入以下内容.
+C:\>lsnrctl
+LSNRCTL for 32-bit Windows: Version 8.1.6.0.0 - Production on 14-3月 -2003 14:17
+:51(c) Copyright 1998, 1999, Oracle Corporation. All rights reserved.
+
+欢迎来到LSNRCTL，请键入"help"以获得信息。
+
+LSNRCTL> status
+连接至(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=robust)(PORT=1521)))
+TNS-01103: 地址的协议专用组件指定不正确
+TNS-12541: TNS：无监听器
+TNS-12560: TNS：协议适配器出现错误
+TNS-00511: 无监听器
+32-bit Windows Error: 61: Unknown error
+
+LSNRCTL> start
+启动tnslsnr：请稍候...
+
+Failed to start service, error 3.
+TNS-12536: TNS：可能会阻碍*作
+TNS-12560: TNS：协议适配器出现错误
+TNS-00506: *作可能阻塞
+32-bit Windows Error: 997: Unknown error
+
+二,解决方案
+
+1.解决方案一
+
+
+修改 listerner.ora(..\ora92\network\admin),文件,确保如下:
+LISTENER =
+(DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = tiger)(PORT = 1521))
+)
+
+SID_LIST_LISTENER =
+(SID_LIST =
+    (SID_DESC =
+      (GLOBAL_DBNAME = ORCL)
+      (ORACLE_HOME = E:\oracle\ora92)
+      (SID_NAME = ORCL)
+    )
+)
+
+最后回到CMD中启动
+LSNRCTL> start
+
+2.解决方案二
+
+       用命令或在服务窗口中启动监听提示找不到路径，或监听服务启动异常。打开注册表，进入HKEY_LOCAL_MACHINE/SYSTEM/Current ControlSet/Services/OracleOraHome92TNSListener项，查看ImagePath字符串项是否存在，如果没 有，设定值为D:\oracle\ora92\BIN\TNSLSNR，不同的安装路径设定值做相应的更改。这种方法同样适用于Oracle实例服务，同上，找到如同HKEY_LOCAL_MACHINE/SYSTEM/Current ControlSet/Services/Oracle ServiceMYORACLE项，查看ImagePath字符串项是否存在，如果没有，则新建，设定值为d:\oracle\ora92\bin\ORACLE.EXE MYORACLE。

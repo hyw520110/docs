@@ -1,0 +1,6 @@
+例如我们我们scott下面的表emp添加注释时可以使用形如如下的形式：
+comment on table scott.emp is ‘你好’;
+为列添加注释的例子是：
+comment on column scott.emp.empno is ‘你坏’
+
+comment on 是用来添加注释用的

@@ -1,0 +1,49 @@
+一、语法
+大致写法：select * from some_table [where 条件1] connect by [条件2] start with [条件3];
+其中 connect by 与 start with 语句摆放的先后顺序不影响查询的结果，[where 条件1]可以不需要。
+[where 条件1]、[条件2]、[条件3]各自作用的范围都不相同：
+
+[where 条件1]是在根据“connect by [条件2] start with [条件3]”选择出来的记录中进行过滤，是针对单条记录的过滤， 不会考虑树的结构；
+
+[条件2]指定构造树的条件，以及对树分支的过滤条件，在这里执行的过滤会把符合条件的记录及其下的所有子节点都过滤掉；
+
+[条件3]限定作为搜索起始点的条件，如果是自上而下的搜索则是限定作为根节点的条件，如果是自下而上的搜索则是限定作为叶子节点的条件；
+
+示例：
+假如有如下结构的表：some_table(id,p_id,name)，其中p_id保存父记录的id。
+select * from some_table t where t.id!=123 connect by prior t.p_id=t.id and t.p_id!=321 start with t.p_id=33 or t.p_id=66;
+
+对prior的说明：
+    prior存在于[条件2]中，可以不要，不要的时候只能查找到符合“start with [条件3]”的记录，不会在寻找这些记录的子节点。要的时候有两种写法：connect by prior t.p_id=t.id 或 connect by t.p_id=prior t.id，前一种写法表示采用自上而下的搜索方式（先找父节点然后找子节点），后一种写法表示采用自下而上的搜索方式（先找叶子节点然后找父节点）。
+
+二、执行原理
+connect by...start with...的执行原理可以用以下一段程序的执行以及对存储过程RECURSE()的调用来说明：
+
+/* 遍历表中的每条记录，对比是否满足start with后的条件，如果不满足则继续下一条，
+如果满足则以该记录为根节点，然后调用RECURSE()递归寻找该节点下的子节点，
+如此循环直到遍历完整个表的所有记录 。*/
+for rec in (select * from some_table) loop
+if FULLFILLS_START_WITH_CONDITION(rec) then
+    RECURSE(rec, rec.child);
+end if;
+end loop;
+
+/* 寻找子节点的存储过程*/
+procedure RECURSE (rec in MATCHES_SELECT_STMT, new_parent IN field_type) is
+begin
+APPEND_RESULT_LIST(rec); /*把记录加入结果集合中*/
+/*再次遍历表中的所有记录，对比是否满足connect by后的条件，如果不满足则继续下一条，
+如果满足则再以该记录为根节点，然后调用RECURSE()继续递归寻找该节点下的子节点，
+如此循环直到找至叶子节点。*/
+for rec_recurse in (select * from some_table) loop
+    if FULLFILLS_CONNECT_BY_CONDITION(rec_recurse.child, new_parent) then
+      RECURSE(rec_recurse,rec_recurse.child);
+    end if;
+end loop;
+end procedure RECURSE;
+
+三、使用探讨
+    从上面的执行原理可以看到“connect by...start with...”构造树的方式是：（1）如果是自上而下方式，则把表中的每一条记录都作为根节点来生成树，所以表中有多少条记录就会构造出多少棵树。（2）如果是自下而上的搜索方式，则把表中的每一条记录都作为叶子节点来生成分支，所以表中有多少条记录就会生成多少条分支。
+    因此如果表中的记录不是严格遵照每条记录都只能有一个父记录的原则，那么就可能有部分记录会存在于多棵树中，那么在查找记录的时候就可能会出现找到多条重复记录的异常情况。
+ 
+ 

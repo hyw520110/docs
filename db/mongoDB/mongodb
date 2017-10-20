@@ -1,0 +1,69 @@
+# chkconfig: 2345 60 60  
+# description:  The mongodb server service.  
+# processname: mongodb  
+#!/bin/sh  
+  
+# Source function library.  
+. /etc/rc.d/init.d/functions  
+  
+MONGODB_HOME=/usr/local/mongodb 
+  
+# Check that networking is up.  
+if [ "$NETWORKING" = "no" ]  
+then  
+    exit 0  
+fi  
+  
+RETVAL=0  
+prog="mongodb"  
+  
+start () {  
+    echo -n $"Starting $prog: "  
+    chmod +x $MONGODB_HOME/bin/mongod
+    $MONGODB_HOME/bin/mongod -f $MONGODB_HOME/conf/mongodb.cfg 
+    RETVAL=$?  
+    echo  
+    [ $RETVAL -eq 0 ] && touch /var/lock/subsys/mongodb  
+}  
+stop () {  
+    echo -n $"Stopping $prog: "  
+    killproc $prog  
+    RETVAL=$?  
+    echo  
+    if [ $RETVAL -eq 0 ] ; then  
+        rm -f /var/lock/subsys/mongodb  
+        rm -f /var/run/mongodb.pid  
+    fi  
+}  
+  
+restart () {  
+    stop  
+    start  
+}  
+  
+  
+# See how we were called.  
+case "$1" in  
+    start)  
+        start  
+        ;;  
+    stop)  
+    stop  
+    ;;  
+    status)  
+    status memcached  
+    ;;  
+    restart|reload)  
+    restart  
+    ;;  
+    condrestart)  
+    [ -f /var/lock/subsys/mongodb ] && restart || :  
+    ;;  
+    *)  
+    echo $"Usage: $0 {start|stop|status|restart|reload|condrestart}"  
+    exit 1  
+esac  
+  
+exit $?  
+
+

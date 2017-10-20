@@ -1,0 +1,1 @@
+var DTPath = "http://edu.chinaitlab.com/";var SKPath = "http://edu.chinaitlab.com/skin/default/";var CKPrex = "edu_";

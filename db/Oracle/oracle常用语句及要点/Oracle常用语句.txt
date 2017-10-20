@@ -1,0 +1,56 @@
+//改变已有列的类型
+alter table CiBankAccount modify (accountType char(10))
+//向表中增加字段
+alter   table   PjProjectRegister add (busiSource   varchar2(25))
+//向表中插入
+insert into pmattachmenttype (ID, NAME)
+values ('01', '流程附件');
+
+//是删除表USERS，连同他上面的约束一起删除。   
+  先清除了以前安装可能遗留的表，才能建立新表。
+drop   table   USERS   cascade   constraints
+//
+null字的是字段中的值， 如你的a表里有个字段叫ab，且ab的值是null 
+
+则你可以用 select nvl(a.ab,'0') from a ; 
+输出：当a表中的ab字段为null时，则输出0，否则输出ab字段的非空值。
+
+//删除表
+drop table table_name;
+//删除表的内容
+delete from table_name或者delete table_name(删除全部)
+//删除单行
+delete from table_name where ....;或者delete  table_name where ....
+
+
+//在一个select的结果里新增一列.这列的数据都是一样的
+select seqno,'新增列内容' as new_add from  CiBankAgreement
+//
+rownum 与order by 取值顺序 
+
+如果order by 主键 
+则先排序，然后rownum按排序后编号，取rownum=1，则是排序后的第一条 
+
+如果非主键 
+先rownum编号（按读取顺序），再排序，此时取rownum=1，未必是排序后的第一条 
+
+对于非主键，需要两层sql,内层排序，外层取rownum=1
+
+
+
+
+--不合并重复行
+select * from A
+union 
+select * from B
+
+
+
+合并重复行
+select * from A
+union all
+select * from
+
+资料引用:http://www.knowsky.com/345293.html
+
+update qylasxslblbresult set id=22,asxslbl='333' where id=2

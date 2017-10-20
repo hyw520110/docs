@@ -1,0 +1,1 @@
+document.write("<a href='http://www.sz-aptech.com/accp/default.aspx' target=_blank style='padding-left:4px'>JAVAV工程师权威认证</a><br><a href='http://www.uplooking.com/page/ocp-rhce20111001.php' target=_blank style='padding-left:4px'><font color=#ff0000>必读版《十一攻破RHCE6.0、OCP》</font></a>")

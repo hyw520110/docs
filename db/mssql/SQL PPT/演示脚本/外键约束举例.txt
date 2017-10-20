@@ -1,0 +1,53 @@
+create table test1
+(
+ pub_id varchar(20) primary key,
+ pub_name varchar(50),
+ address varchar(20),
+ city varchar(10),
+ state char(2),
+ country char(10)
+)
+go 
+
+create table test2
+(
+ author_id varchar(20) primary key,
+ author_name varchar(50),
+ phone varchar(20),
+ zipcode char(10)
+)
+go
+
+create table test3
+(
+ title_id int primary key,
+ title_name varchar(50),
+ author_id varchar(20) constraint fk_auid 
+           foreign key references test2(author_id)
+           on delete cascade,
+ pub_id varchar(20) foreign key references test1(pub_id),
+)
+go
+
+insert into test1(pub_id,pub_name) values('pub001','pubaaa');
+insert into test1(pub_id,pub_name) values('pub002','pubbbb');
+insert into test1(pub_id,pub_name) values('pub003','pubccc');
+
+insert into test2(author_id,author_name) values('au001','auaaa');
+insert into test2(author_id,author_name) values('au002','aubbb');
+insert into test2(author_id,author_name) values('au003','auccc');
+
+insert into test3 values(1,'taaa','au001','pub001');
+insert into test3 values(2,'taaa','au002','pub002');
+insert into test3 values(3,'taaa','au003','pub003');
+insert into test3 values(4,'taaa','au004','pub004'); --error,违反外键约束。
+
+--删除pub_id = 'pub001' 的相关记录
+delete from test1 where pub_id='pub001'; --no way
+--应该这样做：先删外键表，再删主键表。
+delete from test3 where pub_id='pub001';
+delete from test1 where pub_id='pub001'; --ok
+
+--删除au_id = 'au001' 的相关记录
+delete from test2 where author_id = 'au002'; --ok,请注意test3表中的相关记录也同时被删除了。
+

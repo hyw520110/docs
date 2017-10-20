@@ -1,0 +1,13 @@
+分组的原则必需使用聚合函数，
+例如group by (custmgr1,custmgr1name，deptcodename)，是说这三列一样的分组，前面必需有
+聚合函数如：sum（a）
+是：把这三列一样的数据和的一块，并把列a加的一块形成一列：
+如：
+  a ，custmgr1,custmgr1name，deptcodename
+  1    a         b               c
+  3    a         b                c
+
+select sum（a） as alla，custmgr1,custmgr1name，deptcodename
+from table group by (custmgr1,custmgr1name，deptcodename) order by alla desc
+
+按alla的降序排列。

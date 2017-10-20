@@ -1,0 +1,158 @@
+事务处理的ACID属性
+事务（transaction）-是构成单一逻辑工作单元的操作集合。
+（例如：银行储户转帐）
+原子性（Atomicity）-事务处理要么全部进行，要么全部不进行。 
+一致性（Consistency）-事务处理要将数据库从一种状态转变为另一种状态。 
+隔离性（Isolation）-在事务处理提交之前，事务处理的效果不能由系统中其他事务处理
+                    看到。 
+持久性（Durability）-一旦提交了事务，它就永久生效。
+示例：
+read(X)-从数据库传送数据项X到执行该read操作的事务的局部缓冲区。
+write(X)-从执行write的事务的局部缓冲区将数据项X传回数据库。
+假设T1是从账户A过户50元到账户B的事务，则该事务可以定义为
+T1:  read(A);
+     A := A - 50;
+     write(A);
+     read(B);
+     B := B + 50;
+     write(B).
+
+并发执行
+提高吞吐量（给定时间内的事务的数量）和资源利用率；
+减少等待时间，减少平均响应时间（一个事务从开始到完成所需要的时间）；
+调度（schedule）：事务的执行顺序。
+如果T1事务和T2事务是顺数执行的话，我们称这两个调度是串行的。
+
+总结
+事务是一个程序执行单位，它访问并且可能更新不同的数据项。理解事务这个概念对于理解和实现数据库中的数据更新是很关键的，只有这样才能保证并发执行和各种故障不会导致数据库处于不一致状态。
+事务具有ACID特性：原子性、一致性、隔离性、持久性。
+事务的并发执行提高了事务吞吐量和系统利用率，也减少了事务等待时间。
+多个事务在数据库中并发执行时，数据的一致性可能受到破坏，因此系统必须控制各并发事务之间的相互作用。
+（1、由于事务是保持一致性的单元，所以事务的串行执行能保持一致性；
+  2、调度捕获影响事务并发执行的关键操作，如read和write操作，而忽略事务执行的内部细节；
+  3、我们要求事务集的并发执行所产生的任何调度的执行效果等价于由这些事务按某种串行顺序执行的效果；
+  4、保证这个特性的系统称为保证可串行性；
+  5、存在几种不同的等价记号，从而引出了冲突可串行化与视图可串行化的概念；）
+事务并发执行所产生的调度的可串行化可以通过多个并发控制机制中的一个来加以保证。
+调度必须是可恢复的，必须确保：若事务a受到事务b的影响，当b中止时，a也要中止。
+调度应该是无级联的，这样不会由于一个事务的中止引起其他事务的级联中止；无级联性是通过只允许事务读取已提交数据来保证的。
+数据库的并发控制管理组件负责处理并发控制机制。
+数据库的恢复管理组件负责保证事务的原子性和持久性。
+
+Oracle中的事务处理
+Oracle中没有所谓的“开始事务处理”语句，即我们不能显式的开始一个事务，事务处理会隐式的开始于第一条修改数据的语句，或一些要求事务处理的场合。
+使用COMMIT或ROLL BACK语句将显式的终止事务处理。
+
+1、COMMIT处理
+通常情况下，我们只需要使用SQL命令COMMIT，该提交命令会结束我们的事务处理，并且使得我们已经执行的任何改变永久生效。请注意，如果没有显式提交的话，我们所做的更新将不会被保存。
+
+2、ROLL BACK处理
+回滚可以让我们撤销我们的工作，但一旦提交成功之后，回滚往往达不到我们所需要的效果。请注意，回滚操作非常消耗系统资源，请谨慎使用。
+
+3、SAVEPOINT和ROLLBACK TO SAVEPOINT
+SAVEPOINT可以让用户在事务处理中建立标记点，可以让我们有选择的回滚到特定地点。
+create table temp_t(char_col varchar2(30));
+begin
+  insert into temp_t(char_col)
+  values('Insert ONE');
+  savepoint A;
+  insert into temp_t(char_col)
+  values('Insert TWO');
+  savepoint B;
+  insert into temp_t(char_col)
+  values('Insert THREE');
+  savepoint C;
+end;
+/
+select * from temp_t;
+rollback to B;
+select * from temp_t;
+实质上，SAVEPOINT和ROLLBACK TO SAVEPOINT是用来处理嵌套事务的。
+
+4、SET TRANSACTION
+这个语句通常用来设置事务处理的各种属性，例如事务的隔离层次、是只读还是可读写、以及是否使用特定的回滚段。
+SET TRANSACTION语句必须是事务处理中使用的第一个语句，也就是说，必须在任何INSERT、UPDATE或DELETE语句，以及任何其他可以开始事务处理的语句之前使用。必须要进行提交或回滚，SET TRANSACTION语句才算完整的结束。
+READ ONLY
+connect teach/1@efan
+set transaction read only;
+update temp_t set char_col='china';
+commit;
+update temp_t set char_col='china';
+select * from temp_t;
+READ WRITE
+本身就是默认设置。
+
+原子性
+create table t(x number(1));
+insert into t values(1);
+insert into t values(2);
+commit;
+rollback;
+select * from t;
+
+
+一致性
+drop table t;
+create table t
+(x int,
+ constraint t_pk primary key(x))
+ ;
+ create trigger t_trigger
+ after update on t for each row
+ begin
+   dbms_output.put_line('Updated x='||:old.x||'to x='||:new.x);
+ end;
+ /
+insert into t values(1);
+insert into t values(2);
+
+set serveroutput on
+begin
+  update t set x = x + 2; --update t set x = 2;
+end;
+/
+
+事务处理级别的一致性
+create table parent(pk int,constraint parent_pk primary key(pk));
+create table child(fk,constraint child_fk foreign key(fk) references parent deferrable);
+insert into parent values(1);
+insert into child values(1);
+commit;
+update parent set pk=2;
+解决上述问题可以延迟child_fk约束，也就是说，我们不希望它在语句层次进行检查
+set constraints child_fk deferred;
+--commit;
+set constraints child_fk deferred;
+update parent set pk=2;
+select * from parent;
+select * from child;
+现在我们将child_fk约束设置成为immediate，这将导致Oracle立即检查已执行约束
+set constraints child_fk immediate;
+update child set fk=2;
+set constraints child_fk immediate;
+commit;
+select * from parent;
+select * from child;
+请记住：语句能够导致数据库中的数据临时性的出现不一致，这种条件会在         适当的时候消除，不会超出语句或者事务处理的范围而存在。
+        你可以控制Oracle验证数据逻辑一致性的时机，或者逐句验证、或者按照任意语句组验证、或者在事务处理层次验证。
+	绝对不能提交违反了预先编入数据库的业务逻辑（约束条件）的信息，这是RDBMS的基本原则。
+
+
+隔离性
+隔离性是数据库允许对其中数据进行并发修改和读取的能力。
+SQL92标准规定了四种隔离层次
+-------------------------------------------------------------------
+隔离层次                      脏读取         非重复读取    影像读取
+非提交读取（Read Uncommitted）允许           允许          允许
+提交读取（Read Committed）    禁止           允许          允许
+可重复读取（Repeatable Read） 禁止           禁止          允许
+串行读取（Serializable）      禁止           禁止          禁止
+-------------------------------------------------------------------
+脏读取（Dirty read）-可以读取没有提交的“脏”数据。
+非重复读取（Non-repeatable read）-如果用户在T1时刻读取了一行，在T2时刻再次读取这一行，那么这个行就可能发生改变。
+影像读取（Phantom read）-意味着如果用户在T1时刻执行了一个查询，在T2时刻再次执行它，就可能会有影响结果的附加行加入到数据库中。
+
+
+持久性
+可以确保一旦事务处理提交之后，它的改变就会永久生效。
+在Oracle中，只要是commit之后，所发生的改变即永久生效。

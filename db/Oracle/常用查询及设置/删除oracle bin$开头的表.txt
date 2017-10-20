@@ -1,0 +1,14 @@
+ORACLE删除的表系统会自动给他重命名就是大家看到的【BIN$】开头的名字。
+通过show recyclebin命令可以查看被删掉的表的详细信息，或者查询：
+select * from recyclebin;
+收回表的命令：
+flashback table 原表名 to before drop;
+清空回收站的命令：
+purge recyclebin;
+如果想直接删除表而不经过回收站：
+drop table 表名 purge;
+或者停用数据库的回收站功能：
+10.1版本中，修改隐藏参数:_recyclebin
+alter system set “_recyclebin” = false;
+10.2版本中：
+alter system set recyclebin = off;

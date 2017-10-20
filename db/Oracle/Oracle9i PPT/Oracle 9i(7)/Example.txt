@@ -1,0 +1,210 @@
+declare
+i number:=1;
+s number:=0;
+begin
+dbms_output.enable;
+loop
+s:=s+i;
+i:=i+1;
+exit when i>10;
+end loop;
+dbms_output.put_line('s='||s);
+end;
+/
+
+
+declare
+i number:=1;
+s number:=0;
+begin
+dbms_output.enable;
+loop
+s:=s+i;
+i:=i+1;
+if i>10 then
+   exit;
+end if;
+end loop;
+dbms_output.put_line('s='||s);
+end;
+/
+
+
+
+declare
+i number:=12;
+s number:=0;
+begin
+dbms_output.enable;
+while i<11 loop
+s:=s+i;
+i:=i+1;
+end loop;
+dbms_output.put_line('s='||s);
+end;
+/
+
+
+declare
+i number:=11;
+s number:=0;
+begin
+dbms_output.enable;
+loop
+s:=s+i;
+i:=i+1;
+if i>10 then
+   exit;
+end if;
+end loop;
+dbms_output.put_line('s='||s);
+end;
+/
+
+
+declare
+i number;
+s number:=0;
+begin
+dbms_output.enable;
+for i in 1..10 loop
+    s:=s+i;
+end loop;
+dbms_output.put_line('s='||s);
+end;
+/
+
+
+declare
+id m_indent.employee_id%type;
+begin
+select employee_id into id from m_indent;
+exception
+when too_many_rows then
+     dbms_output.put_line('Error!');
+when others then
+     dbms_output.put_line('Others Error!');
+end;
+/
+
+
+declare
+temp_rec m_indent%rowtype;
+cursor temp_cur is
+select * from m_indent;
+
+begin
+open temp_cur;
+dbms_output.enable;
+fetch temp_cur into temp_rec;
+
+dbms_output.put_line(temp_rec.employee_id||'   '||temp_rec.provider_id);
+
+
+close temp_cur;
+end;
+/
+
+
+declare
+temp_rec userinfo%rowtype;
+scode varchar2(32);
+spass varchar2(32);
+cursor temp_cur(code varchar2) is
+select * from userinfo where usercode = code;
+
+begin
+scode:='&scode';
+spass:='&spass';
+
+open temp_cur(scode);
+dbms_output.enable;
+fetch temp_cur into temp_rec;
+      
+if spass=temp_rec.password then
+    dbms_output.put_line('Welcome!');
+else
+    dbms_output.put_line('no power!');
+end if;
+
+close temp_cur;
+end;
+/
+
+
+declare
+temp_rec userinfo%rowtype;  -- 定义变量为 userinfo 表结构体
+scode varchar2(32);
+spass varchar2(32);
+cursor temp_cur(code varchar2) is         -- 参数为账号 字符串类型
+select * from userinfo where usercode = code;  -- 定义带参数游标
+
+begin
+scode:='&scode';
+spass:='&spass'; -- 提供用户输入值给 账号和密码变量
+
+open temp_cur(scode); -- 打开游标
+
+
+if temp_cur%isopen then  -- 测试游标是否打开成功
+   -- 成功打开后的操作
+   dbms_output.enable;
+   fetch temp_cur into temp_rec; -- 游标取值并存于 temp_rec
+   
+   if temp_cur%found then  -- 测试游标是否取值成功
+      -- 取值成功后的操作
+      if spass=temp_rec.password then
+            dbms_output.put_line('Welcome!');
+         else
+            dbms_output.put_line('no power!');
+      end if;
+   else
+      -- 取值失败后的操作
+      dbms_output.put_line('no data is found!'); 
+   end if;
+else
+   -- 失败打开时的操作
+   dbms_output.put_line('The Cursor is not open!'); 
+end if;
+close temp_cur;
+
+exception 
+   when others then
+        dbms_output.put_line('case exception!');
+end;
+/
+
+
+declare
+cursor tmp is select * from m_indent;
+begin
+for tep_rec in tmp loop
+
+    dbms_output.put_line(tep_rec.employee_id||' '||tep_rec.provider_id);
+end loop;
+
+end;
+/
+
+declare
+cursor tmp is select * from m_indent;
+begin
+for tep_rec in tmp loop
+    fetch tmp into tep_rec;
+    dbms_output.put_line(tep_rec.employee_id||' '||tep_rec.provider_id);
+end loop;
+
+end;
+/
+
+
+declare
+cursor tmp is select * from tindent for update;
+begin
+for tep_rec in tmp loop
+    update tindent set tindent.all_amount = tindent.all_amount*1.1 
+    where current of tmp;
+end loop;
+commit;
+end;
+/

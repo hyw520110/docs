@@ -1,0 +1,159 @@
+安装好mongodb数据库之后，在数据库的安装目录下建立db、logs、conf文件夹,分别用于存放数据库的数据文件、日志文件、配置文件
+
+在conf目录下建立mongodb.cfg(文件名可自定义),内容如下
+#指定数据库数据存放目录
+dbpath=D:\Java\MongoDB3.0.5ssl\db\27017
+#指定日志文件路径
+logpath=D:\Java\MongoDB3.0.5ssl\logs\27017\mongodb.log
+#是否日志追加模式
+logappend=true
+#pid文件linux上比较有用
+#pidfilepath=D:\Java\MongoDB3.0.5ssl\27017.pid
+#服务端口
+port=27017
+#是否开启http监控，如开启默认为port加1000
+httpinterface=true
+#和上一个参数一起用,开启rest风格 
+rest=true
+#数据操作日志 默认打开可不配置
+journal=true
+#操作日志大小
+oplogSize=2048
+#使用小文件
+smallfiles=true
+#复制集名称
+replSet=goldenwx
+
+安装服务：
+进入bin目录执行：
+mongo -f mongodb.cfg的绝对路径 --install  --serviceName mongodb --serviceDisplayName mongodb
+开启服务：
+net start mongodb 
+
+重复操作以上步骤，在不同电脑（分布式）或同一台电脑不同文件夹上(伪分布式)安装并开启27018、27019、27020实例数据库
+
+登陆任意一个数据库：
+
+mongo localhost:27017/admin
+
+初始化副本集(安装配置时执行一次即可)：
+replSetConf={"_id":"goldenwx","members":[{"_id":1,"host":"127.0.0.1:27017"},{"_id":2,"host":"127.0.0.1:27018"},{"_id":3,"host":"127.0.0.1:27019","priority":0,"hidden":true,"slaveDelay":14400},{"_id":4,"host":"127.0.0.1:27020","arbiterOnly": true}]}
+rs.initiate(replSetConf)
+其中:
+	第3个27019的节点为延时备份节点，延时备份可以帮助我们在人为误操作或是其他意外情况下恢复数据.延时时间单位为秒,以上指定延时4小时.
+		延时节点的优先级必须设置为0，优先级为0的节点不会选举为主节点
+		延时节点必须是隐藏节点(hidden)，隐藏节点参与投票、但对应用程序不可见(db.isMaster也不可见)不会收到客户端的读请求
+
+	第4个27020的节点为仲裁节点，不存储数据，用于故障恢复:在主节点挂掉时，进行投票选举从复制集节点中选举出主节点
+
+查看复制集状态：
+rs.status()
+执行结果，中关注：
+ "stateStr" : 
+	"ARBITER" 为仲裁
+	SECONDARY 从节点
+	PRIMARY   主节点
+
+从节点默认不可以读，登陆从库执行:rs.slaveOk()后即可执行查询
+
+
+**复制集认证**
+
+登陆主库执行：
+
+	添加系统管理员
+	db.createUser({user:"superadmin",pwd:"golden",roles:[{role:"root",db:"admin"}]})
+	添加数据库管理员
+	db.createUser({user:"root",pwd:"golden",roles:[{role:"dbAdminAnyDatabase",db:"admin"},{role:"readWrite",db:"admin"}]})
+	用户认证
+	db.auth("root","golden")
+
+生成密码文件：
+
+	openssl rand -base64 741 >mongodb-keyfile
+linux系统赋予权限（300或600）
+
+	chmod 300 mongodb-keyfile
+
+在mongodb各节点的配置文件中增加认证参数：
+
+	auth=true
+	keyFile=..\conf\mongodb-keyfile
+然后逐一启动副本，只有经过密码文件认证的节点才能加入，数据库操作也需要密码认证提高了安全性
+
+连接：
+
+	mongo localhost:27017/admin -u root -p golden --authenticationDatabase admin
+
+
+
+
+
+在初始化复制集以后,新增节点:
+登陆主节点执行:rs.add("ip:port")
+
+配置或修改节点优先级:
+查看配置
+rs.conf()
+把配置对象赋值给变量cfg
+cfg=rs.conf()
+把成员3(下标从0开始)的优先级设置为0
+cfg.members[2].priority=0
+更新复制集配置
+rs.reconfig(cfg)
+
+
+
+
+MongoDB README
+
+Welcome to MongoDB!
+
+COMPONENTS
+
+  bin/mongod - The database process.
+  bin/mongos - Sharding controller.
+  bin/mongo  - The database shell (uses interactive javascript).
+
+UTILITIES
+
+  bin/mongodump         - MongoDB dump tool - for backups, snapshots, etc..
+  bin/mongorestore      - MongoDB restore a dump
+  bin/mongoexport       - Export a single collection to test (JSON, CSV)
+  bin/mongoimport       - Import from JSON or CSV
+  bin/mongofiles        - Utility for putting and getting files from MongoDB GridFS
+  bin/mongostat         - Show performance statistics
+
+RUNNING
+
+  For command line options invoke:
+
+    $ ./mongod --help
+
+  To run a single server database:
+
+    $ mkdir /data/db
+    $ ./mongod
+    $
+    $ # The mongo javascript shell connects to localhost and test database by default:
+    $ ./mongo 
+    > help
+
+DRIVERS
+
+  Client drivers for most programming languages are available at mongodb.org.  Use the 
+  shell ("mongo") for administrative tasks.
+
+DOCUMENTATION
+
+  http://www.mongodb.org/
+
+MAIL LISTS AND IRC
+
+  http://dochub.mongodb.org/core/community
+
+32 BIT BUILD NOTES
+
+  MongoDB uses memory mapped files.  If built as a 32 bit executable, you will
+  not be able to work with large (multi-gigabyte) databases.  However, 32 bit
+  builds work fine with small development databases.

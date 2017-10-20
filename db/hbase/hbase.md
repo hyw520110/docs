@@ -1,0 +1,1 @@
+http://abloz.com/hbase/book.html#d613e75

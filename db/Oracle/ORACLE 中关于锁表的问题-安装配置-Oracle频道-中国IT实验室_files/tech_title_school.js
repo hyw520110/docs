@@ -1,0 +1,1 @@
+document.write("<a class=\"\" href=\"http://www.1010school.com/database/ocp10gzs/index.htm\"  target=\"_blank\"><font color=\"#ff0000\"> Oracle 10G ocp 证书班热招<\/font><\/a><br> <a class=\"\" href=\"http://www.openlab.cn/Elite/index.html\" target=\"_blank\">做IT就要做精英,至少4000/月吧?<\/a>");

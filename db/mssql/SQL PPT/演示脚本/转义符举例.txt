@@ -1,0 +1,21 @@
+/*转义符举例*/
+
+--建表
+create table test(col varchar(10))
+
+--插入数据
+insert into test values('x_yz')
+insert into test values('[xyz]')
+insert into test values('x%yz')
+insert into test values('xyz')
+
+--查找以'X_'开头的记录，如果想下面这样不使用转义符，结果将不是我们想要的。
+Select col 
+From test
+Where col LIKE 'X_%'
+
+--使用转义符才能得到我们所想要的。
+Select col 
+From test
+Where col LIKE 'X\_%'
+ESCAPE '\'

@@ -1,0 +1,52 @@
+windows中mysql5.5.10默认字符集修改，字符编码设置，中文乱码，gb2312，gbk，utf8格式存储数据
+
+通过修改mysql默认字符集，可以存储中文数据，以免出现中文乱码，以下以设置为utf8为例。
+查看字符编码
+show variables like 'character%';
+show variables like 'collation%';
+关闭mysql服务，在mysql安装目录下，my.ini文件进行如下修改，没有则直接进行添加
+[client]
+#修改客户端默认字符编码格式为utf8
+default-character-set=utf8
+[mysqld]
+#修改服务器端默认字符编码格式为utf8
+character-set-server = utf8
+
+修改后，再次输入命令查看
+show variables like 'character%';
++--------------------------+---------------------------------+
+| Variable_name            | Value                           |
++--------------------------+---------------------------------+
+| character_set_client     | utf8                            |
+| character_set_connection | utf8                            |
+| character_set_database   | utf8                            |
+| character_set_filesystem | binary                          |
+| character_set_results    | utf8                            |
+| character_set_server     | utf8                            |
+| character_set_system     | utf8                            |
+| character_sets_dir       | D:\mysql-5.5.10\share\charsets\ |
++--------------------------+---------------------------------+
+
+show variables like 'collation%';
++----------------------+-----------------+
+| collation_connection | utf8_general_ci |
+| collation_database   | utf8_general_ci |
+| collation_server     | utf8_general_ci |
++----------------------+-----------------+
+
+show character set;查看mysql已经安装的所有字符集，也就是在mysql中可以使用的字符集
+
+经过所有以上设置以后，mysql中所有字符集都是utf8的了，但是在控制台操作的时候，还是会出现乱码中文乱码。
+这是因为windows XP的控制台窗口默认显示字符编码格式为gbk，所以这里要设置显示结果使用的字符编码格式为utf8。
+每次在控制台进行操作的时候，都要进行如下这个设置，结果才能正常显示中文
+
+set character_set_results='gbk';
+一般就算设置了表的默认字符集为utf8并且通过UTF-8编码发送查询，你会发现存入数据库的仍然是乱码。
+问题就出在这个connection连接层上。解决方法是在发送查询前执行一下下面这句：
+set names gbk;
+它相当于下面的三句指令：
+SET character_set_client = utf8;
+SET character_set_results = utf8;
+SET character_set_connection = utf8;
+因此，这个方法也可以解决所有字符编码设置为utf8，而控制台显示中文乱码的问题。
+

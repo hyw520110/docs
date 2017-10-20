@@ -1,0 +1,35 @@
+--简单case函数
+
+USE pubs
+GO
+SELECT   Category = 
+      CASE type
+         WHEN 'popular_comp' THEN '计算机类'
+         WHEN 'mod_cook' THEN '现代厨艺'
+         WHEN 'business' THEN '商业图书'
+         WHEN 'psychology' THEN '心理学'
+         WHEN 'trad_cook' THEN '传统厨艺'
+         ELSE '未分类'
+      END,
+   avg(price) AS 'Average Price'
+FROM titles
+WHERE price IS NOT NULL
+GROUP BY type
+ORDER BY type
+GO
+
+--case搜索函数
+USE pubs
+GO
+SELECT    title ,
+ 'Price Category' = 
+      CASE 
+         WHEN price IS NULL THEN '未定价'
+         WHEN price < 10 THEN '价格小于10美元'
+         WHEN price >= 10 and price < 20 THEN '价格介于10到20美元之间'
+         ELSE '高于20美元'
+      END  
+FROM titles
+ORDER BY price
+GO
+

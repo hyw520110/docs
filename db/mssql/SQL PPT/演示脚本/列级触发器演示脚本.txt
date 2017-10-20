@@ -1,0 +1,34 @@
+--列级触发器演示脚本
+
+create table who_change  --创建表
+(
+change_date datetime,
+change_column varchar(20),
+who varchar(20)
+)
+
+go
+
+create trigger mytrigger
+on authors
+for insert,update
+as
+ if update(au_lname)  --如果更新的是au_lname列
+   begin
+     insert into who_change   --记录更新信息。
+     values(getdate(),'au_lname',user_name())
+    end
+ else if update(au_fname)
+    begin
+     insert into who_change 
+     values(getdate(),'au_fname',user_name())
+    end
+ else
+    begin
+     insert into who_change 
+     values(getdate(),'other columns',user_name())
+    end
+go
+
+update authors set au_lname = 'haijian' 
+where au_fname = 'zhang'

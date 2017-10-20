@@ -1,0 +1,41 @@
+外连接就是查两张表 左连接就是左边的表全有值，右边表的值可以为空（+）
+
+                   右连接是左边表值可以为空（+）    右边表的值全有
+
+                  全连接是左连接和右连接的并集 好像是这个符号（U）
+
+                 内连接是左连接和右连接的交集 。。。  
+
+对于外连接，oracle中可以使用“(+)”来表示，9i可以使用left/right/full outer join，下面将配合实例一一介绍。 
+
+1. left outer join：左外关联
+
+
+select e.last_name, e.department_id, d.department_name  
+from employees e  
+left outer join departments d  
+on (e.department_id = d.department_id);
+等价于 
+select e.last_name, e.department_id, d.department_name  
+from employees e, departments d  
+where e.department_id=d.department_id(+);
+ 结果为：所有员工及对应部门的记录，包括没有对应部门编号department_id的员工记录
+2. right outer join：右外关联 
+
+select e.last_name, e.department_id, d.department_name  
+from employees e  
+right outer join departments d  
+on (e.department_id = d.department_id);
+等价于 
+select e.last_name, e.department_id, d.department_name  
+from employees e, departments d  
+where e.department_id(+)=d.department_id;
+ 结果为：所有员工及对应部门的记录，包括没有任何员工的部门记录
+3. full outer join：全外关联 
+
+select e.last_name, e.department_id, d.department_name  
+from employees e  
+full outer join departments d  
+on (e.department_id = d.department_id);
+
+结果为：所有员工及对应部门的记录，包括没有对应部门编号department_id的员工记录和没有任何员工的部门记录

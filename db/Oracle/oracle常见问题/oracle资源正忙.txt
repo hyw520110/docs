@@ -1,0 +1,18 @@
+Oracle资源正忙,要求指定NOWAIT——Oracle解锁问题 
+今天在研究Oracle锁的问题。发现自己在设置锁的时候没有设置时间，结果发生了死锁行为。我的资料中没有具体介绍如何解除死锁，试过用超级管理员删表都弹出：资源正忙,要求指定NOWAIT……的提示。在网上搜了下解决办法，全是问这个问题的，没什么好的解答，这也是一个网上的通病，乱转载，试都不试的……
+
+我又换了一个内容搜索：Oracle如何解锁，又跳到Oracle解锁，最后终于找到了解锁办法：
+
+oracle 解锁
+select t2.username,t2.sid,t2.serial#,t2.logon_time 
+from v$locked_object t1,v$session t2 
+where t1.session_id=t2.sid order by t2.logon_time;
+--查看锁
+
+
+--alter system kill session 'sid,serial#';
+--把锁给KILL掉
+alter system kill session '146,21177';
+
+根据你用第1条代码查得到的结果，来kill 锁，注意看第2条注释部分的内容。
+

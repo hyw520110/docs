@@ -1,0 +1,154 @@
+
+declare
+i varchar2(32);
+begin
+dbms_output.enable;
+i:='&i';
+dbms_output.put_line('i='||i);
+end;
+/
+
+
+declare
+i varchar2;
+begin
+dbms_output.enable;
+i:='12345';
+dbms_output.put_line('i='||i);
+end;
+/
+
+declare
+eid m_indent.employee_id%type;
+pid m_indent.provider_id%type;
+iid m_indent.indent_id%type;
+idate m_indent.indent_date%type;
+tempi varchar2(32);
+begin
+dbms_output.enable;
+eid:='&eid';
+pid:='&pid';
+iid:='&iid';
+tempi:='&tempi';
+idate:=to_date(tempi,'YYYY-MM-DD');
+
+insert into m_indent values
+(
+eid,
+pid,
+iid,
+idate
+);
+commit;
+dbms_output.put_line('成功添加信息!');
+
+end;
+/
+
+declare
+tempd m_indent%rowtype;
+tempi varchar2(32);
+begin
+dbms_output.enable;
+tempd.employee_id:='&tempd';
+tempd.provider_id:='&tempd';
+tempd.indent_id:='&tempd';
+tempi:='&tempi';
+tempd.indent_date:=to_date(tempi,'YYYY-MM-DD');
+
+insert into m_indent values
+(
+tempd.employee_id,
+tempd.provider_id,
+tempd.indent_id,
+tempd.indent_date
+);
+commit;
+dbms_output.put_line('成功添加信息!');
+
+end;
+/
+
+
+declare
+  uid varchar2(32);
+  pwd varchar2(32);
+begin
+  uid:='&uid';
+  pwd:='&pwd';
+  if uid='jdcheng' then
+     if pwd='123456' then
+        dbms_output.put_line('欢迎进入!');
+     else
+        dbms_output.put_line('密码有误!');
+     end if;
+  else
+      dbms_output.put_line('非法账号!');
+  end if;
+end;
+/
+
+
+declare
+  uid varchar2(32);
+  pwd varchar2(32);
+  sta varchar2(32);
+begin
+  uid:='&uid';
+  pwd:='&pwd';
+  sta:='&sta';
+  if uid='jdcheng' then
+     if pwd='123456' then
+        case sta
+             when '0' then
+                 dbms_output.put_line('账号初始化!'); 
+             when '2' then
+                 dbms_output.put_line('账号已禁用!'); 
+             when '1' then
+                 dbms_output.put_line('账号启用中,欢迎进入!');
+             else
+                 dbms_output.put_line('非法状态信息!');
+        end case;
+        
+     else
+        dbms_output.put_line('密码有误!');
+     end if;
+  else
+      dbms_output.put_line('非法账号!');
+  end if;
+end;
+/
+
+
+
+declare
+  uid varchar2(32);
+  pwd varchar2(32);
+  sta varchar2(32);
+begin
+  uid:='&uid';
+  pwd:='&pwd';
+  sta:='&sta';
+  if uid='jdcheng' then
+     if pwd='123456' then
+        case 
+             when sta='0' then
+                 dbms_output.put_line('账号初始化!'); 
+             when sta='2' then
+                 dbms_output.put_line('账号已禁用!'); 
+             when sta='1' then
+                 dbms_output.put_line('账号启用中,欢迎进入!');
+             else
+                 dbms_output.put_line('非法状态信息!');
+        end case;
+        
+     else
+        dbms_output.put_line('密码有误!');
+     end if;
+  else
+      dbms_output.put_line('非法账号!');
+  end if;
+end;
+/
+
+

@@ -1,0 +1,40 @@
+SELECT AVG(ticket_key) , ticket_title 
+FROM srweb_ticket_ticket
+GROUP BY ticket_title
+
+
+以上这句是按照投票的标题排序，体现在GROUP BY ticket_title，
+执行完上序之后得出如下的结果
+328       苹果
+328       葡萄
+327       西瓜
+
+
+如果加上having条件的话会出现如下的结果，
+having是出现在group by之后的条件的
+SELECT AVG(ticket_key) , ticket_title 
+FROM srweb_ticket_ticket
+GROUP BY ticket_title having AVG(ticket_key)>327
+
+
+328       苹果
+328       葡萄
+
+
+如果再加上where条件的话会出现下面的结果
+SELECT AVG(ticket_key) , ticket_title 
+FROM srweb_ticket_ticket 
+where ticket_title not in('葡萄') 
+GROUP BY ticket_title having AVG(ticket_key)>327
+
+
+328       苹果
+
+
+通过分析，式子。。首先是执行where条件去掉一些不满足的，
+之后通过group by按照类型进行分组运算，之后在分组求了数的基础上再用having去掉一些数据
+总结：
+1.where是对输出条件的第一次筛选。
+2 group by是 筛选后的结果分组显示。
+3 having 是对分组后的结果进行条件筛选展示。having必需用在再group by 后。
+

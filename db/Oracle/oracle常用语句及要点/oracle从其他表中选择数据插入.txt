@@ -1,0 +1,22 @@
+insert into rpjtpsxmtjbg
+			(reportTerm,actdeptcode,deptname,xxmsbsl,fysbxmsl,zysbxmsl,sbxmxj,tgsl,zysl,fdsl,xmtgl,fyzyl) 
+      select cast('2008-10' as char(7)),actdeptcode,deptname,xxmsbsl,fysbxmsl,
+       zysbxmsl,sbxmxj,tgsl,zysl,fdsl,xmtgl,fyzyl
+				from(
+        select actdeptcode,DeptName,xxmsbsl,fysbxmsl,zysbxmsl ,sbxmxj,tgsl,zysl,fdsl,round(xxmsbsl/sbxmxj,2)xmtgl,round((fysbxmsl+zysbxmsl)/sbxmxj,2)fyzyl  
+from( 
+ select aa.actdeptcode,xxmsbsl,fysbxmsl,zysbxmsl,tgsl,zysl,fdsl,cc.name DeptName,xxmsbsl+fysbxmsl+zysbxmsl sbxmxj
+ from(
+   select actdeptcode,sum(case when(A.STATE='1') then 1 else 0 end)tgsl,
+   sum(case when(A.STATE='2') then 1 else 0 end)zysl, 
+   sum(case when(A.STATE='0') then 1 else 0 end)fdsl
+   from pjprojectinfo a group by a.actdeptcode
+   )aa,
+  (
+   select actdeptcode,sum(case when((a.custid like 'G%' and b.processdefid='A001') or (a.custid like 'Q%' and b.processdefid='B001')) then 1 else 0 end)xxmsbsl,
+   sum(case when((a.custid like 'G%' and b.processdefid='A002') or (a.custid like 'Q%' and b.processdefid='B002')) then 1 else 0 end)fysbxmsl,
+   sum(case when((a.custid like 'G%' and b.processdefid='A003') or (a.custid like 'Q%' and b.processdefid='B003')) then 1 else 0 end)zysbxmsl
+   from pjprojectinfo a,PjProjectCourse b where a.projectno=b.projectno group by a.actdeptcode
+  )bb,rbac_group cc where aa.actdeptcode=bb.actdeptcode and cc.id=aa.actdeptcode order by aa.actdeptcode 
+ )aaa
+        ) t

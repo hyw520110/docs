@@ -1,0 +1,77 @@
+--下例为 authors 表中所有的姓声明了一个简单的游标，并使用 FETCH NEXT 逐个提取这些行。FETCH 语句以单行结果集形式返回由 DECLARE CURSOR 指定的列的值。
+
+
+
+USE pubs
+GO
+DECLARE authors_cursor INSENSITIVE  CURSOR FOR
+SELECT au_lname FROM authors
+ORDER BY au_lname
+
+print @@cursor_rows  --当前游标没有打开，所以结果为0
+
+OPEN authors_cursor  --打开游标
+
+print @@cursor_rows  --已经有了结果。
+
+print @@fetch_status --执行第一条fetch语句之前，@@fetch_status=-1，表示还没有结果。
+
+FETCH NEXT FROM authors_cursor  --执行第一条fetch语句
+
+WHILE @@FETCH_STATUS = 0  --这时才可以检查@@fetch_status的值，=0表示成功，这里是一个循环
+  BEGIN
+     -- This is executed as long as the previous fetch succeeds.
+     FETCH NEXT FROM authors_cursor  --这里的fetch语句被循环执行。
+     if @@fetch_status <> 0    
+        print @@fetch_status     
+   
+  END
+
+CLOSE authors_cursor  --关闭游标
+DEALLOCATE authors_cursor  --释放游标
+GO
+
+
+
+
+
+--下例与上例相似，但 FETCH 语句的输出存储于局部变量而不是直接返回给客户端。
+--PRINT 语句将变量组合成单一字符串并将其返回到客户端。
+
+USE pubs
+GO
+
+-- Declare the variables to store the values returned by FETCH.
+DECLARE @au_lname varchar(40), @au_fname varchar(20)  --声明两个变量存放数据
+
+
+DECLARE authors_cursor CURSOR FOR
+SELECT au_lname, au_fname FROM authors
+WHERE au_lname LIKE 'B%'
+ORDER BY au_lname, au_fname
+
+OPEN authors_cursor
+
+-- Perform the first fetch and store the values in variables.
+-- Note: The variables are in the same order as the columns
+-- in the SELECT statement. 
+
+FETCH NEXT FROM authors_cursor  --取得数据，存入变量中
+INTO @au_lname, @au_fname
+
+-- Check @@FETCH_STATUS to see if there are any more rows to fetch.
+WHILE @@FETCH_STATUS = 0  --循环执行下面的语句
+BEGIN
+
+   -- Concatenate and display the current values in the variables.
+   PRINT 'Author: ' + @au_fname + ' ' +  @au_lname  --打印变量中的数据
+
+   -- This is executed as long as the previous fetch succeeds.
+   FETCH NEXT FROM authors_cursor  --取下一个值，存入变量
+   INTO @au_lname, @au_fname
+END
+
+CLOSE authors_cursor
+DEALLOCATE authors_cursor
+GO
+

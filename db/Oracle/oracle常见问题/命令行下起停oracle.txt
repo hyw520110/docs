@@ -1,0 +1,88 @@
+在Windows上命令行如何手工起停Oracle
+日期：2007年7月20日 作者： 查看:[大字体 中字体 小字体]
+
+    *
+
+
+      添加到QQ书签收藏 添加到雅虎收藏 添加到百度收藏 添加到Google书签 添加到Yahoo书签 添加到新浪ViVi 添加到搜狐网摘 添加到365Key网摘 添加到天极网摘 添加到diglog 添加到和讯网摘 添加到POCO网摘 添加到YouNote网摘 添加到博拉网 添加到天下图摘 Del.icio.us digg reddit spurl BlinkList blogmarks
+      添加到QQ书签收藏 添加到雅虎收藏 添加到百度收藏 添加到Google书签 添加到Yahoo书签 添加到新浪ViVi 添加到搜狐网摘 添加到365Key网摘 添加到天极网摘 添加到diglog 添加到和讯网摘 添加到POCO网摘 添加到YouNote网摘 添加到博拉网 添加到天下图摘 Del.icio.us digg reddit spurl BlinkList blogmarks
+    *
+
+      在命令行我们可以用net命令手工启动Oracle服务: 
+      C:\>net start oracleserviceeygle
+      OracleServiceEYGLE 服务正在启动 ..............
+      OracleServiceEYGLE 服务已经启动成功。
+
+       在正常情况下，数据库即可随之启动，如果数据库不能启动，则可以通过sysdba身份连接进入数据库，手工mount并Open数据库
+
+      C:\>sqlplus "/ as sysdba"
+
+      SQL*Plus: Release 10.2.0.1.0 - ProdUCtion on 星期五 8月 18 11:17:16 2006
+
+      Copyright (c) 1982, 2005, Oracle.  All rights reserved.
+
+
+      连接到:
+      Oracle Database 10g Enterprise Edition Release 10.2.0.1.0 - Production
+      With the Partitioning, OLAP and Data Mining options
+
+      SQL> select instance_name from v$instance;
+
+      INSTANCE_NAME
+      ----------------
+      eygle
+
+      SQL> exit
+      从 Oracle Database 10g Enterprise Edition Release 10.2.0.1.0 - Production
+      With the Partitioning, OLAP and Data Mining options 断开
+
+       停止同样很简单，net命令，一行即可:
+      C:\>net stop oracleserviceeygle
+      OracleServiceEYGLE 服务正在停止......
+      OracleServiceEYGLE 服务已成功停止。
+
+      在Windows上，使用net命令能否启动数据库，还受到一个注册表参数的影响，这个参数是:ORA_<SID>_AUTOSTART
+
+      对于我的Oracle10g数据库，这个键值位于HKEY_LOCAL_MACHINE\SOFTWARE\ORACLE\KEY_Ora10g，我的数据库SID为eygle，这个参数就是:ORA_EYGLE_AUTOSTART
+
+      当这个参数设置为True时，当我们启动服务时，Oracle数据库就会随之启动；反之，数据库就不会启动。
+
+      测试1，ORA_EYGLE_AUTOSTART=true时: 
+
+      C:\>net start oracleserviceeygle
+      OracleServiceEYGLE 服务正在启动 .....................
+      OracleServiceEYGLE 服务已经启动成功。
+
+
+      C:\>sqlplus "/ as sysdba"
+
+      SQL*Plus: Release 10.2.0.1.0 - Production on 星期二 8月 22 09:27:35 2006
+
+      Copyright (c) 1982, 2005, Oracle.  All rights reserved.
+
+
+      连接到:
+      Oracle Database 10g Enterprise Edition Release 10.2.0.1.0 - Production
+      With the Partitioning, OLAP and Data Mining options
+SQL> select instance_name from v$instance;
+
+INSTANCE_NAME
+----------------
+eygle
+
+测试2，ORA_EYGLE_AUTOSTART=FALSE时:  
+
+C:\>net start oracleserviceeygle
+OracleServiceEYGLE 服务正在启动 .
+OracleServiceEYGLE 服务已经启动成功。
+
+
+C:\>sqlplus "/ as sysdba"
+
+SQL*Plus: Release 10.2.0.1.0 - Production on 星期二 8月 22 09:30:03 2006
+
+Copyright (c) 1982, 2005, Oracle.  All rights reserved.
+
+已连接到空闲例程。
+
+SQL>

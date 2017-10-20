@@ -1,0 +1,149 @@
+set serveroutput on
+declare
+i number;
+count_sum number := 0;
+too_many_records exception;
+begin
+dbms_output.enable;
+-- select salary into i from m_employee;
+select count(*) into count_sum from m_employee;
+if count_sum >3 then
+   raise too_many_records;
+end if;
+
+exception
+   when TOO_MANY_ROWS THEN
+        dbms_output.put_line('查询后的数据项过多!');
+  when too_many_records THEN
+        dbms_output.put_line('总记录数过多!');
+   when others then
+        dbms_output.put_line('系统抛出无法预知异常信息!');
+end;
+/
+
+ 
+ 
+
+set serveroutput on
+declare
+cursor temp_cur 
+is select * from m_employee where 1=2; -- 定义游标
+
+wid m_employee.warehouse_id%type;
+eid m_employee.employee_id%type;
+salary m_employee.salary%type;
+begin
+open temp_cur; --打开游标
+
+fetch temp_cur into wid,eid,salary; -- 提取游标
+dbms_output.put_line(wid);
+dbms_output.put_line(eid);
+dbms_output.put_line(salary);
+
+close temp_cur; -- 关闭游标
+end;
+/
+
+
+set serveroutput on
+declare
+cursor temp_cur 
+is select * from m_employee where 1=2; -- 定义游标
+
+wid m_employee.warehouse_id%type;
+eid m_employee.employee_id%type;
+salary m_employee.salary%type;
+begin
+open temp_cur; --打开游标
+
+fetch temp_cur into wid,eid,salary; -- 提取游标
+if temp_cur%found then
+   dbms_output.put_line(wid);
+   dbms_output.put_line(eid);
+   dbms_output.put_line(salary);
+end if;
+close temp_cur; -- 关闭游标
+end;
+/
+
+set serveroutput on
+declare
+cursor temp_cur 
+is select * from m_employee; -- 定义游标
+
+wid m_employee.warehouse_id%type;
+eid m_employee.employee_id%type;
+salary m_employee.salary%type;
+begin
+open temp_cur; --打开游标
+
+loop 
+fetch temp_cur into wid,eid,salary; -- 提取游标
+if temp_cur%found then
+   dbms_output.put_line(temp_cur%rowcount);
+   dbms_output.put_line(wid);
+   dbms_output.put_line(eid);
+   dbms_output.put_line(salary);
+else
+   exit;
+end if;
+end loop;
+
+close temp_cur; -- 关闭游标
+end;
+/
+
+
+set serveroutput on
+declare
+cursor temp_cur 
+is select * from m_employee; -- 定义游标
+begin
+for temp_employee in temp_cur loop 
+   dbms_output.put_line(temp_cur%rowcount);
+   dbms_output.put_line(temp_employee.warehouse_id);
+   dbms_output.put_line(temp_employee.employee_id);
+   dbms_output.put_line(temp_employee.salary);
+end loop;
+end;
+/
+
+
+set serveroutput on
+declare
+cursor temp_cur(salary1 number) 
+is select * from test_employee where salary > salary1; -- 定义游标
+begin
+for temp_employee in temp_cur(1230) loop 
+   dbms_output.put_line(temp_cur%rowcount);
+   dbms_output.put_line(temp_employee.warehouse_id);
+   dbms_output.put_line(temp_employee.employee_id);
+   dbms_output.put_line(temp_employee.salary);
+end loop;
+end;
+/
+
+set serveroutput on
+declare
+cursor temp_cur(salary1 number) 
+is select * from test_employee where salary > salary1 for update of salary; -- 定义游标
+begin
+for temp_employee in temp_cur(1230) loop 
+   update test_employee set salary  = salary + 100 where current of temp_cur; 
+end loop;
+commit;
+end;
+/
+
+
+set serveroutput on
+declare
+cursor temp_cur(salary1 number) 
+is select * from test_employee where salary = salary1 for update of salary; -- 定义游标
+begin
+for temp_employee in temp_cur(1550) loop 
+   delete from test_employee where current of temp_cur; 
+end loop;
+commit;
+end;
+/

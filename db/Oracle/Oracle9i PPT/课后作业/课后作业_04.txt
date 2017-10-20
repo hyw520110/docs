@@ -1,0 +1,47 @@
+带有ANY谓词的查询
+语法格式:
+<表达式> <比较运算符> [ANY|ALL](子查询)
+[NOT]EXISTS(子查询)
+
+ANY: 在进行比较运算时只要子查询中有一行能使结果为真，则结果就为真；
+ALL: 要求子查询中的所有的行都使结果为真时，结果才为真。
+EXISTS: EXISTS或NOT EXISTS 是用来检查在子查询中是否有结果返回，即存在元组或不存在元组。
+
+1.检索那些仓库中还没有职工的仓库的信息。
+========================================================
+select * from m_warehouse where not exists
+       (select * from m_employee where m_employee.warehouse_id = m_warehouse.warehouse_id);
+
+
+2.检索那些仓库中至少已经有一个职工的仓库的信息。
+========================================================
+select * from m_warehouse where exists
+       (select * from m_employee where m_employee.warehouse_id = m_warehouse.warehouse_id);
+
+
+3.检索有职工的工资大于或等于WH1仓库中任何一名职工工资的仓库号。
+========================================================
+select distinct warehouse_id from m_employee where salary >=any
+       (select salary from m_employee where warehouse_id = 'WH1');
+
+
+4.检索有职工的工资大于或等于WH1仓库中所有职工工资的仓库号。
+========================================================
+select distinct warehouse_id from m_employee where salary >=all
+       (select salary from m_employee where warehouse_id = 'WH1');
+
+
+外联结查询
+
+外联结查询: 外联结不仅返回满足联结条件的所有记录，而且也返回了一个表中的那些在另一个表中没有匹配的行记录。
+外联结的操作符是(+). (+)号放在联结条件中信息不完整的那一边(也就是没有匹配行的那一边)
+
+5.检索出所有仓库中的仓库号，城市，面积，职工号，工资信息，要求结果集中包括还没有职工的仓库信息。
+===============================================================================================
+select m_warehouse.warehouse_id,city,area,employee_id,salary from 
+m_warehouse,m_employee where m_warehouse.warehouse_id = 
+m_employee.warehouse_id(+);
+
+说明: 因为仓库表中的仓库号为'WH4'的仓库中还没出职工。
+
+

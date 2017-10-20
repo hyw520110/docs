@@ -1,0 +1,53 @@
+DML_sql_server 2000
+1.插入一个新的供应商元组(S9,智通公司,沈阳)。
+============================================================
+insert into M_PROVIDER (PROVIDER_ID, PROVIDER_NAME, PROVIDER_ADDRESS)
+values ('S9 ', '智通公司', '沈阳');
+
+
+
+
+
+2.删除目前没有任何订购单的供应商。
+========================================================
+delete from t_provider where provider_id not in 
+(select provider_id from t_indent where provider_id is not null) 
+
+
+3.删除由在上海仓库工作的职工发出的所有订购单。
+========================================================
+
+delete from t_indent where employee_id in
+(select employee_id from t_employee,t_warehouse
+where t_employee.warehouse_id = t_warehouse.warehouse_id
+and city = '上海')
+
+delete from t_indent where employee_id in
+(select employee_id from t_employee
+inner join t_warehouse 
+on
+t_employee.warehouse_id = t_warehouse.warehouse_id
+where city = '上海')
+
+
+
+
+4.北京的所有仓库增加100平方米的面积。
+========================================================
+update m_warehouse set area=area+100
+where city='北京';
+
+
+5.给所有低于本仓库职工平均工资的职工提高5%的工资。
+=========================================================
+update m_employee a set salary = salary*(1+0.05)
+where salary < (select avg(salary) from m_employee b
+where a.warehouse_id = b.warehouse_id);
+
+
+5.给低于所有职工平均工资的职工提高5%的工资。
+========================================================
+update m_employee set salary = salary*(1+0.05)
+where salary < (select avg(salary) from m_employee);
+
+

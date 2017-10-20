@@ -1,0 +1,24 @@
+*{ margin:0; padding:0;font-size:12px}
+li{ list-style:none}
+.top{height:31px;width:660px;background:url(../img/top_bj.gif) repeat-x left top;line-height:31px;color:#FFF;font-weight:bold;font-size:16px;}
+.top .h1{padding:0 175px 0 10px;float:left;font-size:16px;font-weight:bold}
+.a{
+	display:inline;
+	width:414px;
+	font-size:12px;
+	padding-right:40px;
+	color:#fff;
+	text-decoration: none;
+}
+.big{width:650px;height:250px; background:#fff;border:#0099ff 1px solid;border-top:none;padding:5px 4px 5px 4px}
+.big .up{width:650px;height:auto;padding-top:6px;}
+.big .up .left{float:left;width:195px;height:auto;padding-left:10px;border:#7d7d7d 1px solid;margin-right:10px;padding-bottom:4px}
+.big .up .middle{float:left;width:192px;height:auto;border:#7d7d7d 1px solid;padding-left:10px;margin-right:10px;padding-bottom:4px}
+.big .up .right{float:left;width:199px;height:auto;border:#7d7d7d 1px solid;padding-left:10px;padding-bottom:4px}
+
+.big .down{width:650px;height:auto;margin-top:20px}
+.big .down .l{float:left;width:195px;height:auto;padding-left:10px;border:#7d7d7d 1px solid;margin-right:10px;margin-top:12px;padding-bottom:4px}
+.big .down .m{float:left;width:192px;height:auto;border:#7d7d7d 1px solid;padding-left:10px;margin-right:10px;margin-top:12px;padding-bottom:4px}
+.big .down .r{float:left;width:199px;height:auto;border:#7d7d7d 1px solid;padding-left:10px;margin-top:12px;padding-bottom:4px}
+.biaoti{font-size:14px;font-weight:bold;line-height:18px;padding-left:16px; position:relative; top:-8px; background:url(../img/biaobj.gif) no-repeat center left}
+

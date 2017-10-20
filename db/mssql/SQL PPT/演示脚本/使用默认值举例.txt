@@ -1,0 +1,15 @@
+--使用默认值举例
+
+CREATE TABLE T1 
+( column_1 int identity, 
+  column_2 varchar(30) 
+    CONSTRAINT default_name DEFAULT ('column default'),
+  column_3 varchar(30),
+  column_4 int NULL)
+GO
+
+INSERT INTO T1 DEFAULT VALUES 
+
+insert into t1(column_3) values('hello col3')
+
+SELECT * FROM T1

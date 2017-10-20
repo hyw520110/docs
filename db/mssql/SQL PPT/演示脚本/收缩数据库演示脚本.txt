@@ -1,0 +1,25 @@
+1. 要收缩数据库，先创建表，向表中塞满数据，让数据文件自动增长；
+2. 删除所有数据，让表中有可回收的空间；
+3. 收缩数据库，查看效果。
+
+
+CREATE TABLE Test (  
+	id int IDENTITY (1, 1) ,
+	ch char(500)
+) 
+GO
+
+
+
+begin
+declare @a int
+set @a = 1
+while @a < 3000
+  begin
+   insert into test values('aaa')
+   set @a = @a + 1
+  end
+end
+
+delete from test
+

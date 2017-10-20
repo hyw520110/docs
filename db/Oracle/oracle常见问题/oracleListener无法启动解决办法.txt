@@ -1,0 +1,17 @@
+1.检查控制面板的服务是否设置为自动 ；
+
+2.检查注册表HKEY_LOCAL_MACHINE\SOFTWARE\ORACLE\HOME0 下面一个自启动的参数(ORA_ORCL_AUTOSTART)是否为 true
+
+3.检查注册表中HKEY_LOCAL_MACHINE\SOFTWARE\ORACLE\HOME0下有没有ORACLE_SID
+
+4.检查服务COM+ Event System和COM+ System Application是否已启动，如果没有改为自动启动；
+
+5.检查一下你的%ORACLE_HOME%\network\ADMIN\Sqlnet.ora文件
+如果有 SQLNET.AUTHENTICATION_SERVICES= (NTS)
+改为 SQLNET.AUTHENTICATION_SERVICES= (NONE)
+
+6.重新创建服务
+c:\>oradim -delete -sid orcl
+重新启动机器
+c:\>oradim -new -sid orcl -startmode a -pfile 'd:\oracle\admin\orcl\pfile\init.ora' -timeout 30
+再重新启动机器，看服务是否正常

@@ -1,0 +1,49 @@
+USE master  		  --使用master数据库
+GO
+-- Create the database with the default data
+-- filegroup and the log file. Specify the
+-- growth increment and the max size for the
+-- primary data file.
+CREATE DATABASE MyDB      --创建MyDB数据库
+ON PRIMARY                --主文件组PRIMARY
+  ( NAME='MyDB_Primary',  --逻辑文件名：MyDB_Primary
+   FILENAME=
+      'e:\Program Files\Microsoft SQL Server\MSSQL\data\MyDB_Prm.mdf',  --物理文件名（路径）
+   SIZE=4,              --文件大小
+   MAXSIZE=10,          --文件大小的上限为10MB（最大值）
+   FILEGROWTH=1),       --文件自动增长，每次增加1MB
+FILEGROUP MyDB_FG1      --用户自定义文件组
+  ( NAME = 'MyDB_FG1_Dat1',
+   FILENAME =
+      'e:\Program Files\Microsoft SQL Server\MSSQL\data\MyDB_FG1_1.ndf',
+   SIZE = 1MB,
+   MAXSIZE=10,
+   FILEGROWTH=1),
+  ( NAME = 'MyDB_FG1_Dat2',
+   FILENAME =
+      'e:\Program Files\Microsoft SQL Server\MSSQL\data\MyDB_FG1_2.ndf',
+   SIZE = 1MB,
+   MAXSIZE=10,
+   FILEGROWTH=1)
+LOG ON                  --日志
+  ( NAME='MyDB_log',    --日志逻辑名
+   FILENAME =    
+      'e:\Program Files\Microsoft SQL Server\MSSQL\data\MyDB.ldf',  --日志物理文件名（路径）
+   SIZE=1,              --日志文件大小为1MB
+   MAXSIZE=10,          --最大10MB
+   FILEGROWTH=1)        --自动每次增加1MB
+GO
+
+
+ALTER DATABASE MyDB     --更改MyDB数据库
+MODIFY FILEGROUP MyDB_FG1 DEFAULT   --更改文件组MyDB_FG1为默认文件组
+GO
+
+-- Create a table in the user-defined filegroup.
+USE MyDB
+CREATE TABLE MyTable
+  ( cola      int   PRIMARY KEY,
+   colb      char(8) )
+ON MyDB_FG1              --在MyDB_FG1文件组上创建一个表
+GO
+

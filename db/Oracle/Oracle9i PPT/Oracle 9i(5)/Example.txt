@@ -1,0 +1,104 @@
+
+
+set serveroutput on
+declare
+i number:=25;
+begin
+dbms_output.enable;
+dbms_output.put_line(i);
+end;
+/
+
+
+set serveroutput on
+declare
+i number;
+begin
+dbms_output.enable;
+avg(45);
+select count(*) into i from employee;
+dbms_output.put_line(i);
+end;
+/
+
+
+USERID   NVARCHAR2(32)                           
+USERCODE NVARCHAR2(50)                           
+PASSWORD NVARCHAR2(32) Y                         
+USERNAME NVARCHAR2(50) Y                         
+TIME     DATE          Y                         
+STATE    NVARCHAR2(1)  Y  
+
+
+declare
+uid varchar2(20);
+pwd varchar2(20);
+begin
+uid:='&uid';
+pwd:='&pwd';
+
+if uid='abc' and pwd='123' then
+   dbms_output.put_line('Welcome to our Site!');
+else
+    dbms_output.put_line('No Power!');
+end if;
+end;
+/
+
+
+declare
+uid varchar2(20);
+pwd varchar2(20);
+begin
+uid:='&uid';
+pwd:='&pwd';
+
+if uid='abc' then
+   if pwd='123' then
+      dbms_output.put_line('谢谢光临!');
+   else
+      dbms_output.put_line('密码有误!');
+   end if;
+else
+    dbms_output.put_line('账号有误!');
+end if;
+end;
+/
+
+
+declare
+state varchar2(1);
+begin
+state:='&state';
+
+case state
+     when '0' then
+         dbms_output.put_line('初始化!'); 
+     when '1' then
+         dbms_output.put_line('启用中!'); 
+     when '2' then
+         dbms_output.put_line('已禁用!');    
+     else 
+         dbms_output.put_line('非法!');  
+end case;
+end;
+/
+
+
+declare
+state varchar2(1);
+begin
+state:='&state';
+
+case 
+     when state='0' then
+         dbms_output.put_line('初始化!'); 
+     when state='1' then
+         dbms_output.put_line('启用中!'); 
+     when state='2' then
+         dbms_output.put_line('已禁用!');    
+     else 
+         dbms_output.put_line('非法!');  
+end case;
+end;
+/

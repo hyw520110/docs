@@ -1,0 +1,279 @@
+1.增加主键
+   alter table TABLE_NAME add constraint KEY_NAME primary key (TABLE_COLUMN);
+   指定表空间
+   alter table TABLE_NAME add constraint KEY_NAME primary key (TABLE_COLUMN) using index  tablespace TABLE_SPACE_NAME;
+2.增加外键
+   alter table TABLE_NAME add constraint FK_NAME  foreign key (TABLE_COLUMN) references KEY_TABLE_NAME;
+3.使主键或外键失效、生效
+   alter table TABLE_NAME  disable(enable) constraint KEY_NAME;
+4、查看各种约束
+  select constraint_name,table_name,constraint_type,status from user_constraints;
+  select constraint_name, constraint_type,search_condition, r_constraint_name  from user_constraints where table_name = upper('&table_name')
+
+  select c.constraint_name,c.constraint_type,cc.column_name 
+     from user_constraints c,user_cons_columns cc
+     where c.owner = upper('&table_owner') and c.table_name = upper('&table_name')
+     and c.owner = cc.owner and c.constraint_name = cc.constraint_name
+     order by cc.position;
+
+5、删除主键或外键
+  alter table TABLE_NAME  drop constraint KEY_NAME;
+6、建外键
+    单字段时：create table 表名 (col1  char(8),
+                                 cno   char(4)  REFERENCE course);
+    多个字段时,在最后加上 Foreign Key (字段名) REFERENCE 表名(字段)
+    连带删除选项 (on delete cascade
+       当指定时，如果父表中的记录被删除，则依赖于父表的记录也被删除
+             REFERENCE 表名（） on delete cascade;
+7、删除带约束的表
+    Drop table 表名 cascade  constraints;
+
+8：索引管理
+<1>.creating function-based indexes
+sql> create index summit.item_quantity on summit.item(quantity-quantity_shipped);
+
+<2>.create a B-tree index
+sql> create [unique] index index_name on table_name(column,.. asc/desc) tablespace
+sql> tablespace_name [pctfree integer] [initrans integer] [maxtrans integer]
+sql> [logging | nologging] [nosort] storage(initial 200k next 200k pctincrease 0
+sql> maxextents 50);
+
+<3>.pctfree(index)=(maximum number of rows-initial number of rows)*100/maximum number of rows
+
+<4>.creating reverse key indexes
+sql> create unique index xay_id on xay(a) reverse pctfree 30 storage(initial 200k
+sql> next 200k pctincrease 0 maxextents 50) tablespace indx;
+
+<5>.create bitmap index
+sql> create bitmap index xay_id on xay(a) pctfree 30 storage( initial 200k next 200k
+sql> pctincrease 0 maxextents 50) tablespace indx;
+
+<6>.change storage parameter of index
+sql> alter index xay_id storage (next 400k maxextents 100);
+
+7.allocating index space
+sql> alter index xay_id allocate extent(size 200k datafile 'c:/oracle/index.dbf');
+
+<8>.alter index xay_id deallocate unused;
+
+<9>、查看索引
+     SQL>select index_name,index_type,table_name from user_indexes order by table_name;
+<10>、查看索引被索引的字段
+     SQL>select * from user_ind_columns where index_name=upper('&index_name');
+
+11、创建序列
+    select * from user_sequences;
+    create  sequence SEQ_NAME  start with 1000
+         maxvalue  1000 increment by 1;
+    alter sequence  SEQ_NAME minvalue 50 maxvalue 100;
+12、删除重复行
+    update a set aa=null where aa is not null;
+   
+    delete from a where rowid!=
+        (select max(rowid) from a  b where  a.aa=b.aa);
+13、删除同其他表相同的行
+    delete from a  where exits
+      (select 'X' from b where b.no=a.no);
+    或
+      delete from a  where no in (select no from b);
+14、查询从多少行到多少行的记录(可以用在web开发中的分页显示)
+
+ select * from ( select rownum row_id,b.* from (select a.* from sys_oper a) b )
+ where row_id between 15 and 20
+
+15、对公共授予访问权
+    grant select on 表名 to public;
+    create public synonym 同义词名  for 表名;
+16、填加注释
+    comment on table 表名 is  '注释';
+    comment on column 表名.列名 is '注释';
+17、分布式数据库,创建数据库链路
+    create [public] database link LINKNAME
+       [connect to USERNAME identified by PASSWORD]
+       [using 'CONNECT_STRING']
+    可以在服务器端，也可以在客户端建立，但必须注意，两台服务器之间
+    数据库必须可以互访，必须各有各自的别名数据库
+18、查看数据库链路
+    select * from  all_db_links;
+    select * from user_db_links;
+    查询  select * from TABLENAME@DBLNKNAME;
+    创建远程数据库同义词
+       create synonym  for TABLENAME@DBLNKNAME;
+    操纵远程数据库记录
+      insert into TABLENAME@DBLNKNAME (a,b)  values (va,vb);
+      update    TABLENAME@DBLNKNAME  set a='this';
+      delete from TABLENAME@DBLNKNAME;
+   怎样执行远程的内嵌过程
+       begin
+         otherdbpro@to_html(参数);
+       end;
+
+19、数据库链路用户密码有特殊字符的时候，可以用双引号把密码引起来
+create public database link dblink1 connect to db1 identified by "123*456" using 'db11'
+
+20.oracle8中扩充了group by rollup和cube的操作。有时候省了你好多功夫的。
+ <1>下面的语句可以进行总计
+ select region_code,count(*) from aicbs.acc_woff_notify
+ group by rollup(region_code);
+ <2> 对第1个字段小计，最后合计
+ select region_code,write_status,count(*) from aicbs.acc_woff_notify
+ group by rollup(region_code,write_status);
+ ----------------------
+  570     0       3
+  570     1       2
+  570             5   --此处小计了570的记录
+  571     0       10
+  571     1       2
+  571             12  --此处小计了571的记录
+  .....
+      100 --此处有总计
+ <3> 复合rollup表达式,只做总计
+ select region_code,write_status,count(*) from aicbs.acc_woff_notify
+ group by rollup(region_code,write_status);
+  
+ <4> 对第1个字段小计，再对第2个字段小计，最后合计
+ select region_code,write_status,count(*) from aicbs.acc_woff_notify
+ group by cube(region_code,write_status);
+ ----------------------
+      100  --此处有总计
+    0  60  --对write_status＝0的小计
+    1  39  --对write_status＝1的小计
+    3  1  --对write_status＝3的小计
+  570    5  --此处小计了570的记录
+  570  0  3
+  570  1  2
+  571    12  --此处小计了571的记录
+  571  0  10
+  571  1  2
+  ....
+ <3> 复合cube表达式,只做总计
+ select region_code,write_status,count(*) from aicbs.acc_woff_notify
+ group by cube(region_code,write_status);
+  
+ 
+ <4>下面的语句可以按照rollup不同的字段进行小计
+ select region_code,write_status,count(*) from aicbs.acc_woff_notify
+ group by region_code,rollup(write_status);
+21.查询view的创建语句
+  sql>set long 1000
+  sql>select * from user_views where view_name='MY_VIEW_NAME';
+   or
+ sql>select * from all_views where view_name='MY_VIEW_NAME';
+
+22、去除数据库中特殊字符
+ <1>.字符串字段中含有"'",如果用来组合sql语句，会造成语句不准确。
+     比如：replace(f1,'''','')
+ <2>.字符串字段中含有"\t \n",如果用来在c或者c＋＋程序中输出到文件，格式无法保证。
+  比如：replace(f2,'\t','')
+ <3>.清除换行和回车
+  比如: replace(f2,chr(13)||chr(10),'')
+23、如何在字符串里加回车或者tab键
+  在sqlplus中执行
+   sql>select 'UserId=1233111'||chr(10)||'AccId=13431'||chr(9)||'AccId2=11111' from dual;
+
+24、树形查询
+create table zj(
+bm     number(8),
+bmmc   varchar2(20),
+sjbm   number(8)
+)
+
+insert into zj values(1,'aaa',0)
+insert into zj values(11,'aaa1',1)
+insert into zj values(12,'aaa2',1)
+insert into zj values(111,'aaa11',11)
+insert into zj values(112,'aaa12',11)
+insert into zj values(113,'aaa13',11)
+insert into zj values(121,'aaa21',12)
+insert into zj values(122,'aaa22',12)
+insert into zj values(123,'aaa23',12)
+--
+select bm,bmmc,sjbm,level
+from zj
+start with sjbm=0
+connect by prior  bm = sjbm
+或者
+
+select bm,bmmc,sjbm,level
+from zj
+start with sjbm=0
+connect by  sjbm = prior  bm
+
+
+25、快照
+    create snapshot SNAPSHOT_NAME
+       [storage (storage parameter)]
+       [tablespace  TABLESPACE_NAME]
+       [refresh  [fast\complete\force]
+       [start with  START_DATE next NEXT_DATE]
+       as QUERY;
+  
+   create snapshot snapshot_to_study as select * from TABLE_NAME@to_study;
+   创建角色
+     create role aa identified by aaa;
+   授权  grant create snapshot,alter snapshot to aaa;
+         grant  aaa to emp;
+   create snapshot SNAPSHOT_TO_HTML refresh  complete start with sysdate next
+       sysdate+5/(24*60*60) as  select * from a@to_html;
+   删除  drop snapshot snap_to_html
+   手工刷新快照,(调用DBMS_SNAPSHOT包中的refresh过程)DBMS_SNAPSHOT.refresh(snapshot_name,refresh_type);
+       begin
+          DBMS_SNAPSHOT.REFRESH('snap_to_html','c');
+       end;
+   对所有快照进行刷新
+       begin
+          DBMS_SNAPSHOT.REFRESH_ALL;
+       end;
+   怎样执行远程的内嵌过程
+       begin
+         otherdbpro@to_html(参数);
+       end;
+26、用户管理
+ create a user: database authentication
+  sql> create user juncky identified by oracle default tablespace users
+  sql> temporary tablespace temp quota 10m on data password expire
+  sql> [account lock|unlock] [profile profilename|default];
+
+ <1>.查看当前用户的缺省表空间
+ SQL>select username,default_tablespace from user_users;
+ <2>生成用户时指定缺省表空间
+  create user 用户名 identified by 口令  default      tablespace 表空间名;
+ 
+ <3>重新指定用户的缺省表空间
+      alter user 用户名 default tablespace 表空间名
+ <4>查看当前用户的角色
+ SQL>select * from user_role_privs;
+ <5>查看当前用户的系统权限和表级权限
+  SQL>select * from user_sys_privs;
+  SQL>select * from user_tab_privs;
+ <6>查看用户下所有的表
+      SQL>select * from user_tables;
+ <7> alter user语句的quota子句限制用户的磁盘空间
+     如:alter user jf  quota 10M  on system;
+
+
+27、查看放在ORACLE的内存区里的表 
+     SQL>select table_name,cache from user_tables where instr(cache,'Y')>0;
+
+28、约束条件
+    create table employee
+     (empno  number(10)  primary key,
+      name   varchar2(40) not null,
+      deptno  number(2)  default 10,
+      salary  number(7,2)  check  salary<10000,
+      birth_date date,
+      soc_see_num  char(9)  unique,
+      foreign key(deptno) references dept.deptno)
+      tablespace users;
+     
+    关键字(primary key)必须是非空,表中记录的唯一性
+    not null  非空约束
+    default   缺省值约束
+    check     检查约束,使列的值符合一定的标准范围
+    unqiue  唯一性约束
+    foreign key 外部键约束
+
+29、查看创建视图的select语句
+     SQL>set view_name,text_length from user_views;
+     SQL>set long 2000;  说明：可以根据视图的text_length值设定set long 的大小
+     SQL>select text from user_views where view_name=upper('&view_name');

@@ -1,0 +1,20 @@
+USE pubs
+GO
+CREATE TABLE Test1 (
+a INT PRIMARY KEY, 
+b CHAR(3) constraint ch_b check(b like '[a-z][a-z][a-z]')
+)
+
+Begin tran --开始一个事务
+declare @Error int  --声明一个局部变量存储错误代码
+INSERT INTO Test1 VALUES (1, 'aaa')  --插入数据
+SET @Error = @@ERROR   --保存错误代码
+IF (@ERROR <> 0)  --0表示正确，非0表示出错
+  BEGIN
+    rollback --回退事务   
+    PRINT 'Error encountered, ' + 
+         CAST(@Error AS VARCHAR(10))  --打印错误代码
+  END
+else
+Commit
+GO

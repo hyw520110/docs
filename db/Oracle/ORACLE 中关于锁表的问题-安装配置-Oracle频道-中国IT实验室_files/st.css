@@ -1,0 +1,126 @@
+/* CSS Document */
+body,td,th {
+	font-size: 12px;
+}
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+
+
+#S_tequan {
+	width:956px;
+	height:37px;
+	background-color:#FFF;
+	color:#444;
+	margin-right: auto;
+	margin-bottom: 5px;
+	margin-left: auto;
+	padding-top: 5px;
+	padding-right: 1px;
+	padding-bottom: 1px;
+	padding-left: 1px;
+}
+#S_tequan .con {
+	height:36px;
+	width:934px;
+	font-family:Arial;
+	padding-top: 0px;
+	padding-right: 12px;
+	padding-bottom: 0;
+	padding-left: 12px;
+	float: left;
+	background-image: url(../image/bav.jpg);
+	background-repeat: no-repeat;	
+}
+#S_tequan .con a{ color:#444; padding:0 8px; text-decoration: none;}
+#S_tequan .con a:hover{
+}
+#S_tequan .con span { font-weight:bold;}
+#S_tequan .con ul { list-style: none; margin: 0px; padding: 0px; }
+#S_tequan .con ul li {
+	float:left;
+	margin-left:2px;
+	font-family: "宋体";
+	color: #666;
+}
+#S_tequan .con #li {
+	height: 31px;
+	width: 920px;
+	float: left;
+	margin-left: 10px;
+	margin-top: 5px;
+}
+#S_tequan .con ul li a { display:block; width:auto; height:28px; line-height:28px; text-align:center; font-size:12px;}
+#S_tequan .con ul li ul { border:1px solid #ccc; display:none; position:absolute;}
+#S_tequan .con ul li ul li { float:none; width:87px; background:#eee; margin:0;}
+#S_tequan .con ul li ul li a { background:none;}
+#S_tequan .con ul li ul li a:hover {color:#000;}
+#S_tequan .con ul li:hover ul { display:block;}
+#S_tequan .con ul li.sfhover ul { display:block;}
+
+#wrap1 .sidecenter1 {float: right;width: 610px; margin-top:10px; border: 1px solid #CCC;}
+#wrap1 .sidecenter1 .WeiZhi {
+	background-image: url(../image/lanmu.jpg);
+	width: 608px;
+	text-align: left;
+	text-align: left;
+	color: #00546C;
+	background-repeat: repeat-x;
+	height: 30px;
+	line-height: 30px;
+	border:1px solid #f2f2f2;
+	border-top: 0;
+}
+#wrap1 .sidecenter1 .WeiZhi .WeiZhi1 {
+	padding-left: 40px;
+	font-size: 16px;
+	color: #1B4F89;
+	font-weight: bold;
+}
+
+#wrap1 .sidecenter1 .WeiZhi h3 {width: 98%; text-align:left; background: #F2F2F2; font-weight:normal; height: 35px; font-size: 12px; line-height: 35px; color: #888; margin-left: 5px; margin-top:10px;
+}
+#wrap1 .sidecenter1 .A.HL:link, A.HL:visited {FONT-SIZE: 16px; FONT-FAMILY: "宋体"; text-decoration: none; color: #069; font-weight:bold;}
+#wrap1 .sidecenter1 .WeiZhi h3 .infor { float:right; margin-right:10px;}
+#wrap1 .sidecenter1 .WeiZhi h3 .Ttitle {float:left; margin-left:25px; font-size:16px; color:#069;}
+#wrap1 .sidecenter1 .A.HL:active,A.HL:hover {
+	COLOR: #069;
+	FONT-FAMILY: "宋体";
+	text-decoration: underline;
+}
+#wrap1 .sidecenter1 .WeiZhi .blank {height: 7px; width: 5px;}
+#wrap1 .sidecenter1 .WeiZhi .R_Lst {
+	width: 290px;
+	float: left;
+	margin: 5px;
+	border: 1px solid #CCC;
+}
+#wrap1 .sidecenter1 .WeiZhi .R_Lst .L_Lst {width: 100%; text-align: left; line-height:23px;}
+
+#wrap1 .sidecenter1 .WeiZhi .R_Lst .title_line {
+	width: 100%;
+	height:31px;
+	background-repeat: no-repeat;
+	color: #333; background-image: url(../image/lanmu1.jpg);
+	font-weight: bold;
+}
+#wrap1 .sidecenter1 .WeiZhi .R_Lst1 {
+	width: 595px; height:25px;
+	float: left;
+	margin: 5px;
+	border: 1px solid #CCC;
+}
+#wrap1 .sidecenter1 .WeiZhi .R_Lst1 .L_Lst {width: 100%; text-align: left; line-height:23px;}
+#wrap1 .sidecenter1 .WeiZhi .R_Lst1 .title_line {
+	width: 100%;
+	height:25px;
+	background-color:#C1E0F9;
+	background-repeat: no-repeat;
+	color: #333;
+}
+#wrap1 .sidecenter1 .WeiZhi .R_Lst1 .R_last_lst {width: 98%; height:30px; line-height: 25px; }
+#wrap1 .sidecenter1 .WeiZhi .R_Lst1 .R_last_lst .R1_title {width: 72%; float: left; text-align: left; padding-left: 8px; margin-top:5px;}
+#wrap1 .sidecenter1 .WeiZhi .R_Lst1 .R_last_lst .R1_date {width: 25%; margin-top:5px; float: right; text-align: left; font-size: 14px; color: #555;}

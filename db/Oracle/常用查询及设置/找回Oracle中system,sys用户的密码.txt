@@ -1,0 +1,53 @@
+Oracle中如果不知道system,sys用户的密码后可用如下方法找回： 
+
+首先以一个普通用户等入数据库： 
+在SQL*Plus中执行如下命令： 
+SQL>connect/as sysdba (也可以以如下方式连接：SQL>connect internal) 
+SQL>alter user sys identified by sys; (回车后用户sys的密码会更改为sys) 
+同理可以更改system密码 
+SQL>alter user system identified by system; (回车后用户system的密码会更改为system)  
+
+ 
+
+使用操作系统认证 
+
+conn / as sysdba 
+
+修改sys的密码
+
+在windows下测试OK
+
+Oracle? Database Express Edition Getting Started Guide 
+10g Release 2 (10.2)
+
+ 
+
+ 
+
+Oracle忘记密码怎么办？在本机安装完Oracle以后，不记得sys用户的密码了，采用如下方法可以修改密码：
+
+1.打开cmd，输入sqlplus /nolog，回车；输入“conn / as sysdba”;输入“alter user sys identified by 新密码”，注意：新密码最好以字母开头，否则可能出现错误Ora-00988。有了这个方法后，只要自己对oracle服务器有管理员权限，不记得密码的时候就可以随意修改密码了。
+
+2.在命令行执行如下命令：sqlplus "/@服务名 as sysdba",然后在sqlplus中alter user sys identified by 新密码;
+alter user system identified by 新密码;
+
+3.运行到C盘根目录 
+1)输入：SET ORACLE_SID = 你的SID名称 
+2)输入：sqlplus/nolog 
+3)输入：connect/as sysdba 
+4)输入：alert user sys identified by sys 
+5)输入：alert user system identified by system 
+6)更改完成，密码是Oracle数据库初始密码
+
+4.首先,在CMD下输入SQLPLUS/NOLOG然后再在出来的界面中打入CONN/AS SYSDBA,这样就会以本地系统登录的用户为信任用户进入数据库的操作.解决这个问题的方式有两种,一个是：ALTER USER （USERNAME） IDENTIFIED BY “密码”;这个是可以改变USERNAME的密码.当然这个USERNAME必须已经存在的
+另一种是：CREATE USER (USERNAME) IDENTIFIED BY "密码";改变用户权限的命令是：GRANT ROLES TO （USERNAME）;以上2种方法都是针对ORACLE 9I的版本 。
+
+5.用orapwd.exe命令，可以修改命令。
+orapwd file='/oracle/pwdsid.ora' password=123456这个命令是修改sys用户的密码。你把生成的文件覆盖原来的密码文件。除sys和system其他用户的密码不会改变。
+
+6.su - oracle 
+sqlplus /nolog
+conn / as sysdba
+startup (如果数据库不是处于启动状态则启动)
+alter user sys identified by 123456
+然后就可以使用sys用户密码登陆了

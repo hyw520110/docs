@@ -1,0 +1,135 @@
+使用dba用户操作：
+创建临时表空间 
+
+create temporary tablespace oa_temp 
+tempfile 'D:\oracle\product\10.2.0\oradata\mycustom\oa_temp01.dbf' 
+size 32m 
+autoextend on 
+next 32m maxsize 2048m 
+extent management local; 
+
+创建数据表空间 
+create tablespace oa_data 
+logging 
+datafile 'D:\oracle\product\10.2.0\oradata\mycustom\oa_data01.dbf' 
+size 32m 
+autoextend on 
+next 32m maxsize 2048m 
+extent management local; 
+
+创建用户并指定表空间 
+create user oa_user identified by oa_pass 
+default tablespace oa_data 
+temporary tablespace oa_temp; 
+
+授予连接，恢复，导出，导入数据库权限给用户
+grant connect,resource,imp_full_database,exp_full_database to oa_user; 
+
+//查看已建立的directory
+select * from dba_directories;
+
+
+
+使用普通用户:
+导出：
+	exp oa_user/oa_pass@ORCL file=oa_user.dmp owner=oa_user log=exp_oa_user.log
+导入:
+	imp user/pass@orcl file=oa_user.dmp fromuser=oa_user touser=user log=emp_oa_user.log ignore=y 
+
+11G TO 10G
+	EXPDP USERID='SYS/PASS@SID as sysdba' schemas=srcuser directory=dumDir dumpfile=backup%date:~0,4%%date:~5,2%%date:~8,2%.dmp logfile=expdp.log version=10.2.0.1.0
+		schemas为源数据库的用户，version为目标库的版本号,必须指定
+	10G上建库、建表空间、建用户授权、将导出的dmp文件拷贝到10G的dpdump目录下
+	IMPDP USERID='SYS/PASS@SID as sysdba' schemas=dstuser directory=dumDir dumpfile=backup.dmp logfile=impdp.log version=10.2.0.1.0
+
+
+导出前：
+	撤销用户表空间无限配额的权限
+	revoke unlimited tablespace from oa_user;
+	更改用户使用默认表空间权限为无限配额
+	alter user oa_user default tablespace oa_data quota unlimited on oa_data;
+
+oracle不同用户不同表空间的数据导入
+---------------------------------IMPDP，EXPDP------------------------
+
+使用dba用户操作:
+	SQL> select * from dba_directories;//查看已建立的directory
+
+	SQL>create directory data_pump_dir1 as 'D:\\datapump';//创建Directory
+	
+	SQL> grant connect,resource to susan identified by susan; //建立用户赋予目录权限
+
+	SQL> grant read,write on directory data_pump_dir1 to susan;//赋予可读写权限
+	SQL> grant exp_full_database,imp_full_database to susan;//赋予expdp,impdp的权限
+
+使用普通用户操作:
+
+	
+	导出/导出操作:
+		 expdp susan/susan@orcl directory=data_dump_dir1 dumpfile=susan01.dmp
+		 impdp susan/susan@orcl directory=data_pump_dir1 dumpfile=susan01.dmp
+
+	不同用户不同表空间下的导入操作:
+		impdp 用户名/密码@数据库实例名 directory='您创建的目录的名称' dumpfile='导出的文件名称' 
+remap_schema=导出的用户名称:要导入的用户名称 remap_tablespace=导出的表空间名称:要导入的表空间名称
+
+
+
+Oracle数据导入导出imp/exp
+功能：Oracle数据导入导出imp/exp就相当与oracle数据还原与备份。
+ 
+大多情况都可以用Oracle数据导入导出完成数据的备份和还原（不会造成数据的丢失）。
+ Oracle有个好处，虽然你的电脑不是服务器，但是你装了oracle客户端，并建立了连接
+ （通过Net Configuration Assistant添加正确的服务命名，其实你可以想成是客户端与服务器端 修了条路，然后数据就可以被拉过来了）
+ 这样你可以把数据导出到本地，虽然可能服务器离你很远。
+ 你同样可以把dmp文件从本地导入到远处的数据库服务器中。
+ 利用这个功能你可以构建俩个相同的数据库，一个用来测试，一个用来正式使用。
+ 
+执行环境：可以在SQLPLUS.EXE或者DOS（命令行）中执行，
+ DOS中可以执行时由于 在oracle 8i 中  安装目录\$ora10g\BIN被设置为全局路径，
+ 该目录下有EXP.EXE与IMP.EXE文件被用来执行导入导出。
+ oracle用java编写，我想SQLPLUS.EXE、EXP.EXE、IMP.EXE这俩个文件是被包装后的类文件。
+ SQLPLUS.EXE调用EXP.EXE、IMP.EXE他们所包裹的类，完成导入导出功能。
+ 
+下面介绍的是导入导出的实例，向导入导出看实例基本上就可以完成，因为导入导出很简单。
+数据导出：
+ 1 将数据库TEST完全导出,用户名system 密码manager 导出到D:\daochu.dmp中
+   exp system/manager@TEST file=d:\daochu.dmp full=y
+ 2 将数据库中system用户与sys用户的表导出
+   exp system/manager@TEST file=d:\daochu.dmp owner=(system,sys)
+ 3 将数据库中的表table1 、table2导出
+   exp system/manager@TEST file=d:\daochu.dmp tables=(table1,table2)
+ 4 将数据库中的表table1中的字段filed1以"00"打头的数据导出
+   exp system/manager@TEST file=d:\daochu.dmp tables=(table1) query=\" where filed1 like  '00%'\"
+ 
+     上面是常用的导出，对于压缩我不太在意，用winzip把dmp文件可以很好的压缩。
+                     不过在上面命令后面 加上 compress=y  就可以了
+
+数据的导入
+ 1 将D:\daochu.dmp 中的数据导入 TEST数据库中。
+   imp system/manager@TEST  file=d:\daochu.dmp
+   上面可能有点问题，因为有的表已经存在，然后它就报错，对该表就不进行导入。
+   在后面加上 ignore=y 就可以了。
+ 2 将d:\daochu.dmp中的表table1 导入
+ imp system/manager@TEST  file=d:\daochu.dmp  tables=(table1)
+ 
+ 基本上上面的导入导出够用了。不少情况我是将表彻底删除，然后导入。
+ 
+注意：
+ 你要有足够的权限，权限不够它会提示你。
+ 数据库时可以连上的。可以用tnsping TEST 来获得数据库TEST能否连上。
+
+ 
+
+数据导出：
+exp hkb/hkb@boss_14 full=y file=c:\orabackup\hkbfull.dmp log=c:\orabackup\hkbfull.log;
+
+导出注意事项：导出的是当前用户的的数据，当前用户如果有DBA的权限，则导出所有数据！
+
+同名用户之间的数据导入：
+imp hkb/hkb@xe  file=c:\orabackup\hkbfull.dmp log=c:\orabackup\hkbimp.log full=y
+
+不同名之间的数据导入：
+imp system/test@xe fromuser=hkb touser=hkb_new file=c:\orabackup\hkbfull.dmp
+
+log=c:\orabackup\hkbimp.log;

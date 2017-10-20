@@ -1,0 +1,33 @@
+create table userinfo
+(
+userid varchar2(32) constraint pk_1 primary key,
+usercode varchar2(32),
+username varchar2(32),
+password varchar2(32),
+regtime date,
+state varchar2(1)
+);
+
+
+create table employee
+(
+employeeid varchar2(32) constraint pk_2 primary key,
+employeecode varchar2(32),
+employeename varchar2(32),
+employeesex varchar2(1),
+employeediploma varchar2(1),
+employeemobiletel number(38),
+employeetel varchar2(20),
+employeemail varchar2(50),
+employeestate varchar2(1)
+);
+
+
+select menuid,menuname,fatherid,menulevel from menuinfo
+connect by prior menuid = fatherid
+start with fatherid = '0' order by fatherid; 
+
+
+insert into testseq values(employeeid.nextval,'jdcheng');
+
+select * from testseq;

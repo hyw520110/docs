@@ -1,0 +1,1 @@
+document.write("&nbsp;<a href='http://www.ccxx.com/oracle/index.html' target=_blank style='padding-left:4px'><font color=#ff0000>OracleÅàÑµ+¿¼ÊÔ Ô­³§ID ¾ª±¬¼Û</font></a><br>")

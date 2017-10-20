@@ -1,0 +1,238 @@
+001
+=================================================================
+-- 仓库表 (仓库号,城市,面积) 添加非空约束 (NOT NULL)
+CREATE TABLE WAREHOUSEDEMO_01
+(
+  WAREHOUSE_ID VARCHAR2(4) NOT NULL,
+  CITY         VARCHAR2(4) ,
+  AREA         NUMBER(4) 
+)
+;
+
+002
+=================================================================
+-- 添加单列主键约束
+ALTER TABLE WAREHOUSEDEMO_01
+  ADD CONSTRAINT PK_WAREHOUSEID_01 PRIMARY KEY (WAREHOUSE_ID);
+  
+003
+=================================================================
+-- 一次性完成操作对单列主键约束
+CREATE TABLE WAREHOUSEDEMO_02
+(
+  WAREHOUSE_ID VARCHAR2(4) CONSTRAINT PK_WAREHOUSEID_02 PRIMARY KEY,
+  CITY         VARCHAR2(4) ,
+  AREA         NUMBER(4) 
+)
+;
+
+004
+=================================================================
+-- 一次性完成操作对多列主键约束 (表级)强调多列主键约束时 所有主键列均不为 NULL
+CREATE TABLE WAREHOUSEDEMO_03
+(
+  WAREHOUSE_ID VARCHAR2(4) NOT NULL,
+  CITY         VARCHAR2(4) NOT NULL,
+  AREA         NUMBER(4),
+  CONSTRAINT PK_WAREHOUSEID_03 PRIMARY KEY (WAREHOUSE_ID, CITY)
+)
+;
+
+005
+=================================================================
+-- 添加多列主键约束 (表级约束)
+ALTER TABLE WAREHOUSEDEMO_01
+  ADD CONSTRAINT PK_WAREHOUSEID_001 PRIMARY KEY (WAREHOUSE_ID, CITY);
+
+如果: 现有表中已经存在一个主键,再次添加时会产生如下错误提示:
+
+ORA-02260: 表只能具有一个主键
+
+006
+=================================================================
+-- 添加多列检测约束 (表级约束)
+ALTER TABLE WAREHOUSEDEMO_01
+  ADD CONSTRAINT CK_WAREHOUSEID_001 CHECK(SUBSTR(WAREHOUSE_ID,1,2)='WH');
+
+007
+=================================================================
+-- 一次性完成操作对单列主键及检查约束
+CREATE TABLE WAREHOUSEDEMO_04
+(
+  WAREHOUSE_ID VARCHAR2(4) CONSTRAINT PK_WAREHOUSEID_04 PRIMARY KEY CONSTRAINT CK_WAREHOUSEID_04 CHECK(SUBSTR(WAREHOUSE_ID,1,2)='WH'),
+  CITY         VARCHAR2(4) ,
+  AREA         NUMBER(4) 
+)
+;
+
+008
+===============================================================
+-- 添加外键约束
+1) 创建主表
+CREATE TABLE WAREHOUSEDEMO_01
+(
+  WAREHOUSE_ID VARCHAR2(4) CONSTRAINT PK_WAREHOUSEID_01 PRIMARY KEY,
+  CITY         VARCHAR2(4) ,
+  AREA         NUMBER(4) 
+)
+;
+
+2) 创建子表并添加外键约束
+CREATE TABLE EMPLOYEEDEMO_01
+(
+  WAREHOUSE_ID VARCHAR2(4) ,
+  EMPLOYEE_ID  VARCHAR2(3) CONSTRAINT PK_EMPLOYEEID_01 PRIMARY KEY,
+  SALARY       NUMBER(4) ,
+  CONSTRAINT FK_WAREHOUSEID FOREIGN KEY(WAREHOUSE_ID) REFERENCES WAREHOUSEDEMO_01(WAREHOUSE_ID) ON DELETE CASCADE
+)
+;
+ORA-02267: 列类型与引用的列类型不兼容
+
+009
+=================================================================
+-- 添加外键约束并添加了默认值
+CREATE TABLE EMPLOYEEDEMO_02
+(
+  WAREHOUSE_ID VARCHAR2(4) ,
+  EMPLOYEE_ID  VARCHAR2(3) CONSTRAINT PK_EMPLOYEEID_02 PRIMARY KEY,
+  SALARY       NUMBER(4) DEFAULT 1000,
+  CONSTRAINT FK_WAREHOUSEID_02 FOREIGN KEY(WAREHOUSE_ID) REFERENCES WAREHOUSEDEMO_01(WAREHOUSE_ID) ON DELETE CASCADE
+)
+;
+
+
+010
+==================================================================
+-- 增加新列 STATE （账号状态） 默认值为 '0' 添加约束性条件 (其取值只限于 '0','1','2') 
+alter table userinfo add state varchar2(1) default '0' constraint ck_userinfo_01 check(state in ('0','1','2'));
+
+
+011
+==================================================================
+-- 修改现有列的数据类型 由 NUMBER 改为 VARCHAR2 长度不变
+alter table employee modify employeemobiletel varchar2(38);
+
+012
+==================================================================
+-- 删除新列 
+alter table employee add state varchar2(1) default '0' constraint ck_employee_01 check(state in ('0','1','2'));
+desc employee;
+alter table employee drop column state cascade constraints;
+desc employee;
+
+013
+==================================================================
+-- 增加约束条件 说明一定要保证现有表的数据中不违反参照完整性任务
+alter table m_employee add constraint pk_employeeandwarehouse foreign key(warehouse_id) references m_warehouse(warehouse_id);
+
+案例说明:
+SQL> alter table m_employee add constraint pk_employeeandwarehouse foreign key(warehouse_id) references m_warehouse(warehouse_id);
+
+alter table m_employee add constraint pk_employeeandwarehouse foreign key(warehouse_id) references m_warehouse(warehouse_id)
+
+ORA-02298: 无法验证 (ISS0704.PK_EMPLOYEEANDWAREHOUSE) - 未找到父项关键字
+
+SQL> alter table m_employee add constraint pk_employeeandwarehouse foreign key(warehouse_id) references m_warehouse(warehouse_id);
+
+Table altered
+
+第一次出现无法验证 也就是在子表项中存在一个取值在父表中不存在对应的参照值所引起的.
+
+
+014
+===================================================================
+-- 删除约束条件
+alter table m_employee drop constraint pk_employeeandwarehouse cascade;
+-- 失效所有与之有关联的约束条件
+alter table m_employee disable constraint pk_employeeandwarehouse cascade;
+-- 生效当前的约束条件
+alter table m_employee enable constraint pk_employeeandwarehouse;
+
+
+015
+==================================================================
+-- 删除表
+create table tindent2 as select * from tindent;
+desc tindent2;
+select * from tindent2;
+drop table tindent2;
+
+-- 重命名表
+create table tindent2 as select * from tindent;
+desc tindent2;
+select * from tindent2;
+rename tindent2 to tindent02;
+desc tindent02;
+select * from tindent02;
+
+-- 删除数据
+select * from tindent02;
+truncate table tindent02;
+select * from tindent02;
+
+
+016
+==================================================================
+-- 建立非唯一索引
+create index index_usercode on userinfo(usercode);
+
+-- 建立唯一索引
+create unique index unique_index_usercode on userinfo(time);
+
+-- 建立复合索引
+create index mutil_index on userinfo(usercode,password);
+
+-- 删除索引
+drop index index_usercode ;
+
+
+017
+==================================================================
+
+select upper('NAME:'||usercode) from userinfo;
+
+select substr(warehouse_id,1,2) from m_warehouse;
+
+select length(warehouse_id),length(city) from m_warehouse;
+
+select sysdate as nowdate,add_months(sysdate,2),last_day(sysdate),next_day(sysdate,'星期一') from userinfo;
+
+
+018
+==================================================================
+-- VALUES 子句 没有指定列名采用默认建表时字段的顺序
+insert into m_employee values('WH1','E5',1299);
+
+-- 按建表的顺序指定列名
+insert into m_employee(warehouse_id,employee_id,salary) values('WH1','E2',1299);
+
+-- 非建表的顺序指定列名
+insert into m_employee(employee_id,warehouse_id,salary) values('E8','WH1',1299);
+
+-- 插入日期类型的数据
+insert into m_indent values('E4','S3','OR92',TO_DATE('2008-08-08','YYYY-MM-DD'));
+
+-- 向表中一次性添加多行记录
+CREATE TABLE TEST_EMPLOYEE AS SELECT * FROM M_INDENT;
+TRUNCATE TABLE TEST_EMPLOYEE;
+SELECT * FROM TEST_EMPLOYEE;
+INSERT INTO TEST_EMPLOYEE SELECT * FROM M_INDENT;
+SELECT * FROM TEST_EMPLOYEE;
+
+019
+====================================================================
+-- 不带子查询的更新操作
+update m_indent 
+set indent_date = to_date('2010-10-10','YYYY-MM-DD')
+where indent_id = 'OR92';
+SELECT * FROM M_INDENT;
+
+-- 带子查询的更新操作 
+-- 给 向'S7'发过订购单的职工添加 200 的工资
+update m_employee 
+set salary = salary  + 200
+where employee_id in (
+select employee_id from m_indent where provider_id = 'S7');
+
+-- 删除订购单号为 'OR92' 的记录行
+delete from m_indent where indent_id = 'OR92';

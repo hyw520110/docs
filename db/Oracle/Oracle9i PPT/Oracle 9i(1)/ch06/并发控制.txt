@@ -1,0 +1,42 @@
+并发控制
+开发多用户、数据库驱动的应用程序的主要挑战之一就是要最大化并发访问（多个用户同时访问数据），而且与此同时，还要确保每个用户都能在一致的方式下读取和修改数据，能够提供这些功能的锁定和并发控制是所有数据库的关键特性。
+
+锁（lock）-是用来控制共享资源并发访问的机制。
+死锁-就是两个会话都进入了彼此等候对方的状态时的一种停止状态。
+Oracle处理死锁的方式为：当检测出死锁的时候（它们会被立刻检测出来），Oracle会自动选择一个作为“牺牲者”，该会话将得到一个出错的信息提示，这是“牺牲者”会做出选择-可以尝试使用另外的资源、或者进行回滚。
+在Oracle中，发生死锁的概率非常小。
+
+升级
+在很多数据库中，当锁定的记录达到一定的范围后，将会导致锁的级别自动提升，而Oracle不会升级锁的类型。
+Oracle会使用锁的转换（lock conversion）或提升（promotion），它会在尽可能低的级别上获得锁（即具有尽可能少的限制的锁），并且将锁转换到更具限制性的级别。例如，我们使用for update子句从表中选取一行，那么将产生两个锁，一个锁会放置在所选择的行上，这个是排它锁，它会阻止其他的用户锁定已选择的行；另一个锁要放置在表上，它是一个row share table锁，这个锁将会阻止其他会话获取表上的排它锁（例如，为了改变表的结构），而其他的所有语句则都是允许的。
+打开两个会话，我们来试验锁，在其中一个会话中我们输入select * from temp_t for update;然后在另一个会话输入update temp_t set char_col='usa';请观察所发生的现象。（请考虑一下如何解决）
+
+遗失更新
+当一个会话拥有另一个会话正在请求的资源上的锁时会发生阻塞（blocking），正在进行请求的会话会一直阻塞，直到占用资源的会话释放锁定的资源为止。通常在前台应用程序中，如果在每次更新后马上就进行提交，则很容易出现上述现象。这一类问题我们通常将其称之为遗失更新（lost update）。
+
+悲观锁（pessimistic locking）
+在我们更新某些数据的时候，很有可能有其他的用户也在做和我们相同的操作，这时，我们需要首先将我们准备更新的记录锁起来。
+select *
+from table_name
+where column1=:old_column1
+  and column2=:old_column2
+...
+for update nowait;
+
+乐观锁（optimistic locking）
+乐观锁会在应用中同时保存旧值和新值，当更新数据的时候，我们就可以使用一个更新将列设置为它们的新值，同时还必须验证数据库中的数据行是否具有与我们读取它时相同的值。
+connect scott/tiger@efan
+select * from dept where deptno=10;
+update dept
+set loc='BOSTON'
+where deptno=10
+and dname='ACCOUNTING'
+and loc='NEW YORK';
+commit;
+（下面的语句请放在另一个会话中执行）
+connect scott/tiger@efan
+update dept
+set loc='ALBANY'
+where deptno=10
+and dname='ACCOUNTING'
+and loc='NEW YORK';
