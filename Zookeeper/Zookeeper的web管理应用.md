@@ -1,0 +1,5 @@
+<p>Update:如果遇到在search不存在的path报段错误，这是node-zookeeper的一个bug，我暂时修复了下并提交了pullrequest，你可以暂时用我修改的node-zookeeper<a href="https://github.com/killme2008/node-zookeeper" target="_blank">https://github.com/killme2008/node-zookeeper<br></a><br>我们已经开始在产品使用<a href="http://zookeeper.apache.org/" target="_blank">zookeeper</a>了，那么维护工具也必然需要，所谓兵马未动，粮草先行。请同事帮忙看过几个开源项目后，并没有特别让人满意的。<br>我想要的功能比较简单。首先，希望能将zookeeper集群的数据展示为树形结构，跟zookeeper模型保持一致。可以逐步展开每层的节点，每次展开都是延迟加载从zk里取数据，这样不会对zk造成太大压力。其次，除了展示树形结构外，我还希望它能展示每个path的属性和数据，更进一步，如果数据是文本的，我希望它可编辑。当然，因为编辑功能是比较危险的行为，我还希望这个管理工具有个简单的授权验证机制。</p>
+<p>最终，我自己写了这么个东西，取名为<a href="https://github.com/killme2008/node-zk-browser" target="_blank">node-zk-browser</a>，基于node.js的<a href="http://expressjs.com/" target="_blank">express.js</a>框架和<a href="https://github.com/yfinkelstein/node-zookeeper" target="_blank">node-zookeeper</a>客户端实现的。我将它放在了github上</p>
+<p><a href="https://github.com/killme2008/node-zk-browser" target="_blank">https://github.com/killme2008/node-zk-browser</a></p>
+<p>你可以自己搭建这个小app，npm几乎能帮你搞定大部分工作。界面不美观，实用为主，几张运行时截图</p>
+<p></p>

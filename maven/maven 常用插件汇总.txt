@@ -1,0 +1,513 @@
+http://wiki.eclipse.org/Jetty/Feature/Jetty_Maven_Plugin
+
+http://www.infoq.com/cn/news/2011/04/xxb-maven-7-plugin
+
+http://www.infoq.com/cn/news/2011/05/xxb-maven-8-plugin
+
+ 
+
+http://yingzhuo.iteye.com/blog/1185371
+Maven 常用插件
+
+    * 博客分类：Maven
+
+maven
+Maven常用插件
+
+1) 通用
+Xml代码  收藏代码
+
+   1. <plugin>  
+   2.     <groupId>org.apache.maven.plugins</groupId>  
+   3.     <artifactId>maven-compiler-plugin</artifactId>  
+   4.     <version>2.3.2</version>  
+   5.     <configuration>  
+   6.         <source>1.6</source>  
+   7.         <target>1.6</target>  
+   8.         <encoding>UTF-8</encoding>  
+   9.     </configuration>  
+  10. </plugin>  
+  11. <plugin>  
+  12.     <groupId>org.apache.maven.plugins</groupId>  
+  13.     <artifactId>maven-resources-plugin</artifactId>  
+  14.     <version>2.5</version>  
+  15.     <configuration>  
+  16.         <encoding>UTF-8</encoding>  
+  17.     </configuration>  
+  18. </plugin>  
+  19. <plugin>  
+  20.     <groupId>org.apache.maven.plugins</groupId>  
+  21.     <artifactId>maven-surefire-plugin</artifactId>  
+  22.     <version>2.9</version>  
+  23.     <configuration>  
+  24.         <skipTests>true</skipTests>  
+  25.         <testFailureIgnore>flase</testFailureIgnore>  
+  26.     </configuration>  
+  27. </plugin>  
+  28. <plugin>  
+  29.     <groupId>org.apache.maven.plugins</groupId>  
+  30.     <artifactId>maven-dependency-plugin</artifactId>  
+  31.     <version>2.3</version>  
+  32.     <configuration>  
+  33.         <outputDirectory>dependencies</outputDirectory>  
+  34.     </configuration>  
+  35. </plugin>  
+
+<plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-compiler-plugin</artifactId>
+	<version>2.3.2</version>
+	<configuration>
+        <source>1.6</source>
+	    <target>1.6</target>
+		<encoding>UTF-8</encoding>
+	</configuration>
+</plugin>
+<plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-resources-plugin</artifactId>
+	<version>2.5</version>
+	<configuration>
+		<encoding>UTF-8</encoding>
+	</configuration>
+</plugin>
+<plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-surefire-plugin</artifactId>
+	<version>2.9</version>
+	<configuration>
+		<skipTests>true</skipTests>
+		<testFailureIgnore>flase</testFailureIgnore>
+	</configuration>
+</plugin>
+<plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-dependency-plugin</artifactId>
+	<version>2.3</version>
+	<configuration>
+		<outputDirectory>dependencies</outputDirectory>
+	</configuration>
+</plugin>
+
+
+
+2) 打包
+Xml代码  收藏代码
+
+   1. <!-- mvn war:war -->  
+   2. <plugin>  
+   3.     <artifactId>maven-war-plugin</artifactId>  
+   4.     <version>2.1.1</version>  
+   5.     <configuration>  
+   6.         <packagingExcludes>WEB-INF/web.xml</packagingExcludes>  
+   7.         <webXml>WebContent/WEB-INF/web.xml</webXml>  
+   8.         <outputDirectory>target</outputDirectory>  
+   9.         <warName>client</warName>  
+  10.         <warSourceDirectory>WebContent</warSourceDirectory>  
+  11.     </configuration>  
+  12. </plugin>  
+  13. <!-- mvn jar:jar -->  
+  14. <plugin>  
+  15.     <groupId>org.apache.maven.plugins</groupId>  
+  16.     <artifactId>maven-jar-plugin</artifactId>  
+  17.     <version>2.3.2</version>  
+  18.     <configuration>  
+  19.         <excludes>  
+  20.             <exclude>**/impl/*.class</exclude>  
+  21.         </excludes>  
+  22.     </configuration>  
+  23. </plugin>  
+  24. <!-- mvn source:jar -->  
+  25. <plugin>  
+  26.     <groupId>org.apache.maven.plugins</groupId>  
+  27.     <artifactId>maven-source-plugin</artifactId>  
+  28.     <version>2.1.2</version>  
+  29.     <configuration>  
+  30.         <excludes>  
+  31.             <exclude>**/impl/*.java</exclude>  
+  32.         </excludes>  
+  33.     </configuration>  
+  34. </plugin>  
+  35. <!-- mvn ejb:ejb -->  
+  36. <plugin>  
+  37.     <groupId>org.apache.maven.plugins</groupId>  
+  38.     <artifactId>maven-ejb-plugin</artifactId>  
+  39.     <version>2.3</version>  
+  40.     <configuration>  
+  41.         <ejbVersion>3.0</ejbVersion>  
+  42.     </configuration>  
+  43. </plugin>  
+
+<!-- mvn war:war -->
+<plugin>
+	<artifactId>maven-war-plugin</artifactId>
+	<version>2.1.1</version>
+	<configuration>
+		<packagingExcludes>WEB-INF/web.xml</packagingExcludes>
+		<webXml>WebContent/WEB-INF/web.xml</webXml>
+		<outputDirectory>target</outputDirectory>
+		<warName>client</warName>
+		<warSourceDirectory>WebContent</warSourceDirectory>
+	</configuration>
+</plugin>
+<!-- mvn jar:jar -->
+<plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-jar-plugin</artifactId>
+	<version>2.3.2</version>
+	<configuration>
+		<excludes>
+			<exclude>**/impl/*.class</exclude>
+		</excludes>
+	</configuration>
+</plugin>
+<!-- mvn source:jar -->
+<plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-source-plugin</artifactId>
+	<version>2.1.2</version>
+	<configuration>
+		<excludes>
+			<exclude>**/impl/*.java</exclude>
+		</excludes>
+	</configuration>
+</plugin>
+<!-- mvn ejb:ejb -->
+<plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-ejb-plugin</artifactId>
+	<version>2.3</version>
+	<configuration>
+		<ejbVersion>3.0</ejbVersion>
+	</configuration>
+</plugin>
+
+
+
+3) 部署
+Xml代码  收藏代码
+
+   1. <!-- mvn package jboss:hard-undeploy jboss:hard-deploy -->  
+   2. <plugin>  
+   3.     <groupId>org.codehaus.mojo</groupId>  
+   4.     <artifactId>jboss-maven-plugin</artifactId>  
+   5.     <version>1.5.0</version>  
+   6.     <configuration>  
+   7.         <jbossHome>D:\apps\jboss-5.1.0.GA</jbossHome>  
+   8.         <serverName>default</serverName>  
+   9.         <fileName>target/${project.artifactId}-${project.version}.jar</fileName>  
+  10.     </configuration>  
+  11.     <executions>  
+  12.         <execution>  
+  13.             <id>redeploy</id>  
+  14.             <phase>install</phase>  
+  15.             <goals>  
+  16.                 <goal>hard-undeploy</goal>  
+  17.                 <goal>hard-deploy</goal>  
+  18.             </goals>  
+  19.         </execution>  
+  20.         <execution>  
+  21.             <id>undeploy</id>  
+  22.             <phase>clean</phase>  
+  23.             <goals>  
+  24.                 <goal>hard-undeploy</goal>  
+  25.             </goals>  
+  26.         </execution>  
+  27.     </executions>  
+  28. </plugin>  
+
+<!-- mvn package jboss:hard-undeploy jboss:hard-deploy -->
+<plugin>
+	<groupId>org.codehaus.mojo</groupId>
+	<artifactId>jboss-maven-plugin</artifactId>
+	<version>1.5.0</version>
+	<configuration>
+		<jbossHome>D:\apps\jboss-5.1.0.GA</jbossHome>
+		<serverName>default</serverName>
+		<fileName>target/${project.artifactId}-${project.version}.jar</fileName>
+	</configuration>
+	<executions>
+		<execution>
+			<id>redeploy</id>
+			<phase>install</phase>
+			<goals>
+				<goal>hard-undeploy</goal>
+				<goal>hard-deploy</goal>
+			</goals>
+		</execution>
+		<execution>
+			<id>undeploy</id>
+			<phase>clean</phase>
+			<goals>
+				<goal>hard-undeploy</goal>
+			</goals>
+		</execution>
+	</executions>
+</plugin>
+
+
+
+4) Jetty
+Xml代码  收藏代码
+
+   1. <plugin>  
+   2.     <groupId>org.mortbay.jetty</groupId>  
+   3.     <artifactId>maven-jetty-plugin</artifactId>  
+   4.     <version>6.1.10</version>  
+   5.     <configuration>  
+   6.         <scanIntervalSeconds>10</scanIntervalSeconds>  
+   7.         <stopKey>foo</stopKey>  
+   8.         <stopPort>9999</stopPort>  
+   9.     </configuration>  
+  10.     <executions>  
+  11.         <execution>  
+  12.             <id>start-jetty</id>  
+  13.             <phase>pre-integration-test</phase>  
+  14.             <goals>  
+  15.                 <goal>run</goal>  
+  16.             </goals>  
+  17.             <configuration>  
+  18.                 <scanIntervalSeconds>0</scanIntervalSeconds>  
+  19.                 <daemon>true</daemon>  
+  20.             </configuration>  
+  21.         </execution>  
+  22.         <execution>  
+  23.             <id>stop-jetty</id>  
+  24.             <phase>post-integration-test</phase>  
+  25.             <goals>  
+  26.                 <goal>stop</goal>  
+  27.             </goals>  
+  28.         </execution>  
+  29.     </executions>  
+  30. </plugin>  
+
+<plugin>
+	<groupId>org.mortbay.jetty</groupId>
+	<artifactId>maven-jetty-plugin</artifactId>
+	<version>6.1.10</version>
+	<configuration>
+		<scanIntervalSeconds>10</scanIntervalSeconds>
+		<stopKey>foo</stopKey>
+		<stopPort>9999</stopPort>
+	</configuration>
+	<executions>
+		<execution>
+			<id>start-jetty</id>
+			<phase>pre-integration-test</phase>
+			<goals>
+				<goal>run</goal>
+			</goals>
+			<configuration>
+				<scanIntervalSeconds>0</scanIntervalSeconds>
+				<daemon>true</daemon>
+			</configuration>
+		</execution>
+		<execution>
+			<id>stop-jetty</id>
+			<phase>post-integration-test</phase>
+			<goals>
+				<goal>stop</goal>
+			</goals>
+		</execution>
+	</executions>
+</plugin>
+
+ 
+
+http://hanqunfeng.iteye.com/blog/1300098
+
+http://qa.taobao.com/?p=13201
+maven 常用插件和mvn test命令
+ 
+   自定义构建Maven项目，需要包括额外的插件或者配置已存在的插件参数。
+1. maven-compiler-plugin 指定JDK版本和编码方式
+
+compiler插件能解决2个问题：
+
+第一： maven 2.1默认使用jdk 1.3来编译，这个版本不支持注解，compiler插件可以指定JDK版本为1.6，解决这个问题。
+
+第二：windows平台默认使用 GBK编码，如果工程编码为utf8，也需要在compiler插件中指出，否则按GBK编码，也会出问题
+
+      <plugins>
+
+           <plugin> 
+
+              <groupId>org.apache.maven.plugins</groupId> 
+
+              <artifactId>maven-compiler-plugin</artifactId> 
+
+              <configuration> 
+
+                  <source>1.6</source> 
+
+                  <target>1.6</target> 
+
+                  <encoding>UTF8</encoding>
+
+              </configuration> 
+
+           </plugin>
+
+      </plugins>
+2. maven-war-plugin 打war包在web子项目中指定
+
+<plugin>
+
+           <groupId>org.apache.maven.plugins</groupId>
+
+           <artifactId>maven-war-plugin</artifactId>
+
+           <version>2.1-beta-1</version>
+
+           <configuration>
+
+              <attachClasses>true</attachClasses>
+
+           </configuration>
+
+    </plugin>
+
+<attachClasses>true</attachClasses> 可以把JAR文件和标准的WAR文件同时安装到Maven仓库中
+3. 单元测试插件 maven-surefire-plugin
+
+<plugin>
+
+           <groupId>org.apache.maven.plugins</groupId>
+
+           <artifactId>maven-surefire-plugin</artifactId>
+
+           <configuration>
+
+              <argLine>-Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=256m</argLine>
+
+              <excludes>
+
+                  <exclude>**/TestConstants.java</exclude>
+
+              </excludes>
+
+              <forkMode>always</forkMode>
+
+           </configuration>
+
+</plugin>
+
+<argLine>-Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=256m</argLine>调整JVM(-Xmx1024m)和 PermSize（-XX:PermSize=256m -XX:MaxPermSize=256m）内存
+
+<excludes>
+
+       <exclude>**/TestConstants.java</exclude>
+
+</excludes>
+
+运行测试脚本时不执行TestConstants.java文件
+
+<forkMode>always</forkMode>
+
+Maven 运行测试用例时，是通过调用maven的surefire插件并fork一个子进程来执行用例的。forkmode属性中指明是要为每个测试创建一个进程，还是所有测试在同一个进程中完成。
+
+forkMode 可设置值有 “never”， “once”， “always” 和 “pertest”。
+
+pretest： 每一个测试创建一个新进程，为每个测试创建新的JVM是单独测试的最彻底方式，但也是最慢的，不适合hudson上持续回归
+
+once：在一个进程中进行所有测试。once为默认设置，在Hudson上持续回归时建议使用默认设置。
+
+always：在一个进程中并行的运行脚本，Junit4.7以上版本才可以使用，surefire的版本要在2.6以上提供这个功能，其中 threadCount：执行时，指定可分配的线程数量。只和参数parallel配合使用有效。默认：5。
+
+<forkMode>always</forkMode>
+
+<parallel>methods</parallel>
+
+<threadCount>4</threadCount>
+ 4 .Resource插件
+
+<filters>    
+
+       <filter>${user.home}/asssd.properties</filter>
+
+</filters>
+
+<resources>
+
+       <resource>
+
+           <directory>src/main/resources</directory>
+
+           <filtering>true</filtering>
+
+           <includes>
+
+              <include>**/*</include>
+
+           </includes>
+
+       </resource>
+
+       <resource>
+
+           <directory>src/main/java</directory>
+
+           <includes>
+
+              <include>**.xml</include>
+
+           </includes>
+
+       </resource>
+
+</resources>
+
+运行打包命令时，将src/main/resources中的所有文件和src/main/java目录下的所有.xml文件打到 jar包中。
+
+其中filters过滤器的作用是将所有引用文件中的${变量名称}，替换成antx.properties文件中的变量值。要使用过滤器时，首先需要设置过滤器：
+
+<filters>    
+
+       <filter>${user.home}/antx.properties</filter>
+
+</filters>
+
+然后再启动过滤器, true需要过滤，false不需要过滤：
+
+<filtering>true</filtering>
+5、 Maven常用命令
+
+1、运行应用程序中的单元测试：mvn test或mvn test -Dtest=***Test， 其中“***Test”为被测试用例的类名（不需要输入.java）
+
+         打开控制台，进入测试工程所在目录：D:\workspace-sell\sell-qatest路径；输入mvn test命令后，开始执行sell-qatest中的所有测试脚本，并将信息输出到控制台。
+
+         如果要单独运行一个测试类里的用例，如 publishAuctionTest.java，则可以运行 mvn test -Dtest=publishAuctionTest
+
+2、清除目标目录中的生成结果：mvn clean（清除taget文件夹中内容）
+
+3、在本地repo中安装jar：mvn install。运行命令后工程根目录下生成target文件夹，文件夹内存放jar包，class文件夹等内容。本地仓库repo中生成工程jar包目录。
+
+4、将工程打包：mvn package。运行命令后工程根目录下生成target文件夹，文件夹内存放jar包，class文件夹等内容。
+
+5、生成Eclipse 项目文件：mvn eclipse:eclipse。运行命令后生成eclipse工程，项目的根目录下产生.project、.classpath文件和target文件 夹。将该工程导入到eclipse中：打开eclipse，通过file->import，导入到eclipse中。
+
+6、清除 Eclipse工程：mvn eclipse:clean。.classpath和.project文件会被删除。
+
+7、在运行 install 或package时，测试代码不被执行：
+
+第一种方法：在cmd运行mvn install 或mvn package 命令后加上-Dmaven.test.skip=true 。
+
+例如：mvn install -Dmaven.test.skip=true
+
+第二种方法：在pom.xml文件的maven-surefire-plugin插件中添加参数：<skip>true</skip>
+
+<plugin>
+
+<groupId>org.apache.maven.plugins</groupId>
+
+<artifactId>maven-surefire-plugin</artifactId>
+
+<inherited>true</inherited>
+
+<configuration>
+
+<skip>true</skip>
+
+</configuration>
+
+</plugin>

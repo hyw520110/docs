@@ -1,0 +1,167 @@
+常用命令(运行命令时,加 -e 显示执行过程中的详细信息,错误)：
+mvn eclipse:eclipse			生成 Eclipse 项目文件及包引用定义，注意，需确保定义Classpath Variables: M2_REPO，指向本地maven类库目录
+mvn -Declipse.workspace=<path-to-eclipse-workspace> eclipse:add-maven-repo	eclipse的workspace中加入m2_repo变量
+mvn archetype:create ：			创建 Maven 项目 已过时，推荐 mvn archetype:generate
+
+
+
+mvn archetype:generate			创建mvn项目
+mvn archetype:generate -DgroupId=com.oreilly -DartifactId=my-app							创建mvn项目
+mvn archetype:generate -DgroupId=com.demo -DartifactId=web-app -DarchetypeArtifactId=maven-archetype-webapp	创建Maven Web项目
+
+cmd输出卡死在Generating project in Interactive mode不动,加个参数 -DarchetypeCatalog=internal 让它不要从远程服务器上取catalog
+
+mvn -Dwtpversion=1.0 eclipse:eclipse	生成Wtp插件的Web项目
+mvn -Dwtpversion=1.0 eclipse:clean	清除Eclipse项目的配置信息(Web项目)
+
+mvn -v				显示版本信息
+mvn validate，			验证工程是否正确，所有需要的资源是否可用。 
+mvn verify 			运行任何检查，验证包是否有效且达到质量标准。
+mvn dependency:analyze		Maven Dependency插件能够帮助你发现对于依赖的直接引用
+mvn help:describe		描述插件的属性。它不需要在项目目录下运行。但是你必须提供你想要描述插件的 groupId 和 artifactId。(-Dplugin=help -Dfull)
+mvn help:effective-pom		显示当前构建的实际POM，包含活动的Profile。
+mvn help:active-profiles	列出当前构建中活动的Profile（项目的，用户的，全局的）。
+mvn help:effective-settings	打印出项目的实际settings, 包括从全局的settings和用户级别settings继承的配置。
+
+mvn package			生成target目录，编译、测试代码，生成测试报告，生成jar/war文件
+mvn compile			编译主程序源代码，不会编译test目录的源代码。第一次运行时，会下载相关的依赖包，可能会比较费时。
+mvn test-compile		编译测试代码，compile之后会生成target文件夹，主程序编译在classes下面，测试程序放在test-classes下。
+mvn test			运行应用程序中的单元测试
+mvn integration-test		在集成测试可以运行的环境中处理和发布包。
+mvn generate-sources		产生应用需要的任何额外的源代码，如xdoclet。 
+mvn dependency:sources		依赖包的源码
+mvn dependency:copy-dependencies	拷贝依赖jar to target\dependency	
+mvn site			生成项目相关信息的网站
+
+mvn clean			清除目标目录中的生成结果
+mvn install，			把包安装在本地的repository中，可以被其他工程作为依赖来使用 
+mvn deploy			在整合或者发布环境下执行，将最终版本的包拷贝到远程的repository，使得其他的开发者或者工程可以共享。 
+
+mvn archetype:generate
+
+创建java项目: mvn archetype:create -DgroupId=com.skymobi.maven -DartifactId=mavenstudy
+创建web项目: mvn archetype:create -DgroupId=com.skymobi.mavenweb -DartifactId=mavenweb -DarchetypeArtifactId=maven-archetype-webapp
+
+
+3. 编译源代码： mvn compile
+4. 编译测试代码：mvn test-compile
+5. 运行测试：mvn test
+6. 产生site：mvn site
+7. 打包：mvn package
+8. 清除产生的项目：mvn clean
+9. 生成eclipse项目：mvn eclipse:eclipse
+10. 编译测试的内容：mvn test-compile
+11. 只打jar包: mvn jar:jar
+12. 当开发一个带有很多失败单元测试的系统
+mvn test -Dmaven.test.failure.ignore=true
+13. 想要整个的跳过测试
+mvn install -Dmaven.test.skip=true
+mvn deploy
+传到本地他库
+mvn install 会将项目生成的构件安装到本地Maven仓库，mvn deploy 用来将项目生成的构件分发到远程Maven仓库
+mvn deploy:deploy -file -DgroupId=com.skymobi.mavenapp -DartifactId=mavenapp -Dversion=2.0 -Dpackaging=jar -Dfile=mavenapp-1.0-SNAPSHOT.jar -Durl=http://dev.maven.com:8081/nexus/content/repositories/thirdparty/ 
+
+
+mvn install:install-file  -DgroupId=com.skymobi.mavenapp -DartifactId=mavenapp -Dversion=1.0.1 -Dpackaging=jar -Dfile=mavenapp-1.0-SNAPSHOT.jar -DgeneratePom=true  
+
+
+eclipse删除空行正则： ^\s*\n
+tomcat debug:
+-Xdebug -Xrunjdwp:transport=dt_socket,server=y,address=9527,suspend=n
+
+
+--下载源代码和文档
+mvn install dependency:sources -DdownloadSources=true -DdownloadJavadocs=true
+
+
+mvn archetype:generate 列出所有可用的模板供选择并创建
+
+mvn dependency:analyze 使用Maven Dependency插件进行优化
+mvn dependency:resolve 已解决依靠的列表
+mvn dependency:tree 项目的整个依靠树
+
+mvn install -X 查看完整的依靠踪迹，包含那些由于冲突或者其它原因而被拒尽引进的构件 (慎用，输出信息巨大）
+
+mvn scm:checkin -Dmessage="Message"
+mvn scm:checkout
+mvn scm:update
+
+mvn help:effective-pom 查看项目的有效POM
+mvn help:active-profiles 列出活动的Profile
+
+mvn eclipse:eclipse 天生eclipse项目
+mvn eclipse:clean
+
+mvn test -Dtest=MyTest 只对src.test.java下的MyTest类进行测试
+mvn test -Dtest=MyTest -DfailIfNoTests=false 假如测试类里没有测试方法不报错
+
+mvn package -Dmaven.test.skip=true 打包之前不执行单元测试
+
+mvn jetty:run jetty插件运行web程序
+
+exec 插件可以用来运行程序
+surefire插件可以用来测试程序
+
+mvn archetype:create -DgroupId=com.mycompany.app    -DartifactId=my-webapp       -DarchetypeArtifactId=maven-archetype-web
+
+下载依靠包的源代码：mvn dependency:sources -DdownloadSources=true -DdownloadJavadocs=true
+
+
+mvn clean install -Pproduction -X
+
+mvn install -Dmaven.test.skip=true
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-surefire-plugin</artifactId>
+<configuration>
+<skip>true</skip>
+</configuration>
+</plugin>
+
+mvn assembly:assembly
+<plugin>
+<artifactId>maven-assembly-plugin</artifactId>
+<configuration>
+<descriptorRefs>
+<descriptorRef>jar-with-dependencies</descriptorRef>
+</descriptorRefs>
+</configuration>
+</plugin>
+
+mvn install:install-file
+-Dfile=<path-to-file>
+-DgroupId=<group-id>
+-DartifactId=<artifact-id>
+-Dversion=<version>
+-Dpackaging=<packaging>
+
+-DgeneratePom=true
+-DcreateChecksum=true
+-DpomFile=path-to-pom
+-DlocalRepositoryPath=path-to-specific-local-repo
+-DlocalRepositoryId=id-for-specific-local-repo
+
+mvn deploy:deploy-file
+-Durl=file
+-DrepositoryId=some.id
+-Dfile=path-to-your-artifact-jar
+-DgroupId=your.groupId
+-DartifactId=your-artifactId
+-Dversion=version
+-Dpackaging=jar
+-DgeneratePom=false
+-DpomFile=path-to-your-pom.xml
+-Dclassifier=bin
+-DuniqueVersion=false
+
+mvn archetype:generate
+-DarchetypeGroupId=org.***
+-DarchetypeArtifactId= ***
+-DarchetypeVersion=1.0-SNAPSHOT 
+
+
+
+
+
+
+

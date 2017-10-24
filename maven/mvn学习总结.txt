@@ -1,0 +1,46 @@
+http://www.infoq.com/cn/news/2011/06/xxb-maven-9-package
+http://www.infoq.com/cn/news/2011/03/xxb-maven-5-integration-test
+ 
+
+        
+这个web工程的坐标信息如下：
+
+my.test.maven:demo-web:1.0:war
+ 
+
+4.经常使用的Maven命令
+1. 创建Maven的普通java项目：
+mvn archetype:create -DgroupId=packageName -DartifactId=projectName
+2. 创建Maven的Web项目：
+mvn archetype:create -DgroupId=packageName -DartifactId=webappName -DarchetypeArtifactId=maven-archetype-webapp
+3. 编译源代码： mvn compile
+4. 编译测试代码：mvn test-compile
+5. 运行测试：mvn test
+6. 产生site：mvn site
+7. 打包：mvn package
+8. 清除产生的项目：mvn clean
+9. 生成eclipse项目：mvn eclipse:eclipse
+10. 编译测试的内容：mvn test-compile
+11. 只打jar包: mvn jar:jar
+12. 当开发一个带有很多失败单元测试的系统
+mvn test -Dmaven.test.failure.ignore=true
+13. 想要整个的跳过测试
+mvn install -Dmaven.test.skip=true
+
+
+默认情况下，mvn install等同以下命令：
+        mvn resources:resources
+        mvn compiler:compile
+        mvn resources:testResources
+        mvn compiler:testCompile
+        mvn surefire:test
+        mvn jar:jar
+        mvn install:install        默认Lifecycle的组成（不全）。而这些Phase都是可以定制的。 
+ 
+    5、常用命令
+    mvn test [-Dmaven.test.failure.ignore=true]    
+        运行测试，忽略错误。测试的goal是surefire:test [org.apache.maven.plugins:maven-surefire-plugin]    mvn install -Dmaven.test.skip=true
+        不运行测试    mvn assembly:assembly -Djar-with-dependencies
+        打包，包括所有依赖。打包的goal是assembly:assembly [org.apache.maven.plugins:maven-assembly-plugin]    mvn exec:java -Dexec.mainClass=MainClassName -Dexec.args="arg0"
+        运行一个class。不会编译出bytecode，直接讲依赖放在cp里。    mvn archetype:create -DgroupId=org.company -DartifactId=simple-app -DpackageName=org.company -DarchetypeArtifactId=maven-archetype-webapp
+        创建一个maven-archetype-webapp类型的工程。version默认是1.0-SNAPSHOT    mvn clean清除生成的target目录
