@@ -1,0 +1,2393 @@
+From: <ÓÉ Windows Internet Explorer 8 ±£´æ>
+Subject: =?gb2312?B?SGFkb29wv+zL2cjrw8U=?=
+Date: Wed, 22 Aug 2012 16:11:23 +0800
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_0000_01CD8080.C661F490"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.6157
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0000_01CD8080.C661F490
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://hadoop.apache.org/common/docs/r0.19.2/cn/quickstart.html
+
+=EF=BB=BF<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" =
+"http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML><HEAD><TITLE>Hadoop=E5=BF=AB=E9=80=9F=E5=85=A5=E9=97=A8</TITLE>
+<META content=3D"text/html; charset=3DUTF-8" http-equiv=3DContent-Type>
+<META name=3DGENERATOR content=3D"MSHTML 8.00.6001.19190">
+<META name=3DForrest-version content=3D0.8>
+<META name=3DForrest-skin-name content=3Dpelt><LINK rel=3Dstylesheet =
+type=3Dtext/css=20
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/skin/basic.css"><=
+LINK=20
+rel=3Dstylesheet type=3Dtext/css=20
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/skin/screen.css" =
+
+media=3Dscreen><LINK rel=3Dstylesheet type=3Dtext/css=20
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/skin/print.css"=20
+media=3Dprint><LINK rel=3Dstylesheet type=3Dtext/css=20
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/skin/profile.css"=
+>
+<SCRIPT language=3Djavascript type=3Dtext/javascript=20
+src=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/skin/getBlank.js">=
+</SCRIPT>
+
+<SCRIPT language=3Djavascript type=3Dtext/javascript=20
+src=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/skin/getMenu.js"><=
+/SCRIPT>
+
+<SCRIPT language=3Djavascript type=3Dtext/javascript=20
+src=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/skin/fontsize.js">=
+</SCRIPT>
+<LINK rel=3D"shortcut icon" href=3D"images/favicon.ico"></HEAD>
+<BODY onload=3Dinit()>
+<SCRIPT type=3Dtext/javascript>ndeSetTextSize();</SCRIPT>
+
+<DIV id=3Dtop><!--+=0A=
+    |breadtrail=0A=
+    +-->
+<DIV class=3Dbreadtrail><A href=3D"http://www.apache.org/">Apache</A> =
+&gt; <A=20
+href=3D"http://hadoop.apache.org/">Hadoop</A> &gt; <A=20
+href=3D"http://hadoop.apache.org/core/">Core</A>
+<SCRIPT language=3DJavaScript type=3Dtext/javascript=20
+src=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/skin/breadcrumbs.j=
+s"></SCRIPT>
+ </DIV><!--+=0A=
+    |header=0A=
+    +-->
+<DIV class=3Dheader><!--+=0A=
+    |start group logo=0A=
+    +-->
+<DIV class=3Dgrouplogo><A href=3D"http://hadoop.apache.org/"><IMG =
+class=3DlogoImage=20
+title=3D"Apache Hadoop" alt=3DHadoop=20
+src=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/images/hadoop-logo=
+.jpg"></A>=20
+</DIV><!--+=0A=
+    |end group logo=0A=
+    +--><!--+=0A=
+    |start Project Logo=0A=
+    +-->
+<DIV class=3Dprojectlogo><A href=3D"http://hadoop.apache.org/core/"><IMG =
+
+class=3DlogoImage title=3D"Scalable Computing Platform" alt=3DHadoop=20
+src=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/images/core-logo.g=
+if"></A>=20
+</DIV><!--+=0A=
+    |end Project Logo=0A=
+    +--><!--+=0A=
+    |start Search=0A=
+    +-->
+<DIV class=3Dsearchbox>
+<FORM class=3Droundtopsmall method=3Dget =
+action=3Dhttp://www.google.com/search><INPUT=20
+value=3Dhadoop.apache.org type=3Dhidden name=3Dsitesearch><INPUT =
+id=3Dquery=20
+onfocus=3D"getBlank (this, 'Search the site with google');"=20
+value=3D"Search the site with google" size=3D25 type=3Dtext =
+name=3Dq>&nbsp; <INPUT value=3DSearch type=3Dsubmit name=3DSearch> =
+</FORM></DIV><!--+=0A=
+    |end search=0A=
+    +--><!--+=0A=
+    |start Tabs=0A=
+    +-->
+<UL id=3Dtabs>
+  <LI><A class=3Dunselected =
+href=3D"http://hadoop.apache.org/core/">=E9=A1=B9=E7=9B=AE</A> </LI>
+  <LI><A class=3Dunselected =
+href=3D"http://wiki.apache.org/hadoop">=E7=BB=B4=E5=9F=BA</A> </LI>
+  <LI class=3Dcurrent><A class=3Dselected=20
+  =
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/index.html">Hadoo=
+p=20
+  0.18=E6=96=87=E6=A1=A3</A> </LI></UL><!--+=0A=
+    |end Tabs=0A=
+    +--></DIV></DIV>
+<DIV id=3Dmain>
+<DIV id=3DpublishedStrip><!--+=0A=
+    |start Subtabs=0A=
+    +-->
+<DIV id=3Dlevel2tabs></DIV><!--+=0A=
+    |end Endtabs=0A=
+    +-->
+<SCRIPT type=3Dtext/javascript><!--=0A=
+document.write("Last Published: " + document.lastModified);=0A=
+//  --></SCRIPT>
+</DIV><!--+=0A=
+    |breadtrail=0A=
+    +-->
+<DIV class=3Dbreadtrail> </DIV><!--+=0A=
+    |start Menu, mainarea=0A=
+    +--><!--+=0A=
+    |start Menu=0A=
+    +-->
+<DIV id=3Dmenu>
+<DIV style=3D"BACKGROUND-IMAGE: url(skin/images/chapter_open.gif)"=20
+id=3Dmenu_selected_1.1Title class=3Dmenutitle=20
+onclick=3D"SwitchMenu('menu_selected_1.1', =
+'skin/')">=E6=96=87=E6=A1=A3</DIV>
+<DIV style=3D"DISPLAY: block" id=3Dmenu_selected_1.1 =
+class=3Dselectedmenuitemgroup>
+<DIV class=3Dmenuitem><A=20
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/index.html">=E6=A6=
+=82=E8=BF=B0</A> </DIV>
+<DIV class=3Dmenupage>
+<DIV =
+class=3Dmenupagetitle>=E5=BF=AB=E9=80=9F=E5=85=A5=E9=97=A8</DIV></DIV>
+<DIV class=3Dmenuitem><A=20
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/cluster_setup.htm=
+l">=E9=9B=86=E7=BE=A4=E6=90=AD=E5=BB=BA</A>=20
+</DIV>
+<DIV class=3Dmenuitem><A=20
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/hdfs_design.html"=
+>HDFS=E6=9E=84=E6=9E=B6=E8=AE=BE=E8=AE=A1</A>=20
+</DIV>
+<DIV class=3Dmenuitem><A=20
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/hdfs_user_guide.h=
+tml">HDFS=E4=BD=BF=E7=94=A8=E6=8C=87=E5=8D=97</A>=20
+</DIV>
+<DIV class=3Dmenuitem><A=20
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/hdfs_permissions_=
+guide.html">HDFS=E6=9D=83=E9=99=90=E6=8C=87=E5=8D=97</A>=20
+</DIV>
+<DIV class=3Dmenuitem><A=20
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/hdfs_quota_admin_=
+guide.html">HDFS=E9=85=8D=E9=A2=9D=E7=AE=A1=E7=90=86=E6=8C=87=E5=8D=97</A=
+>=20
+</DIV>
+<DIV class=3Dmenuitem><A=20
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/commands_manual.h=
+tml">=E5=91=BD=E4=BB=A4=E6=89=8B=E5=86=8C</A>=20
+</DIV>
+<DIV class=3Dmenuitem><A=20
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/hdfs_shell.html">=
+FS=20
+Shell=E4=BD=BF=E7=94=A8=E6=8C=87=E5=8D=97</A> </DIV>
+<DIV class=3Dmenuitem><A=20
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/distcp.html">Dist=
+Cp=E4=BD=BF=E7=94=A8=E6=8C=87=E5=8D=97</A>=20
+</DIV>
+<DIV class=3Dmenuitem><A=20
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/mapred_tutorial.h=
+tml">Map-Reduce=E6=95=99=E7=A8=8B</A>=20
+</DIV>
+<DIV class=3Dmenuitem><A=20
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/native_libraries.=
+html">Hadoop=E6=9C=AC=E5=9C=B0=E5=BA=93</A>=20
+</DIV>
+<DIV class=3Dmenuitem><A=20
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/streaming.html">S=
+treaming</A>=20
+</DIV>
+<DIV class=3Dmenuitem><A=20
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/hadoop_archives.h=
+tml">Hadoop=20
+Archives</A> </DIV>
+<DIV class=3Dmenuitem><A=20
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/hod.html">Hadoop =
+On=20
+Demand</A> </DIV>
+<DIV class=3Dmenuitem><A=20
+href=3D"http://hadoop.apache.org/core/docs/r0.18.2/api/index.html">API=E5=
+=8F=82=E8=80=83</A>=20
+</DIV>
+<DIV class=3Dmenuitem><A=20
+href=3D"http://hadoop.apache.org/core/docs/r0.18.2/jdiff/changes.html">AP=
+I=20
+Changes</A> </DIV>
+<DIV class=3Dmenuitem><A =
+href=3D"http://wiki.apache.org/hadoop/">=E7=BB=B4=E5=9F=BA</A> </DIV>
+<DIV class=3Dmenuitem><A =
+href=3D"http://wiki.apache.org/hadoop/FAQ">=E5=B8=B8=E8=A7=81=E9=97=AE=E9=
+=A2=98</A> </DIV>
+<DIV class=3Dmenuitem><A=20
+href=3D"http://hadoop.apache.org/core/mailing_lists.html">=E9=82=AE=E4=BB=
+=B6=E5=88=97=E8=A1=A8</A> </DIV>
+<DIV class=3Dmenuitem><A=20
+href=3D"http://hadoop.apache.org/core/docs/r0.18.2/releasenotes.html">=E5=
+=8F=91=E8=A1=8C=E8=AF=B4=E6=98=8E</A>=20
+</DIV>
+<DIV class=3Dmenuitem><A=20
+href=3D"http://hadoop.apache.org/core/docs/r0.18.2/changes.html">=E5=8F=98=
+=E6=9B=B4=E6=97=A5=E5=BF=97</A>=20
+</DIV></DIV>
+<DIV id=3Dcredit></DIV>
+<DIV id=3Droundbottom><IMG style=3D"DISPLAY: none" class=3Dcorner =
+alt=3D""=20
+src=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/skin/images/rc-b-l=
+-15-1body-2menu-3menu.png"=20
+width=3D15 height=3D15></DIV><!--+=0A=
+  |alternative credits=0A=
+  +-->
+<DIV id=3Dcredit2></DIV></DIV><!--+=0A=
+    |end Menu=0A=
+    +--><!--+=0A=
+    |start content=0A=
+    +-->
+<DIV id=3Dcontent>
+<DIV class=3Dpdflink title=3D"Portable Document Format"><A class=3Ddida=20
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/quickstart.pdf"><=
+IMG=20
+class=3Dskin alt=3D"PDF -icon"=20
+src=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/skin/images/pdfdoc=
+.gif"><BR>PDF</A>=20
+</DIV>
+<H1>Hadoop=E5=BF=AB=E9=80=9F=E5=85=A5=E9=97=A8</H1>
+<DIV id=3Dminitoc-area>
+<UL class=3Dminitoc>
+  <LI><A=20
+  =
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/quickstart.html#%=
+E7%9B%AE%E7%9A%84">=E7=9B=AE=E7=9A=84</A>=20
+  </LI>
+  <LI><A=20
+  =
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/quickstart.html#P=
+reReqs">=E5=85=88=E5=86=B3=E6=9D=A1=E4=BB=B6</A>=20
+
+  <UL class=3Dminitoc>
+    <LI><A=20
+    =
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/quickstart.html#%=
+E6%94%AF%E6%8C%81%E5%B9%B3%E5%8F%B0">=E6=94=AF=E6=8C=81=E5=B9=B3=E5=8F=B0=
+</A>=20
+    </LI>
+    <LI><A=20
+    =
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/quickstart.html#%=
+E6%89%80%E9%9C%80%E8%BD%AF%E4%BB%B6">=E6=89=80=E9=9C=80=E8=BD=AF=E4=BB=B6=
+</A>=20
+    </LI>
+    <LI><A=20
+    =
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/quickstart.html#%=
+E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6">=E5=AE=89=E8=A3=85=E8=BD=AF=E4=BB=B6=
+</A>=20
+    </LI></UL></LI>
+  <LI><A=20
+  =
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/quickstart.html#%=
+E4%B8%8B%E8%BD%BD">=E4=B8=8B=E8=BD=BD</A>=20
+  </LI>
+  <LI><A=20
+  =
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/quickstart.html#%=
+E8%BF%90%E8%A1%8CHadoop%E9%9B%86%E7%BE%A4%E7%9A%84%E5%87%86%E5%A4%87%E5%B=
+7%A5%E4%BD%9C">=E8=BF=90=E8=A1=8CHadoop=E9=9B=86=E7=BE=A4=E7=9A=84=E5=87=86=
+=E5=A4=87=E5=B7=A5=E4=BD=9C</A>=20
+  </LI>
+  <LI><A=20
+  =
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/quickstart.html#L=
+ocal">=E5=8D=95=E6=9C=BA=E6=A8=A1=E5=BC=8F=E7=9A=84=E6=93=8D=E4=BD=9C=E6=96=
+=B9=E6=B3=95</A>=20
+  </LI>
+  <LI><A=20
+  =
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/quickstart.html#P=
+seudoDistributed">=E4=BC=AA=E5=88=86=E5=B8=83=E5=BC=8F=E6=A8=A1=E5=BC=8F=E7=
+=9A=84=E6=93=8D=E4=BD=9C=E6=96=B9=E6=B3=95</A>=20
+
+  <UL class=3Dminitoc>
+    <LI><A=20
+    =
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/quickstart.html#%=
+E9%85%8D%E7%BD%AE">=E9=85=8D=E7=BD=AE</A>=20
+    </LI>
+    <LI><A=20
+    =
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/quickstart.html#%=
+E5%85%8D%E5%AF%86%E7%A0%81">=E5=85=8D=E5=AF=86=E7=A0=81ssh=E8=AE=BE=E7=BD=
+=AE</A>=20
+    </LI>
+    <LI><A=20
+    =
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/quickstart.html#%=
+E6%89%A7%E8%A1%8C">=E6=89=A7=E8=A1=8C</A>=20
+    </LI></UL></LI>
+  <LI><A=20
+  =
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/quickstart.html#F=
+ullyDistributed">=E5=AE=8C=E5=85=A8=E5=88=86=E5=B8=83=E5=BC=8F=E6=A8=A1=E5=
+=BC=8F=E7=9A=84=E6=93=8D=E4=BD=9C=E6=96=B9=E6=B3=95</A>=20
+  </LI></UL></DIV><A name=3DN1000D></A><A name=3D%E7%9B%AE%E7%9A%84></A>
+<H2 class=3Dh3>=E7=9B=AE=E7=9A=84</H2>
+<DIV class=3Dsection>
+<P>=E8=BF=99=E7=AF=87=E6=96=87=E6=A1=A3=E7=9A=84=E7=9B=AE=E7=9A=84=E6=98=AF=
+=E5=B8=AE=E5=8A=A9=E4=BD=A0=E5=BF=AB=E9=80=9F=E5=AE=8C=E6=88=90=E5=8D=95=E6=
+=9C=BA=E4=B8=8A=E7=9A=84Hadoop=E5=AE=89=E8=A3=85=E4=B8=8E=E4=BD=BF=E7=94=A8=
+=E4=BB=A5=E4=BE=BF=E4=BD=A0=E5=AF=B9<A=20
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/hdfs_design.html"=
+>Hadoop=E5=88=86=E5=B8=83=E5=BC=8F=E6=96=87=E4=BB=B6=E7=B3=BB=E7=BB=9F(<A=
+CRONYM=20
+title=3D"Hadoop Distributed File =
+System">HDFS</ACRONYM>)</A>=E5=92=8CMap-Reduce=E6=A1=86=E6=9E=B6=E6=9C=89=
+=E6=89=80=E4=BD=93=E4=BC=9A=EF=BC=8C=E6=AF=94=E5=A6=82=E5=9C=A8HDFS=E4=B8=
+=8A=E8=BF=90=E8=A1=8C=E7=A4=BA=E4=BE=8B=E7=A8=8B=E5=BA=8F=E6=88=96=E7=AE=80=
+=E5=8D=95=E4=BD=9C=E4=B8=9A=E7=AD=89=E3=80=82</P></DIV><A=20
+name=3DN1001F></A><A name=3DPreReqs></A>
+<H2 class=3Dh3>=E5=85=88=E5=86=B3=E6=9D=A1=E4=BB=B6</H2>
+<DIV class=3Dsection><A name=3DN10025></A><A=20
+name=3D%E6%94%AF%E6%8C%81%E5%B9%B3%E5%8F%B0></A>
+<H3 class=3Dh4>=E6=94=AF=E6=8C=81=E5=B9=B3=E5=8F=B0</H3>
+<UL>
+  =
+<LI>GNU/Linux=E6=98=AF=E4=BA=A7=E5=93=81=E5=BC=80=E5=8F=91=E5=92=8C=E8=BF=
+=90=E8=A1=8C=E7=9A=84=E5=B9=B3=E5=8F=B0=E3=80=82 =
+Hadoop=E5=B7=B2=E5=9C=A8=E6=9C=892000=E4=B8=AA=E8=8A=82=E7=82=B9=E7=9A=84=
+GNU/Linux=E4=B8=BB=E6=9C=BA=E7=BB=84=E6=88=90=E7=9A=84=E9=9B=86=E7=BE=A4=E7=
+=B3=BB=E7=BB=9F=E4=B8=8A=E5=BE=97=E5=88=B0=E9=AA=8C=E8=AF=81=E3=80=82 =
+</LI>
+  =
+<LI>Win32=E5=B9=B3=E5=8F=B0=E6=98=AF=E4=BD=9C=E4=B8=BA<EM>=E5=BC=80=E5=8F=
+=91=E5=B9=B3=E5=8F=B0</EM>=E6=94=AF=E6=8C=81=E7=9A=84=E3=80=82=E7=94=B1=E4=
+=BA=8E=E5=88=86=E5=B8=83=E5=BC=8F=E6=93=8D=E4=BD=9C=E5=B0=9A=E6=9C=AA=E5=9C=
+=A8Win32=E5=B9=B3=E5=8F=B0=E4=B8=8A=E5=85=85=E5=88=86=E6=B5=8B=E8=AF=95=EF=
+=BC=8C=E6=89=80=E4=BB=A5=E8=BF=98=E4=B8=8D=E4=BD=9C=E4=B8=BA=E4=B8=80=E4=B8=
+=AA<EM>=E7=94=9F=E4=BA=A7=E5=B9=B3=E5=8F=B0</EM>=E8=A2=AB=E6=94=AF=E6=8C=81=
+=E3=80=82=20
+  </LI></UL><A name=3DN1003B></A><A =
+name=3D%E6%89%80%E9%9C%80%E8%BD%AF%E4%BB%B6></A>
+<H3 class=3Dh4>=E6=89=80=E9=9C=80=E8=BD=AF=E4=BB=B6</H3>
+<P>Linux=E5=92=8CWindows=E6=89=80=E9=9C=80=E8=BD=AF=E4=BB=B6=E5=8C=85=E6=8B=
+=AC:</P>
+<OL>
+  =
+<LI>Java<SUP>TM</SUP>1.5.x=EF=BC=8C=E5=BF=85=E9=A1=BB=E5=AE=89=E8=A3=85=EF=
+=BC=8C=E5=BB=BA=E8=AE=AE=E9=80=89=E6=8B=A9Sun=E5=85=AC=E5=8F=B8=E5=8F=91=E8=
+=A1=8C=E7=9A=84Java=E7=89=88=E6=9C=AC=E3=80=82 </LI>
+  <LI><STRONG>ssh</STRONG> =
+=E5=BF=85=E9=A1=BB=E5=AE=89=E8=A3=85=E5=B9=B6=E4=B8=94=E4=BF=9D=E8=AF=81 =
+<STRONG>sshd</STRONG>=E4=B8=80=E7=9B=B4=E8=BF=90=E8=A1=8C=EF=BC=8C=E4=BB=A5=
+=E4=BE=BF=E7=94=A8Hadoop=20
+  =
+=E8=84=9A=E6=9C=AC=E7=AE=A1=E7=90=86=E8=BF=9C=E7=AB=AFHadoop=E5=AE=88=E6=8A=
+=A4=E8=BF=9B=E7=A8=8B=E3=80=82 </LI></OL>
+<P>Windows=E4=B8=8B=E7=9A=84=E9=99=84=E5=8A=A0=E8=BD=AF=E4=BB=B6=E9=9C=80=
+=E6=B1=82</P>
+<OL>
+  <LI><A href=3D"http://www.cygwin.com/">Cygwin</A> - =
+=E6=8F=90=E4=BE=9B=E4=B8=8A=E8=BF=B0=E8=BD=AF=E4=BB=B6=E4=B9=8B=E5=A4=96=E7=
+=9A=84shell=E6=94=AF=E6=8C=81=E3=80=82 </LI></OL><A=20
+name=3DN10064></A><A name=3D%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6></A>
+<H3 class=3Dh4>=E5=AE=89=E8=A3=85=E8=BD=AF=E4=BB=B6</H3>
+<P>=E5=A6=82=E6=9E=9C=E4=BD=A0=E7=9A=84=E9=9B=86=E7=BE=A4=E5=B0=9A=E6=9C=AA=
+=E5=AE=89=E8=A3=85=E6=89=80=E9=9C=80=E8=BD=AF=E4=BB=B6=EF=BC=8C=E4=BD=A0=E5=
+=BE=97=E9=A6=96=E5=85=88=E5=AE=89=E8=A3=85=E5=AE=83=E4=BB=AC=E3=80=82</P>=
+
+<P>=E4=BB=A5Ubuntu Linux=E4=B8=BA=E4=BE=8B:</P>
+<P><SPAN class=3Dcodefrag>$ sudo apt-get install ssh</SPAN> <BR><SPAN=20
+class=3Dcodefrag>$ sudo apt-get install rsync</SPAN> </P>
+<P>=E5=9C=A8Windows=E5=B9=B3=E5=8F=B0=E4=B8=8A=EF=BC=8C=E5=A6=82=E6=9E=9C=
+=E5=AE=89=E8=A3=85cygwin=E6=97=B6=E6=9C=AA=E5=AE=89=E8=A3=85=E5=85=A8=E9=83=
+=A8=E6=89=80=E9=9C=80=E8=BD=AF=E4=BB=B6=EF=BC=8C=E5=88=99=E9=9C=80=E5=90=AF=
+=E5=8A=A8cyqwin=E5=AE=89=E8=A3=85=E7=AE=A1=E7=90=86=E5=99=A8=E5=AE=89=E8=A3=
+=85=E5=A6=82=E4=B8=8B=E8=BD=AF=E4=BB=B6=E5=8C=85=EF=BC=9A</P>
+<UL>
+  <LI>openssh - <EM>Net</EM> =E7=B1=BB</LI></UL></DIV><A =
+name=3DN10088></A><A=20
+name=3D%E4%B8%8B%E8%BD%BD></A>
+<H2 class=3Dh3>=E4=B8=8B=E8=BD=BD</H2>
+<DIV class=3Dsection>
+<P>=E4=B8=BA=E4=BA=86=E8=8E=B7=E5=8F=96Hadoop=E7=9A=84=E5=8F=91=E8=A1=8C=E7=
+=89=88=EF=BC=8C=E4=BB=8EApache=E7=9A=84=E6=9F=90=E4=B8=AA=E9=95=9C=E5=83=8F=
+=E6=9C=8D=E5=8A=A1=E5=99=A8=E4=B8=8A=E4=B8=8B=E8=BD=BD=E6=9C=80=E8=BF=91=E7=
+=9A=84 <A=20
+href=3D"http://hadoop.apache.org/core/releases.html">=E7=A8=B3=E5=AE=9A=E5=
+=8F=91=E8=A1=8C=E7=89=88</A>=E3=80=82</P></DIV><A=20
+name=3DN10096></A><A=20
+name=3D%E8%BF%90%E8%A1%8CHadoop%E9%9B%86%E7%BE%A4%E7%9A%84%E5%87%86%E5%A4=
+%87%E5%B7%A5%E4%BD%9C></A>
+<H2 =
+class=3Dh3>=E8=BF=90=E8=A1=8CHadoop=E9=9B=86=E7=BE=A4=E7=9A=84=E5=87=86=E5=
+=A4=87=E5=B7=A5=E4=BD=9C</H2>
+<DIV class=3Dsection>
+<P>=E8=A7=A3=E5=8E=8B=E6=89=80=E4=B8=8B=E8=BD=BD=E7=9A=84Hadoop=E5=8F=91=E8=
+=A1=8C=E7=89=88=E3=80=82=E7=BC=96=E8=BE=91 <SPAN=20
+class=3Dcodefrag>conf/hadoop-env.sh</SPAN>=E6=96=87=E4=BB=B6=EF=BC=8C=E8=87=
+=B3=E5=B0=91=E9=9C=80=E8=A6=81=E5=B0=86<SPAN=20
+class=3Dcodefrag>JAVA_HOME</SPAN>=E8=AE=BE=E7=BD=AE=E4=B8=BAJava=E5=AE=89=
+=E8=A3=85=E6=A0=B9=E8=B7=AF=E5=BE=84=E3=80=82 </P>
+<P>=E5=B0=9D=E8=AF=95=E5=A6=82=E4=B8=8B=E5=91=BD=E4=BB=A4=EF=BC=9A<BR><SP=
+AN class=3Dcodefrag>$ bin/hadoop</SPAN>=20
+<BR>=E5=B0=86=E4=BC=9A=E6=98=BE=E7=A4=BA<STRONG>hadoop</STRONG> =
+=E8=84=9A=E6=9C=AC=E7=9A=84=E4=BD=BF=E7=94=A8=E6=96=87=E6=A1=A3=E3=80=82 =
+</P>
+<P>=E7=8E=B0=E5=9C=A8=E4=BD=A0=E5=8F=AF=E4=BB=A5=E7=94=A8=E4=BB=A5=E4=B8=8B=
+=E4=B8=89=E7=A7=8D=E6=94=AF=E6=8C=81=E7=9A=84=E6=A8=A1=E5=BC=8F=E4=B8=AD=E7=
+=9A=84=E4=B8=80=E7=A7=8D=E5=90=AF=E5=8A=A8Hadoop=E9=9B=86=E7=BE=A4=EF=BC=9A=
+ </P>
+<UL>
+  <LI>=E5=8D=95=E6=9C=BA=E6=A8=A1=E5=BC=8F</LI>
+  <LI>=E4=BC=AA=E5=88=86=E5=B8=83=E5=BC=8F=E6=A8=A1=E5=BC=8F</LI>
+  =
+<LI>=E5=AE=8C=E5=85=A8=E5=88=86=E5=B8=83=E5=BC=8F=E6=A8=A1=E5=BC=8F</LI><=
+/UL></DIV><A name=3DN100C1></A><A name=3DLocal></A>
+<H2 =
+class=3Dh3>=E5=8D=95=E6=9C=BA=E6=A8=A1=E5=BC=8F=E7=9A=84=E6=93=8D=E4=BD=9C=
+=E6=96=B9=E6=B3=95</H2>
+<DIV class=3Dsection>
+<P>=E9=BB=98=E8=AE=A4=E6=83=85=E5=86=B5=E4=B8=8B=EF=BC=8CHadoop=E8=A2=AB=E9=
+=85=8D=E7=BD=AE=E6=88=90=E4=BB=A5=E9=9D=9E=E5=88=86=E5=B8=83=E5=BC=8F=E6=A8=
+=A1=E5=BC=8F=E8=BF=90=E8=A1=8C=E7=9A=84=E4=B8=80=E4=B8=AA=E7=8B=AC=E7=AB=8B=
+Java=E8=BF=9B=E7=A8=8B=E3=80=82=E8=BF=99=E5=AF=B9=E8=B0=83=E8=AF=95=E9=9D=
+=9E=E5=B8=B8=E6=9C=89=E5=B8=AE=E5=8A=A9=E3=80=82</P>
+<P>=E4=B8=8B=E9=9D=A2=E7=9A=84=E5=AE=9E=E4=BE=8B=E5=B0=86=E5=B7=B2=E8=A7=A3=
+=E5=8E=8B=E7=9A=84 <SPAN class=3Dcodefrag>conf</SPAN>=20
+=E7=9B=AE=E5=BD=95=E6=8B=B7=E8=B4=9D=E4=BD=9C=E4=B8=BA=E8=BE=93=E5=85=A5=EF=
+=BC=8C=E6=9F=A5=E6=89=BE=E5=B9=B6=E6=98=BE=E7=A4=BA=E5=8C=B9=E9=85=8D=E7=BB=
+=99=E5=AE=9A=E6=AD=A3=E5=88=99=E8=A1=A8=E8=BE=BE=E5=BC=8F=E7=9A=84=E6=9D=A1=
+=E7=9B=AE=E3=80=82=E8=BE=93=E5=87=BA=E5=86=99=E5=85=A5=E5=88=B0=E6=8C=87=E5=
+=AE=9A=E7=9A=84<SPAN =
+class=3Dcodefrag>output</SPAN>=E7=9B=AE=E5=BD=95=E3=80=82=20
+<BR><SPAN class=3Dcodefrag>$ mkdir input</SPAN> <BR><SPAN =
+class=3Dcodefrag>$ cp=20
+conf/*.xml input</SPAN> <BR><SPAN class=3Dcodefrag>$ bin/hadoop jar=20
+hadoop-*-examples.jar grep input output 'dfs[a-z.]+' </SPAN><BR><SPAN=20
+class=3Dcodefrag>$ cat output/*</SPAN> </P></DIV><A name=3DN100E5></A><A =
+
+name=3DPseudoDistributed></A>
+<H2 =
+class=3Dh3>=E4=BC=AA=E5=88=86=E5=B8=83=E5=BC=8F=E6=A8=A1=E5=BC=8F=E7=9A=84=
+=E6=93=8D=E4=BD=9C=E6=96=B9=E6=B3=95</H2>
+<DIV class=3Dsection>
+<P>Hadoop=E5=8F=AF=E4=BB=A5=E5=9C=A8=E5=8D=95=E8=8A=82=E7=82=B9=E4=B8=8A=E4=
+=BB=A5=E6=89=80=E8=B0=93=E7=9A=84=E4=BC=AA=E5=88=86=E5=B8=83=E5=BC=8F=E6=A8=
+=A1=E5=BC=8F=E8=BF=90=E8=A1=8C=EF=BC=8C=E6=AD=A4=E6=97=B6=E6=AF=8F=E4=B8=80=
+=E4=B8=AAHadoop=E5=AE=88=E6=8A=A4=E8=BF=9B=E7=A8=8B=E9=83=BD=E4=BD=9C=E4=B8=
+=BA=E4=B8=80=E4=B8=AA=E7=8B=AC=E7=AB=8B=E7=9A=84Java=E8=BF=9B=E7=A8=8B=E8=
+=BF=90=E8=A1=8C=E3=80=82</P><A=20
+name=3DN100EE></A><A name=3D%E9%85%8D%E7%BD%AE></A>
+<H3 class=3Dh4>=E9=85=8D=E7=BD=AE</H3>
+<P>=E4=BD=BF=E7=94=A8=E5=A6=82=E4=B8=8B=E7=9A=84 <SPAN =
+class=3Dcodefrag>conf/hadoop-site.xml</SPAN>:</P>
+<TABLE class=3DForrestTable cellSpacing=3D1 cellPadding=3D4>
+  <TBODY>
+  <TR>
+    <TD rowSpan=3D1 colSpan=3D1>&lt;configuration&gt;</TD></TR>
+  <TR>
+    <TD rowSpan=3D1 colSpan=3D1>&nbsp;&nbsp;&lt;property&gt;</TD></TR>
+  <TR>
+    <TD rowSpan=3D1=20
+      =
+colSpan=3D1>&nbsp;&nbsp;&nbsp;&nbsp;&lt;name&gt;fs.default.name&lt;/name&=
+gt;</TD></TR>
+  <TR>
+    <TD rowSpan=3D1=20
+      =
+colSpan=3D1>&nbsp;&nbsp;&nbsp;&nbsp;&lt;value&gt;localhost:9000&lt;/value=
+&gt;</TD></TR>
+  <TR>
+    <TD rowSpan=3D1 colSpan=3D1>&nbsp;&nbsp;&lt;/property&gt;</TD></TR>
+  <TR>
+    <TD rowSpan=3D1 colSpan=3D1>&nbsp;&nbsp;&lt;property&gt;</TD></TR>
+  <TR>
+    <TD rowSpan=3D1=20
+      =
+colSpan=3D1>&nbsp;&nbsp;&nbsp;&nbsp;&lt;name&gt;mapred.job.tracker&lt;/na=
+me&gt;</TD></TR>
+  <TR>
+    <TD rowSpan=3D1=20
+      =
+colSpan=3D1>&nbsp;&nbsp;&nbsp;&nbsp;&lt;value&gt;localhost:9001&lt;/value=
+&gt;</TD></TR>
+  <TR>
+    <TD rowSpan=3D1 colSpan=3D1>&nbsp;&nbsp;&lt;/property&gt;</TD></TR>
+  <TR>
+    <TD rowSpan=3D1 colSpan=3D1>&nbsp;&nbsp;&lt;property&gt;</TD></TR>
+  <TR>
+    <TD rowSpan=3D1=20
+      =
+colSpan=3D1>&nbsp;&nbsp;&nbsp;&nbsp;&lt;name&gt;dfs.replication&lt;/name&=
+gt;</TD></TR>
+  <TR>
+    <TD rowSpan=3D1=20
+    =
+colSpan=3D1>&nbsp;&nbsp;&nbsp;&nbsp;&lt;value&gt;1&lt;/value&gt;</TD></TR=
+>
+  <TR>
+    <TD rowSpan=3D1 colSpan=3D1>&nbsp;&nbsp;&lt;/property&gt;</TD></TR>
+  <TR>
+    <TD rowSpan=3D1 =
+colSpan=3D1>&lt;/configuration&gt;</TD></TR></TBODY></TABLE><A=20
+name=3DN10152></A><A name=3D%E5%85%8D%E5%AF%86%E7%A0%81></A>
+<H3 class=3Dh4>=E5=85=8D=E5=AF=86=E7=A0=81ssh=E8=AE=BE=E7=BD=AE</H3>
+<P>=E7=8E=B0=E5=9C=A8=E7=A1=AE=E8=AE=A4=E8=83=BD=E5=90=A6=E4=B8=8D=E8=BE=93=
+=E5=85=A5=E5=8F=A3=E4=BB=A4=E5=B0=B1=E7=94=A8ssh=E7=99=BB=E5=BD=95localho=
+st:<BR><SPAN class=3Dcodefrag>$ ssh localhost</SPAN>=20
+</P>
+<P>=E5=A6=82=E6=9E=9C=E4=B8=8D=E8=BE=93=E5=85=A5=E5=8F=A3=E4=BB=A4=E5=B0=B1=
+=E6=97=A0=E6=B3=95=E7=94=A8ssh=E7=99=BB=E9=99=86localhost=EF=BC=8C=E6=89=A7=
+=E8=A1=8C=E4=B8=8B=E9=9D=A2=E7=9A=84=E5=91=BD=E4=BB=A4=EF=BC=9A<BR><SPAN =
+class=3Dcodefrag>$ ssh-keygen -t=20
+dsa -P '' -f ~/.ssh/id_dsa</SPAN> <BR><SPAN class=3Dcodefrag>$ cat=20
+~/.ssh/id_dsa.pub &gt;&gt; ~/.ssh/authorized_keys</SPAN> </P><A=20
+name=3DN10170></A><A name=3D%E6%89%A7%E8%A1%8C></A>
+<H3 class=3Dh4>=E6=89=A7=E8=A1=8C</H3>
+<P>=E6=A0=BC=E5=BC=8F=E5=8C=96=E4=B8=80=E4=B8=AA=E6=96=B0=E7=9A=84=E5=88=86=
+=E5=B8=83=E5=BC=8F=E6=96=87=E4=BB=B6=E7=B3=BB=E7=BB=9F=EF=BC=9A<BR><SPAN =
+class=3Dcodefrag>$ bin/hadoop namenode -format</SPAN>=20
+</P>
+<P>=E5=90=AF=E5=8A=A8Hadoop=E5=AE=88=E6=8A=A4=E8=BF=9B=E7=A8=8B=EF=BC=9A<=
+BR><SPAN class=3Dcodefrag>$ bin/start-all.sh</SPAN> </P>
+<P>Hadoop=E5=AE=88=E6=8A=A4=E8=BF=9B=E7=A8=8B=E7=9A=84=E6=97=A5=E5=BF=97=E5=
+=86=99=E5=85=A5=E5=88=B0 <SPAN class=3Dcodefrag>${HADOOP_LOG_DIR}</SPAN> =
+=E7=9B=AE=E5=BD=95 (=E9=BB=98=E8=AE=A4=E6=98=AF <SPAN=20
+class=3Dcodefrag>${HADOOP_HOME}/logs</SPAN>).</P>
+<P>=E6=B5=8F=E8=A7=88NameNode=E5=92=8CJobTracker=E7=9A=84=E7=BD=91=E7=BB=9C=
+=E6=8E=A5=E5=8F=A3=EF=BC=8C=E5=AE=83=E4=BB=AC=E7=9A=84=E5=9C=B0=E5=9D=80=E9=
+=BB=98=E8=AE=A4=E4=B8=BA=EF=BC=9A</P>
+<UL>
+  <LI><SPAN class=3Dcodefrag>NameNode</SPAN> - <A=20
+  href=3D"http://localhost:50070/">http://localhost:50070/</A> </LI>
+  <LI><SPAN class=3Dcodefrag>JobTracker</SPAN> - <A=20
+  href=3D"http://localhost:50030/">http://localhost:50030/</A> =
+</LI></UL>
+<P>=E5=B0=86=E8=BE=93=E5=85=A5=E6=96=87=E4=BB=B6=E6=8B=B7=E8=B4=9D=E5=88=B0=
+=E5=88=86=E5=B8=83=E5=BC=8F=E6=96=87=E4=BB=B6=E7=B3=BB=E7=BB=9F=EF=BC=9A<=
+BR><SPAN class=3Dcodefrag>$ bin/hadoop fs -put conf=20
+input</SPAN> </P>
+<P>=E8=BF=90=E8=A1=8C=E5=8F=91=E8=A1=8C=E7=89=88=E6=8F=90=E4=BE=9B=E7=9A=84=
+=E7=A4=BA=E4=BE=8B=E7=A8=8B=E5=BA=8F=EF=BC=9A<BR><SPAN =
+class=3Dcodefrag>$ bin/hadoop jar hadoop-*-examples.jar=20
+grep input output 'dfs[a-z.]+' </SPAN></P>
+<P>=E6=9F=A5=E7=9C=8B=E8=BE=93=E5=87=BA=E6=96=87=E4=BB=B6=EF=BC=9A</P>
+<P>=E5=B0=86=E8=BE=93=E5=87=BA=E6=96=87=E4=BB=B6=E4=BB=8E=E5=88=86=E5=B8=83=
+=E5=BC=8F=E6=96=87=E4=BB=B6=E7=B3=BB=E7=BB=9F=E6=8B=B7=E8=B4=9D=E5=88=B0=E6=
+=9C=AC=E5=9C=B0=E6=96=87=E4=BB=B6=E7=B3=BB=E7=BB=9F=E6=9F=A5=E7=9C=8B=EF=BC=
+=9A<BR><SPAN class=3Dcodefrag>$ bin/hadoop fs -get output=20
+output</SPAN> <BR><SPAN class=3Dcodefrag>$ cat output/*</SPAN> </P>
+<P>=E6=88=96=E8=80=85 </P>
+<P>=E5=9C=A8=E5=88=86=E5=B8=83=E5=BC=8F=E6=96=87=E4=BB=B6=E7=B3=BB=E7=BB=9F=
+=E4=B8=8A=E6=9F=A5=E7=9C=8B=E8=BE=93=E5=87=BA=E6=96=87=E4=BB=B6=EF=BC=9A<=
+BR><SPAN class=3Dcodefrag>$ bin/hadoop fs -cat output/*</SPAN>=20
+</P>
+<P>=E5=AE=8C=E6=88=90=E5=85=A8=E9=83=A8=E6=93=8D=E4=BD=9C=E5=90=8E=EF=BC=8C=
+=E5=81=9C=E6=AD=A2=E5=AE=88=E6=8A=A4=E8=BF=9B=E7=A8=8B=EF=BC=9A<BR><SPAN =
+class=3Dcodefrag>$ bin/stop-all.sh</SPAN> </P></DIV><A=20
+name=3DN101DD></A><A name=3DFullyDistributed></A>
+<H2 =
+class=3Dh3>=E5=AE=8C=E5=85=A8=E5=88=86=E5=B8=83=E5=BC=8F=E6=A8=A1=E5=BC=8F=
+=E7=9A=84=E6=93=8D=E4=BD=9C=E6=96=B9=E6=B3=95</H2>
+<DIV class=3Dsection>
+<P>=E5=85=B3=E4=BA=8E=E6=90=AD=E5=BB=BA=E5=AE=8C=E5=85=A8=E5=88=86=E5=B8=83=
+=E5=BC=8F=E6=A8=A1=E5=BC=8F=E7=9A=84=EF=BC=8C=E6=9C=89=E5=AE=9E=E9=99=85=E6=
+=84=8F=E4=B9=89=E7=9A=84=E9=9B=86=E7=BE=A4=E7=9A=84=E8=B5=84=E6=96=99=E5=8F=
+=AF=E4=BB=A5=E5=9C=A8<A=20
+href=3D"http://hadoop.apache.org/common/docs/r0.19.2/cn/cluster_setup.htm=
+l">=E8=BF=99=E9=87=8C</A>=E6=89=BE=E5=88=B0=E3=80=82</P></DIV>
+<P><EM>Java=E4=B8=8EJNI=E6=98=AFSun Microsystems, =
+Inc.=E5=9C=A8=E7=BE=8E=E5=9B=BD=E4=BB=A5=E5=8F=8A=E5=85=B6=E4=BB=96=E5=9B=
+=BD=E5=AE=B6=E5=9C=B0=E5=8C=BA=E7=9A=84=E5=95=86=E6=A0=87=E6=88=96=E6=B3=A8=
+=E5=86=8C=E5=95=86=E6=A0=87=E3=80=82</EM> </P></DIV><!--+=0A=
+    |end content=0A=
+    +-->
+<DIV class=3Dclearboth>&nbsp;</DIV></DIV>
+<DIV id=3Dfooter><!--+=0A=
+    |start bottomstrip=0A=
+    +-->
+<DIV class=3Dlastmodified>
+<SCRIPT type=3Dtext/javascript><!--=0A=
+document.write("Last Published: " + document.lastModified);=0A=
+//  --></SCRIPT>
+</DIV>
+<DIV class=3Dcopyright>Copyright =C2=A9 2007 <A=20
+href=3D"http://www.apache.org/licenses/">The Apache Software =
+Foundation.</A>=20
+</DIV><!--+=0A=
+    |end bottomstrip=0A=
+    +--></DIV></BODY></HTML>
+
+------=_NextPart_000_0000_01CD8080.C661F490
+Content-Type: image/jpeg
+Content-Transfer-Encoding: base64
+Content-Location: http://hadoop.apache.org/common/docs/r0.19.2/cn/images/hadoop-logo.jpg
+
+/9j/4AAQSkZJRgABAQEBLAEsAAD/4QX3RXhpZgAATU0AKgAAAAgABwESAAMAAAABAAEAAAEaAAUA
+AAABAAAAYgEbAAUAAAABAAAAagEoAAMAAAABAAIAAAExAAIAAAAUAAAAcgEyAAIAAAAUAAAAhodp
+AAQAAAABAAAAmgAAAMQAAAEsAAAAAQAAASwAAAABQWRvYmUgUGhvdG9zaG9wIDcuMAAyMDA2OjAz
+OjIyIDAzOjE1OjA5AAADoAEAAwAAAAH//wAAoAIABAAAAAEAAAPooAMABAAAAAEAAADtAAAAAAAG
+AQMAAwAAAAEABgAAARoABQAAAAEAAAESARsABQAAAAEAAAEaASgAAwAAAAEAAgAAAgEABAAAAAEA
+AAEiAgIABAAAAAEAAATNAAAAAAAAAEgAAAABAAAASAAAAAH/2P/gABBKRklGAAEBAAABAAEAAP/b
+AEMACAYGBwYFCAcHBwkJCAoMFA0MCwsMGRITDxQdGh8eHRocHCAkLicgIiwjHBwoNyksMDE0NDQf
+Jzk9ODI8LjM0Mv/bAEMBCQkJDAsMGA0NGDIhHCEyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMv/AABEIABAARwMBIgACEQEDEQH/xAAfAAABBQEBAQEBAQAA
+AAAAAAAAAQIDBAUGBwgJCgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEU
+MoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQ1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2Rl
+ZmdoaWpzdHV2d3h5eoOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK
+0tPU1dbX2Nna4eLj5OXm5+jp6vHy8/T19vf4+fr/xAAfAQADAQEBAQEBAQEBAAAAAAAAAQIDBAUG
+BwgJCgv/xAC1EQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS
+8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4
+eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri
+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
+
+------=_NextPart_000_0000_01CD8080.C661F490
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://hadoop.apache.org/common/docs/r0.19.2/cn/images/core-logo.gif
+
+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
+
+------=_NextPart_000_0000_01CD8080.C661F490
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: http://hadoop.apache.org/common/docs/r0.19.2/cn/skin/images/rc-b-l-15-1body-2menu-3menu.png
+
+iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAAIGNIUk0AAHomAACAhAAA+gAAAIDo
+AAB1MAAA6mAAADqYAAAXcJy6UTwAAAAGYktHRAD/AP8A/6C9p5MAAAAJcEhZcwAADsQAAA7EAZUr
+DhsAAADQSURBVHjaY/TJ6f/PQCZgYmFhZiBbMw8XO/maFaVEyddsqa/MwMHGSp5mUx0lhr///pGn
+WUSAh0FdUYKBiZGJdM0gIiPUiYGNlUzN8pLCDM4W2gwc7KykawaB1GB7BglhfgYWZmbSNTMzMTHU
+ZwYwgOKdWANQPAoKvP6yKAYZcUGivIARSiADJpRHMTibazGws7HgjQWsMiAvZIQ6MvSWRDJoKEky
+MDMzYU1ILPicBYqFzoJQhjcfvjCcvnKP4cj52wyPXrxl+PLtJ8OfP38ZANr8JTF54RTLAAAAAElF
+TkSuQmCC
+
+------=_NextPart_000_0000_01CD8080.C661F490
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: http://hadoop.apache.org/common/docs/r0.19.2/cn/skin/images/pdfdoc.gif
+
+R0lGODlhDQAQAOcAAMTM0s/U3M3V3MvT3cLN2LXC0qe0xbK8z9LY3efn5OTo593i5tHY4sHL17fC
+1LbCzufk4uZVOt2upeDl6NTc5MbR3cbP1sfR2rjBzefi4uc2FNeSh+Ln6Nne583S3a68yaezw52w
+xKKvvOfn5+ZlUtmroeTn6dzg59DX4sHN2KGuwqCyxYWUp9LZ3ubn5+R/ad5xYubn5t/i58/Z37nF
+1KSxwLK+0YqYqObn4+NtWOFgTNi+v9Ha3sLL2brF1pumtLzH1JCdrdLY3OXZ0thtXN3Dvd5RQsjH
+0sfH0sHM2q+4wsLL15OgrtLX3uOgj8+dlt6Uid1dUOc1H+JKO8DEz5mgqMrS3ZejsdK8vORYPtSA
+es+7vM/V39iur8KmpsbP2bO6xcrS2pmksd1nYNhdS8+dlNvg5tfe59Pc49LZ4c7U38nS3a21vc7V
+3pqlsuZ1ccs7NNF8cdve4Nnf5tnd59Xc5dLZ487V38rT3aOpssvS3JumstS5t9DV2t/k5drg5tfd
+5NTb5NLZ4s3V3rzDy9LW3d3h5tnf5dXc5NLa5NDY4czV4cjS3sXP28HN26mwtoqRm4qRnImRm4qS
+momRmoqRmZiepf//////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////yH5BAEKAP8ALAAAAAANABAA
+AAjNAP8JHEiwIIAAAgYQKGDgQEEECRIoWMCggYMHBBFAiCBhAoUKFi5gGIggg4YNHDp4+AAihAiB
+CEaQKGHiBIoUKlawENjCxQsYMWTMoFHDxg2eOHLo2MGjh48fQIIIFDKESBEjR5AkUbKEicAmTp5A
+iSJlCpUqVq4IxJJFyxYuXbx8ARNGzL8xZMqYOYMmjZo1bNq4eQMnjpw5dOrYuYMnj549//j08fMH
+UCBBg/AQ0uNGYCFDhxAlUrSIUSNHnf89ghRJ0iRKlCBBqmQpIAA7
+
+------=_NextPart_000_0000_01CD8080.C661F490
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://hadoop.apache.org/common/docs/r0.19.2/cn/skin/basic.css
+
+IMG {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: =
+0px
+}
+#content TABLE {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; WIDTH: 100%; BORDER-TOP: 0px; =
+BORDER-RIGHT: 0px
+}
+* HTML #content TABLE {
+	MARGIN-LEFT: -3px
+}
+#content TH {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; VERTICAL-ALIGN: top; PADDING-TOP: 0px
+}
+#content TD {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; VERTICAL-ALIGN: top; PADDING-TOP: 0px
+}
+.clearboth {
+	CLEAR: both
+}
+.note {
+	BORDER-BOTTOM: black 1px solid; BORDER-LEFT: black 1px solid; MARGIN: =
+1em 3em; BORDER-TOP: black 1px solid; BORDER-RIGHT: black 1px solid
+}
+.warning {
+	BORDER-BOTTOM: black 1px solid; BORDER-LEFT: black 1px solid; MARGIN: =
+1em 3em; BORDER-TOP: black 1px solid; BORDER-RIGHT: black 1px solid
+}
+.fixme {
+	BORDER-BOTTOM: black 1px solid; BORDER-LEFT: black 1px solid; MARGIN: =
+1em 3em; BORDER-TOP: black 1px solid; BORDER-RIGHT: black 1px solid
+}
+.note .label {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; =
+BACKGROUND: #369; COLOR: white; FONT-WEIGHT: bold; PADDING-TOP: 5px
+}
+.note .content {
+	PADDING-BOTTOM: 5px; LINE-HEIGHT: 120%; PADDING-LEFT: 10px; =
+PADDING-RIGHT: 10px; BACKGROUND: #f0f0ff; COLOR: black; FONT-SIZE: 90%; =
+PADDING-TOP: 5px
+}
+.warning .label {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; =
+BACKGROUND: #c00; COLOR: white; FONT-WEIGHT: bold; PADDING-TOP: 5px
+}
+.warning .content {
+	PADDING-BOTTOM: 5px; LINE-HEIGHT: 120%; PADDING-LEFT: 10px; =
+PADDING-RIGHT: 10px; BACKGROUND: #fff0f0; COLOR: black; FONT-SIZE: 90%; =
+PADDING-TOP: 5px
+}
+.fixme .label {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; =
+BACKGROUND: #c6c600; COLOR: black; FONT-WEIGHT: bold; PADDING-TOP: 5px
+}
+.fixme .content {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; =
+PADDING-TOP: 5px
+}
+BODY {
+	FONT-FAMILY: verdana, "Trebuchet MS", arial, helvetica, sans-serif; =
+FONT-SIZE: 100%
+}
+#content {
+	FONT-FAMILY: Georgia, Palatino, Times, serif; FONT-SIZE: 95%
+}
+#tabs {
+	FONT-SIZE: 70%
+}
+#menu {
+	FONT-SIZE: 80%
+}
+#footer {
+	FONT-SIZE: 70%
+}
+H1 {
+	MARGIN-TOP: 1em; FONT-FAMILY: "Trebuchet MS", verdana, arial, =
+helvetica, sans-serif; MARGIN-BOTTOM: 0.5em; FONT-WEIGHT: bold
+}
+H2 {
+	MARGIN-TOP: 1em; FONT-FAMILY: "Trebuchet MS", verdana, arial, =
+helvetica, sans-serif; MARGIN-BOTTOM: 0.5em; FONT-WEIGHT: bold
+}
+H3 {
+	MARGIN-TOP: 1em; FONT-FAMILY: "Trebuchet MS", verdana, arial, =
+helvetica, sans-serif; MARGIN-BOTTOM: 0.5em; FONT-WEIGHT: bold
+}
+H4 {
+	MARGIN-TOP: 1em; FONT-FAMILY: "Trebuchet MS", verdana, arial, =
+helvetica, sans-serif; MARGIN-BOTTOM: 0.5em; FONT-WEIGHT: bold
+}
+H5 {
+	MARGIN-TOP: 1em; FONT-FAMILY: "Trebuchet MS", verdana, arial, =
+helvetica, sans-serif; MARGIN-BOTTOM: 0.5em; FONT-WEIGHT: bold
+}
+H6 {
+	MARGIN-TOP: 1em; FONT-FAMILY: "Trebuchet MS", verdana, arial, =
+helvetica, sans-serif; MARGIN-BOTTOM: 0.5em; FONT-WEIGHT: bold
+}
+H1 {
+	MARGIN-TOP: 0px; MARGIN-BOTTOM: 1em; FONT-SIZE: 1.4em
+}
+#content H1 {
+	MARGIN-BOTTOM: 0.5em; FONT-SIZE: 160%
+}
+#menu H1 {
+	PADDING-BOTTOM: 10px; MARGIN: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: =
+10px; BACKGROUND: #336699; COLOR: white; PADDING-TOP: 10px
+}
+H2 {
+	FONT-SIZE: 120%
+}
+H3 {
+	FONT-SIZE: 100%
+}
+H4 {
+	FONT-SIZE: 90%
+}
+H5 {
+	FONT-SIZE: 80%
+}
+H6 {
+	FONT-SIZE: 75%
+}
+P {
+	TEXT-ALIGN: left; LINE-HEIGHT: 120%; MARGIN-TOP: 0.5em; MARGIN-BOTTOM: =
+1em
+}
+#content LI {
+	MARGIN-TOP: 0.5em; MARGIN-BOTTOM: 0.5em
+}
+#content TH {
+	MARGIN-TOP: 0.5em; MARGIN-BOTTOM: 0.5em
+}
+#content TD {
+	MARGIN-TOP: 0.5em; MARGIN-BOTTOM: 0.5em
+}
+#content LI UL {
+	MARGIN-TOP: 0.5em; MARGIN-BOTTOM: 0.5em
+}
+#content LI OL {
+	MARGIN-TOP: 0.5em; MARGIN-BOTTOM: 0.5em
+}
+#content LI LI {
+	MARGIN-TOP: 0em; MARGIN-BOTTOM: 0em
+}
+#minitoc-area LI {
+	MARGIN-TOP: 0em; MARGIN-BOTTOM: 0em
+}
+#content .attribution {
+	TEXT-ALIGN: right; FONT-STYLE: italic; MARGIN-TOP: 1em; FONT-SIZE: 85%
+}
+.codefrag {
+	FONT-FAMILY: "Courier New", Courier, monospace; FONT-SIZE: 110%
+}
+
+------=_NextPart_000_0000_01CD8080.C661F490
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://hadoop.apache.org/common/docs/r0.19.2/cn/skin/screen.css
+
+BODY {
+	MARGIN: 0px; FONT-FAMILY: Verdana, Helvetica, sans-serif
+}
+H1 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; FONT-SIZE: 160%; PADDING-TOP: 0px
+}
+H2 {
+	PADDING-BOTTOM: 0px; MARGIN: 1em 0px 0.8em; PADDING-LEFT: 0px; =
+PADDING-RIGHT: 0px; FONT-SIZE: 140%; FONT-WEIGHT: bold; PADDING-TOP: 0px
+}
+H3 {
+	PADDING-BOTTOM: 0px; MARGIN: 0.8em 0px 0px; PADDING-LEFT: 0px; =
+PADDING-RIGHT: 0px; FONT-SIZE: 130%; FONT-WEIGHT: bold; PADDING-TOP: 0px
+}
+.h3 {
+	MARGIN: 22px 0px 3px
+}
+H4 {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 0px; MARGIN: 0.7em 0px 0px; =
+PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 120%; FONT-WEIGHT: =
+normal; PADDING-TOP: 0px
+}
+.h4 {
+	MARGIN: 18px 0px 0px
+}
+H4.faq {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 0px; MARGIN: 18px 0px 0px; =
+PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 120%; FONT-WEIGHT: =
+bold; PADDING-TOP: 0px
+}
+H5 {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 0px; MARGIN: 14px 0px 0px; =
+PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-SIZE: 100%; FONT-WEIGHT: =
+normal; PADDING-TOP: 0px
+}
+TABLE .title {
+	BACKGROUND-COLOR: #000000
+}
+.ForrestTable {
+	BACKGROUND-COLOR: #7099c5; WIDTH: 100%; EMPTY-CELLS: show; COLOR: =
+#ffffff; FONT-SIZE: 100%
+}
+TABLE CAPTION {
+	TEXT-ALIGN: left; BACKGROUND-COLOR: #000000; PADDING-LEFT: 5px; COLOR: =
+white; FONT-WEIGHT: bold
+}
+.ForrestTable TD {
+	BACKGROUND-COLOR: #f0f0ff; COLOR: black
+}
+.ForrestTable TH {
+	TEXT-ALIGN: center
+}
+#top {
+	POSITION: relative; WIDTH: 100%; BACKGROUND: #294563; FLOAT: left
+}
+#top .breadtrail {
+	BORDER-BOTTOM: white 1px solid; PADDING-BOTTOM: 3px; PADDING-LEFT: =
+10px; PADDING-RIGHT: 10px; BACKGROUND: #cfdced; COLOR: black; FONT-SIZE: =
+75%; PADDING-TOP: 3px
+}
+#top .breadtrail A {
+	COLOR: black
+}
+#top .header {
+	WIDTH: 100%; BACKGROUND: url(images/header_white_line.gif) repeat-x 50% =
+bottom; FLOAT: left
+}
+#top .grouplogo {
+	TEXT-ALIGN: left; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; =
+PADDING-RIGHT: 0px; FLOAT: left; PADDING-TOP: 7px
+}
+#top .projectlogo {
+	TEXT-ALIGN: right; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; WIDTH: =
+33%; PADDING-RIGHT: 0px; FLOAT: left; PADDING-TOP: 7px
+}
+#top .projectlogoA1 {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; FLOAT: =
+right; PADDING-TOP: 7px
+}
+HTML > BODY #top .searchbox {
+	BOTTOM: 0px
+}
+#top .searchbox {
+	BACKGROUND-IMAGE: =
+url(images/rc-t-l-5-1header-2searchbox-3searchbox.png); Z-INDEX: 0; =
+POSITION: absolute; TEXT-ALIGN: right; BACKGROUND-COLOR: #000000; =
+BOTTOM: -1px; BACKGROUND-REPEAT: no-repeat; WHITE-SPACE: nowrap; =
+BACKGROUND-POSITION: left top; HEIGHT: 42px; COLOR: white; FONT-SIZE: =
+70%; RIGHT: 10px
+}
+#top .searchbox FORM {
+	PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: =
+10px; PADDING-TOP: 5px
+}
+#top .searchbox P {
+	PADDING-BOTTOM: 2px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+#top .searchbox INPUT {
+	FONT-SIZE: 100%
+}
+#tabs {
+	LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 10px; CLEAR: both; =
+LIST-STYLE-IMAGE: none
+}
+#tabs LI {
+	BACKGROUND-IMAGE: =
+url(images/rc-t-r-5-1header-2tab-unselected-3tab-unselected.png); =
+PADDING-BOTTOM: 0px; BACKGROUND-COLOR: #000000; MARGIN: 0px 3px 0px 0px; =
+PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-REPEAT: no-repeat; =
+BACKGROUND-POSITION: right top; FLOAT: left; PADDING-TOP: 0px
+}
+#tabs LI A {
+	BACKGROUND-IMAGE: =
+url(images/rc-t-l-5-1header-2tab-unselected-3tab-unselected.png); =
+PADDING-BOTTOM: 4px; PADDING-LEFT: 15px; WIDTH: 0.1em; PADDING-RIGHT: =
+15px; DISPLAY: block; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: =
+verdana, arial, sans-serif; WHITE-SPACE: nowrap; BACKGROUND-POSITION: =
+left top; FLOAT: left; COLOR: black; TEXT-DECORATION: none; PADDING-TOP: =
+5px
+}
+#tabs LI A:hover {
+	CURSOR: pointer; TEXT-DECORATION: underline
+}
+#tabs > LI A {
+	WIDTH: auto
+}
+#tabs A {
+	FLOAT: none
+}
+#top .header .current {
+	BACKGROUND-IMAGE: =
+url(images/rc-t-r-5-1header-2tab-selected-3tab-selected.png); =
+BACKGROUND-COLOR: #4c6c8f; BACKGROUND-REPEAT: no-repeat; =
+BACKGROUND-POSITION: right top
+}
+#top .header .current A {
+	BACKGROUND-IMAGE: =
+url(images/rc-t-l-5-1header-2tab-selected-3tab-selected.png); =
+PADDING-BOTTOM: 5px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: =
+left top; COLOR: white; FONT-WEIGHT: bold
+}
+#publishedStrip {
+	TEXT-ALIGN: right; PADDING-BOTTOM: 3px; BACKGROUND-COLOR: #4c6c8f; =
+PADDING-LEFT: 20px; PADDING-RIGHT: 10px; COLOR: #ffffff; FONT-SIZE: 60%; =
+FONT-WEIGHT: bold; PADDING-TOP: 3px
+}
+#level2tabs {
+	POSITION: relative; MARGIN: 0px; FLOAT: left
+}
+#level2tabs A:hover {
+	CURSOR: pointer; TEXT-DECORATION: underline
+}
+#level2tabs A {
+	BACKGROUND-IMAGE: url(images/chapter.gif); PADDING-LEFT: 6px; =
+BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left center; =
+MARGIN-LEFT: 6px; CURSOR: pointer; TEXT-DECORATION: none
+}
+#main {
+	POSITION: relative; BACKGROUND: white; CLEAR: both
+}
+#main .breadtrail {
+	Z-INDEX: 10; BORDER-BOTTOM: black 1px solid; POSITION: relative; =
+PADDING-BOTTOM: 0px; PADDING-LEFT: 180px; PADDING-RIGHT: 180px; =
+BACKGROUND: #cfdced; COLOR: black; CLEAR: both; FONT-SIZE: 75%; =
+BORDER-TOP: black 1px solid; PADDING-TOP: 0px
+}
+#roundtop {
+	BACKGROUND-IMAGE: url(images/rc-t-r-15-1body-2menu-3menu.png); =
+BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: right top
+}
+#roundbottom {
+	BACKGROUND-IMAGE: url(images/rc-b-r-15-1body-2menu-3menu.png); =
+BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: right top
+}
+IMG.corner {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; WIDTH: 15px; =
+DISPLAY: block !important; HEIGHT: 15px; BORDER-TOP: medium none; =
+BORDER-RIGHT: medium none
+}
+.roundtopsmall {
+	BACKGROUND-IMAGE: =
+url(images/rc-t-r-5-1header-2searchbox-3searchbox.png); =
+BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: right top
+}
+#roundbottomsmall {
+	BACKGROUND-IMAGE: =
+url(images/rc-b-r-5-1header-2tab-selected-3tab-selected.png); =
+BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: right top
+}
+IMG.cornersmall {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; WIDTH: 5px; =
+DISPLAY: block !important; HEIGHT: 5px; BORDER-TOP: medium none; =
+BORDER-RIGHT: medium none
+}
+#menu A {
+	FONT-WEIGHT: normal; TEXT-DECORATION: none
+}
+#menu A:visited {
+	FONT-WEIGHT: normal
+}
+#menu A:active {
+	FONT-WEIGHT: normal
+}
+#menu A:hover {
+	FONT-WEIGHT: normal; TEXT-DECORATION: underline
+}
+#menuarea {
+	WIDTH: 10em
+}
+#menu {
+	Z-INDEX: 20; POSITION: relative; BACKGROUND-COLOR: #f90; WIDTH: 160px; =
+FLOAT: left; FONT-SIZE: 70%; TOP: -18px; PADDING-TOP: 0px; LEFT: 10px
+}
+.menutitle {
+	BACKGROUND-IMAGE: url(images/chapter.gif); PADDING-BOTTOM: 3px; =
+PADDING-LEFT: 12px; PADDING-RIGHT: 12px; BACKGROUND-REPEAT: no-repeat; =
+BACKGROUND-POSITION: left center; MARGIN-LEFT: 10px; CURSOR: pointer; =
+FONT-WEIGHT: bold; PADDING-TOP: 3px
+}
+.menutitle:hover {
+	CURSOR: pointer; TEXT-DECORATION: underline
+}
+#menu .menuitemgroup {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 0px 6px 8px; PADDING-LEFT: 0px; =
+PADDING-RIGHT: 0px; FONT-WEIGHT: bold; PADDING-TOP: 0px
+}
+#menu .selectedmenuitemgroup {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 8px; PADDING-LEFT: 0px; =
+PADDING-RIGHT: 0px; FONT-WEIGHT: normal; PADDING-TOP: 0px
+}
+#menu .menuitem {
+	BACKGROUND-IMAGE: url(images/page.gif); PADDING-BOTTOM: 1px; =
+PADDING-LEFT: 13px; PADDING-RIGHT: 0px; BACKGROUND-REPEAT: no-repeat; =
+BACKGROUND-POSITION: left center; MARGIN-LEFT: 10px; FONT-WEIGHT: =
+normal; PADDING-TOP: 2px
+}
+#menu .menupage {
+	BACKGROUND-IMAGE: url(images/page.gif); PADDING-BOTTOM: 0px; =
+FONT-STYLE: normal; MARGIN: 2px 0px 1px 10px; PADDING-LEFT: 12px; =
+PADDING-RIGHT: 3px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: =
+left center; PADDING-TOP: 0px
+}
+#menu .menupagetitle {
+	BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; PADDING-BOTTOM: 0px; =
+FONT-STYLE: normal; PADDING-LEFT: 1px; PADDING-RIGHT: 0px; BORDER-TOP: =
+1px solid; MARGIN-RIGHT: 10px; BORDER-RIGHT: 1px solid; PADDING-TOP: 0px
+}
+#menu .menupageitemgroup {
+	BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; PADDING-BOTTOM: 4px; =
+FONT-STYLE: normal; PADDING-LEFT: 6px; PADDING-RIGHT: 0px; MARGIN-RIGHT: =
+10px; BORDER-RIGHT: 1px solid; PADDING-TOP: 3px
+}
+#menu .menupageitem {
+	BORDER-RIGHT-WIDTH: 0px; FONT-STYLE: normal; BORDER-TOP-WIDTH: 0px; =
+BORDER-BOTTOM-WIDTH: 0px; FONT-SIZE: 90%; BORDER-LEFT-WIDTH: 0px; =
+FONT-WEIGHT: normal
+}
+#menu #credit {
+	TEXT-ALIGN: center
+}
+#menu #credit2 {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 3px; BACKGROUND-COLOR: #ffffff; =
+PADDING-LEFT: 3px; PADDING-RIGHT: 3px; PADDING-TOP: 3px
+}
+#menu .searchbox {
+	TEXT-ALIGN: center
+}
+#menu .searchbox FORM {
+	PADDING-BOTTOM: 3px; MARGIN: 0px; PADDING-LEFT: 3px; PADDING-RIGHT: =
+3px; PADDING-TOP: 3px
+}
+#menu .searchbox INPUT {
+	FONT-SIZE: 100%
+}
+#content {
+	PADDING-BOTTOM: 20px; MARGIN: 0px; PADDING-LEFT: 180px; PADDING-RIGHT: =
+20px; FONT: 80% Verdana, Helvetica, sans-serif; PADDING-TOP: 20px
+}
+#content UL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 25px; PADDING-RIGHT: =
+25px; PADDING-TOP: 0px
+}
+#content LI {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; =
+PADDING-TOP: 0px
+}
+#feedback {
+	TEXT-ALIGN: center; MARGIN-TOP: 5px; BACKGROUND: #cfdced; COLOR: black
+}
+#feedback #feedbackto {
+	COLOR: black; FONT-SIZE: 90%
+}
+#footer {
+	POSITION: relative; WIDTH: 100%; BACKGROUND: #cfdced; COLOR: black; =
+CLEAR: both; BORDER-TOP: #4c6c8f 1px solid
+}
+#footer .copyright {
+	POSITION: relative; PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-LEFT: =
+5px; WIDTH: 45%; PADDING-RIGHT: 5px; PADDING-TOP: 5px
+}
+#footer .lastmodified {
+	POSITION: relative; TEXT-ALIGN: right; PADDING-BOTTOM: 5px; MARGIN: =
+0px; PADDING-LEFT: 5px; WIDTH: 45%; PADDING-RIGHT: 5px; FLOAT: right; =
+PADDING-TOP: 5px
+}
+#footer A {
+	COLOR: white
+}
+#footer #logos {
+	TEXT-ALIGN: left
+}
+ACRONYM {
+	CURSOR: help
+}
+.boxed {
+	BACKGROUND-COLOR: #a5b6c6
+}
+.underlined_5 {
+	BORDER-BOTTOM: #4c6c8f 5px solid
+}
+.underlined_10 {
+	BORDER-BOTTOM: #4c6c8f 10px solid
+}
+.trail {
+	POSITION: relative; TEXT-ALIGN: right; PADDING-BOTTOM: 0px; MARGIN: =
+-10px 5px 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FLOAT: right; =
+FONT-SIZE: 70%; PADDING-TOP: 0px
+}
+#motd-area {
+	BORDER-BOTTOM: #4c6c8f 1px solid; POSITION: relative; PADDING-BOTTOM: =
+5px; BACKGROUND-COLOR: #f0f0ff; WIDTH: 35%; MARGIN-BOTTOM: 15px; FLOAT: =
+right; MARGIN-LEFT: 15px; BORDER-TOP: #4c6c8f 1px solid; MARGIN-RIGHT: =
+10%; PADDING-TOP: 5px
+}
+#minitoc-area {
+	BORDER-BOTTOM: #4c6c8f 1px solid; PADDING-BOTTOM: 7px; MARGIN: 15px 10% =
+5px 15px; BORDER-TOP: #4c6c8f 1px solid; PADDING-TOP: 5px
+}
+.minitoc {
+	FONT-WEIGHT: normal; LIST-STYLE-IMAGE: url(images/current.gif)
+}
+LI P {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: =
+0px; PADDING-TOP: 0px
+}
+.pdflink {
+	POSITION: relative; PADDING-BOTTOM: 0px; MARGIN: 0px 5px; PADDING-LEFT: =
+0px; PADDING-RIGHT: 0px; FLOAT: right; PADDING-TOP: 0px
+}
+.pdflink BR {
+	MARGIN-TOP: -10px; PADDING-LEFT: 1px
+}
+.pdflink A {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: =
+0px; PADDING-RIGHT: 0px; DISPLAY: block; FONT-SIZE: 70%; PADDING-TOP: =
+0px
+}
+.pdflink IMG {
+	WIDTH: 16px; DISPLAY: block; HEIGHT: 16px
+}
+.xmllink {
+	POSITION: relative; PADDING-BOTTOM: 0px; MARGIN: 0px 5px; PADDING-LEFT: =
+0px; PADDING-RIGHT: 0px; FLOAT: right; PADDING-TOP: 0px
+}
+.xmllink BR {
+	MARGIN-TOP: -10px; PADDING-LEFT: 1px
+}
+.xmllink A {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: =
+0px; PADDING-RIGHT: 0px; DISPLAY: block; FONT-SIZE: 70%; PADDING-TOP: =
+0px
+}
+.xmllink IMG {
+	WIDTH: 16px; DISPLAY: block; HEIGHT: 16px
+}
+.podlink {
+	POSITION: relative; PADDING-BOTTOM: 0px; MARGIN: 0px 5px; PADDING-LEFT: =
+0px; PADDING-RIGHT: 0px; FLOAT: right; PADDING-TOP: 0px
+}
+.podlink BR {
+	MARGIN-TOP: -10px; PADDING-LEFT: 1px
+}
+.podlink A {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: =
+0px; PADDING-RIGHT: 0px; DISPLAY: block; FONT-SIZE: 70%; PADDING-TOP: =
+0px
+}
+.podlink IMG {
+	WIDTH: 16px; DISPLAY: block; HEIGHT: 16px
+}
+.printlink {
+	POSITION: relative; FLOAT: right
+}
+.printlink BR {
+	MARGIN-TOP: -10px; PADDING-LEFT: 1px
+}
+.printlink A {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: =
+0px; PADDING-RIGHT: 0px; DISPLAY: block; FONT-SIZE: 70%; PADDING-TOP: =
+0px
+}
+.printlink IMG {
+	WIDTH: 16px; DISPLAY: block; HEIGHT: 16px
+}
+P.instruction {
+	LIST-STYLE-POSITION: outside; DISPLAY: list-item; MARGIN-LEFT: 2em; =
+LIST-STYLE-IMAGE: url(../images/instruction_arrow.png)
+}
+
+------=_NextPart_000_0000_01CD8080.C661F490
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://hadoop.apache.org/common/docs/r0.19.2/cn/skin/print.css
+
+BODY {
+	FONT-FAMILY: Georgia, Palatino, serif; BACKGROUND: white; FONT-SIZE: =
+12pt
+}
+#tabs {
+	DISPLAY: none
+}
+#menu {
+	DISPLAY: none
+}
+#content .toc {
+	DISPLAY: none
+}
+#content {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: auto; PADDING-RIGHT: =
+0px; BACKGROUND: inherit; FLOAT: none !important; COLOR: black; =
+PADDING-TOP: 0px
+}
+A:link {
+	BACKGROUND: inherit; COLOR: #336699; TEXT-DECORATION: underline
+}
+A:visited {
+	BACKGROUND: inherit; COLOR: #336699; TEXT-DECORATION: underline
+}
+#top .logo {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 0px 2em; PADDING-LEFT: 0px; =
+PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+#footer {
+	MARGIN-TOP: 4em
+}
+ACRONYM {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: =
+0px
+}
+
+------=_NextPart_000_0000_01CD8080.C661F490
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://hadoop.apache.org/common/docs/r0.19.2/cn/skin/profile.css
+
+
+@media Aural   =20
+{
+H1 {
+	voice-family: paul, male; stress: 20; richness: 90
+}
+H2 {
+	voice-family: paul, male; stress: 20; richness: 90
+}
+H3 {
+	voice-family: paul, male; stress: 20; richness: 90
+}
+H4 {
+	voice-family: paul, male; stress: 20; richness: 90
+}
+H5 {
+	voice-family: paul, male; stress: 20; richness: 90
+}
+H6 {
+	voice-family: paul, male; stress: 20; richness: 90
+}
+H1 {
+	pitch: x-low; pitch-range: 90
+}
+H2 {
+	pitch: x-low; pitch-range: 80
+}
+H3 {
+	pitch: low; pitch-range: 70
+}
+H4 {
+	pitch: medium; pitch-range: 60
+}
+H5 {
+	pitch: medium; pitch-range: 50
+}
+H6 {
+	pitch: medium; pitch-range: 40
+}
+LI {
+	richness: 60; pitch: medium
+}
+DT {
+	richness: 60; pitch: medium
+}
+DD {
+	richness: 60; pitch: medium
+}
+DT {
+	stress: 80
+}
+PRE {
+	stress: 0; richness: 80; pitch: medium; pitch-range: 0
+}
+CODE {
+	stress: 0; richness: 80; pitch: medium; pitch-range: 0
+}
+TT {
+	stress: 0; richness: 80; pitch: medium; pitch-range: 0
+}
+EM {
+	stress: 60; richness: 50; pitch: medium; pitch-range: 60
+}
+STRONG {
+	stress: 90; richness: 90; pitch: medium; pitch-range: 60
+}
+DFN {
+	stress: 60; pitch: high; pitch-range: 60
+}
+S {
+	richness: 0
+}
+STRIKE {
+	richness: 0
+}
+I {
+	stress: 60; richness: 50; pitch: medium; pitch-range: 60
+}
+B {
+	stress: 90; richness: 90; pitch: medium; pitch-range: 60
+}
+U {
+	richness: 0
+}
+:link {
+	voice-family: harry, male
+}
+:visited {
+	voice-family: betty, female
+}
+:active {
+	voice-family: betty, female; pitch: x-high; pitch-range: 80
+}
+    }
+A.external {
+	BACKGROUND-IMAGE: url(images/external-link.gif); PADDING-BOTTOM: 0px; =
+PADDING-LEFT: 0px; PADDING-RIGHT: 20px; DISPLAY: inline; =
+BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: right center; =
+PADDING-TOP: 0px
+}
+#top {
+	BACKGROUND-COLOR: #ffffff
+}
+#top .header .current {
+	BACKGROUND-COLOR: #4c6c8f
+}
+#top .header .current A:link {
+	COLOR: #ffffff
+}
+#top .header .current A:visited {
+	COLOR: #ffffff
+}
+#top .header .current A:hover {
+	COLOR: #ffffff
+}
+#tabs LI {
+	BACKGROUND-COLOR: #e5e4d9
+}
+#tabs LI A:link {
+	COLOR: #000000
+}
+#tabs LI A:visited {
+	COLOR: #000000
+}
+#tabs LI A:hover {
+	COLOR: #000000
+}
+#level2tabs A.selected {
+	BACKGROUND-COLOR: #4c6c8f
+}
+#level2tabs A:link {
+	COLOR: #ffffff
+}
+#level2tabs A:visited {
+	COLOR: #ffffff
+}
+#level2tabs A:hover {
+	COLOR: #ffffff
+}
+#level2tabs {
+	BACKGROUND-COLOR: #e5e4d9
+}
+#level2tabs A.unselected:link {
+	COLOR: #000000
+}
+#level2tabs A.unselected:visited {
+	COLOR: #000000
+}
+#level2tabs A.unselected:hover {
+	COLOR: #000000
+}
+.heading {
+	BACKGROUND-COLOR: #e5e4d9
+}
+.boxed {
+	BACKGROUND-COLOR: #e5e4d9
+}
+.underlined_5 {
+	BORDER-BOTTOM: #e5e4d9 5px solid
+}
+.underlined_10 {
+	BORDER-BOTTOM: #e5e4d9 10px solid
+}
+TABLE CAPTION {
+	BACKGROUND-COLOR: #e5e4d9; COLOR: #000000
+}
+#feedback {
+	TEXT-ALIGN: center; BACKGROUND: #4c6c8f; COLOR: #ffffff
+}
+#feedback #feedbackto {
+	COLOR: #ffffff
+}
+#publishedStrip {
+	BACKGROUND: #4c6c8f; COLOR: #ffffff
+}
+#publishedStrip {
+	BACKGROUND: #e5e4d9; COLOR: #000000
+}
+#menu .menupagetitle {
+	BACKGROUND-COLOR: #cfdced; COLOR: #000000
+}
+#menu {
+	BORDER-BOTTOM-COLOR: #999999; BORDER-TOP-COLOR: #999999; =
+BORDER-RIGHT-COLOR: #999999; BORDER-LEFT-COLOR: #999999
+}
+#menu .menupagetitle {
+	BORDER-BOTTOM-COLOR: #999999; BORDER-TOP-COLOR: #999999; =
+BORDER-RIGHT-COLOR: #999999; BORDER-LEFT-COLOR: #999999
+}
+#menu .menupageitemgroup {
+	BORDER-BOTTOM-COLOR: #999999; BORDER-TOP-COLOR: #999999; =
+BORDER-RIGHT-COLOR: #999999; BORDER-LEFT-COLOR: #999999
+}
+#menu {
+	BACKGROUND-COLOR: #4c6c8f
+}
+#menu {
+	COLOR: #ffffff
+}
+#menu A:link {
+	COLOR: #ffffff
+}
+#menu A:visited {
+	COLOR: #ffffff
+}
+#menu A:hover {
+	BACKGROUND-COLOR: #4c6c8f; COLOR: #ffffff
+}
+#menu H1 {
+	BACKGROUND-COLOR: #cfdced; COLOR: #000000
+}
+#top .searchbox {
+	BACKGROUND-COLOR: #e5e4d9; COLOR: #000000
+}
+#menu .menupageitemgroup {
+	BACKGROUND-COLOR: #e5e4d9
+}
+#menu .menupageitem {
+	COLOR: #000000
+}
+#menu .menupageitem A:link {
+	COLOR: #000000
+}
+#menu .menupageitem A:visited {
+	COLOR: #000000
+}
+#menu .menupageitem A:hover {
+	BACKGROUND-COLOR: #e5e4d9; COLOR: #000000
+}
+BODY {
+	BACKGROUND-COLOR: #ffffff; COLOR: #000000
+}
+A:link {
+	COLOR: #0000ff
+}
+A:visited {
+	COLOR: #009999
+}
+A:hover {
+	COLOR: #6587ff
+}
+.ForrestTable {
+	BACKGROUND-COLOR: #ccc
+}
+.ForrestTable TD {
+	BACKGROUND-COLOR: #ffffff
+}
+.highlight {
+	BACKGROUND-COLOR: #ffff00
+}
+.fixme {
+	BORDER-BOTTOM-COLOR: #c60; BORDER-TOP-COLOR: #c60; BORDER-RIGHT-COLOR: =
+#c60; BORDER-LEFT-COLOR: #c60
+}
+.note {
+	BORDER-BOTTOM-COLOR: #069; BORDER-TOP-COLOR: #069; BORDER-RIGHT-COLOR: =
+#069; BORDER-LEFT-COLOR: #069
+}
+.warning {
+	BORDER-BOTTOM-COLOR: #900; BORDER-TOP-COLOR: #900; BORDER-RIGHT-COLOR: =
+#900; BORDER-LEFT-COLOR: #900
+}
+.code {
+	BORDER-BOTTOM-COLOR: #a5b6c6; BORDER-TOP-COLOR: #a5b6c6; =
+BORDER-RIGHT-COLOR: #a5b6c6; BORDER-LEFT-COLOR: #a5b6c6
+}
+#footer {
+	BACKGROUND-COLOR: #e5e4d9
+}
+P.quote {
+	PADDING-BOTTOM: 0.5em; BACKGROUND-COLOR: #f0f0f0; PADDING-LEFT: 0.5em; =
+PADDING-RIGHT: 0.5em; FONT-FAMILY: monospace; MARGIN-LEFT: 2em; =
+PADDING-TOP: 0.5em
+}
+
+------=_NextPart_000_0000_01CD8080.C661F490
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://hadoop.apache.org/common/docs/r0.19.2/cn/skin/getBlank.js
+
+/*=0A=
+* Licensed to the Apache Software Foundation (ASF) under one or more=0A=
+* contributor license agreements.  See the NOTICE file distributed with=0A=
+* this work for additional information regarding copyright ownership.=0A=
+* The ASF licenses this file to You under the Apache License, Version 2.0=0A=
+* (the "License"); you may not use this file except in compliance with=0A=
+* the License.  You may obtain a copy of the License at=0A=
+*=0A=
+*     http://www.apache.org/licenses/LICENSE-2.0=0A=
+*=0A=
+* Unless required by applicable law or agreed to in writing, software=0A=
+* distributed under the License is distributed on an "AS IS" BASIS,=0A=
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or =
+implied.=0A=
+* See the License for the specific language governing permissions and=0A=
+* limitations under the License.=0A=
+*/=0A=
+/**=0A=
+ * getBlank script - when included in a html file and called from a form =
+text field, will set the value of this field to ""=0A=
+ * if the text value is still the standard value.=0A=
+ * getPrompt script - when included in a html file and called from a =
+form text field, will set the value of this field to the prompt=0A=
+ * if the text value is empty.=0A=
+ *=0A=
+ * Typical usage:=0A=
+ * <script type=3D"text/javascript" language=3D"JavaScript" =
+src=3D"getBlank.js"></script>=0A=
+ * <input type=3D"text" id=3D"query" value=3D"Search the site:" =
+onFocus=3D"getBlank (this, 'Search the site:');" onBlur=3D"getBlank =
+(this, 'Search the site:');"/>=0A=
+ */=0A=
+<!--=0A=
+function getBlank (form, stdValue){=0A=
+if (form.value =3D=3D stdValue){=0A=
+	form.value =3D '';=0A=
+	}=0A=
+return true;=0A=
+}=0A=
+function getPrompt (form, stdValue){=0A=
+if (form.value =3D=3D ''){=0A=
+	form.value =3D stdValue;=0A=
+	}=0A=
+return true;=0A=
+}=0A=
+//-->=0A=
+
+------=_NextPart_000_0000_01CD8080.C661F490
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://hadoop.apache.org/common/docs/r0.19.2/cn/skin/getMenu.js
+
+/*=0A=
+* Licensed to the Apache Software Foundation (ASF) under one or more=0A=
+* contributor license agreements.  See the NOTICE file distributed with=0A=
+* this work for additional information regarding copyright ownership.=0A=
+* The ASF licenses this file to You under the Apache License, Version 2.0=0A=
+* (the "License"); you may not use this file except in compliance with=0A=
+* the License.  You may obtain a copy of the License at=0A=
+*=0A=
+*     http://www.apache.org/licenses/LICENSE-2.0=0A=
+*=0A=
+* Unless required by applicable law or agreed to in writing, software=0A=
+* distributed under the License is distributed on an "AS IS" BASIS,=0A=
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or =
+implied.=0A=
+* See the License for the specific language governing permissions and=0A=
+* limitations under the License.=0A=
+*/=0A=
+/**=0A=
+ * This script, when included in a html file, can be used to make =
+collapsible menus=0A=
+ *=0A=
+ * Typical usage:=0A=
+ * <script type=3D"text/javascript" language=3D"JavaScript" =
+src=3D"menu.js"></script>=0A=
+ */=0A=
+=0A=
+if (document.getElementById){ =0A=
+  document.write('<style type=3D"text/css">.menuitemgroup{display: =
+none;}</style>')=0A=
+}=0A=
+=0A=
+=0A=
+function SwitchMenu(obj, thePath)=0A=
+{=0A=
+var open =3D 'url("'+thePath + 'images/chapter_open.gif")';=0A=
+var close =3D 'url("'+thePath + 'images/chapter.gif")';=0A=
+  if(document.getElementById)  {=0A=
+    var el =3D document.getElementById(obj);=0A=
+    var title =3D document.getElementById(obj+'Title');=0A=
+=0A=
+    if(el.style.display !=3D "block"){ =0A=
+      title.style.backgroundImage =3D open;=0A=
+      el.style.display =3D "block";=0A=
+    }else{=0A=
+      title.style.backgroundImage =3D close;=0A=
+      el.style.display =3D "none";=0A=
+    }=0A=
+  }// end -  if(document.getElementById) =0A=
+}//end - function SwitchMenu(obj)=0A=
+
+------=_NextPart_000_0000_01CD8080.C661F490
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://hadoop.apache.org/common/docs/r0.19.2/cn/skin/fontsize.js
+
+/*=0A=
+* Licensed to the Apache Software Foundation (ASF) under one or more=0A=
+* contributor license agreements.  See the NOTICE file distributed with=0A=
+* this work for additional information regarding copyright ownership.=0A=
+* The ASF licenses this file to You under the Apache License, Version 2.0=0A=
+* (the "License"); you may not use this file except in compliance with=0A=
+* the License.  You may obtain a copy of the License at=0A=
+*=0A=
+*     http://www.apache.org/licenses/LICENSE-2.0=0A=
+*=0A=
+* Unless required by applicable law or agreed to in writing, software=0A=
+* distributed under the License is distributed on an "AS IS" BASIS,=0A=
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or =
+implied.=0A=
+* See the License for the specific language governing permissions and=0A=
+* limitations under the License.=0A=
+*/=0A=
+function init() =0A=
+{ //embedded in the doc=0A=
+  //ndeSetTextSize();=0A=
+}=0A=
+=0A=
+function checkBrowser(){=0A=
+  if (!document.getElementsByTagName){=0A=
+    return true;=0A=
+  }=0A=
+  else{=0A=
+    return false;=0A=
+  }=0A=
+}=0A=
+=0A=
+=0A=
+function ndeSetTextSize(chgsize,rs) =0A=
+{=0A=
+  var startSize;=0A=
+  var newSize;=0A=
+=0A=
+  if (!checkBrowser)=0A=
+  {=0A=
+    return;=0A=
+  }=0A=
+=0A=
+  startSize =3D parseInt(ndeGetDocTextSize());=0A=
+=0A=
+  if (!startSize)=0A=
+  {=0A=
+    startSize =3D 16;=0A=
+  }=0A=
+=0A=
+  switch (chgsize)=0A=
+  {=0A=
+  case 'incr':=0A=
+    newSize =3D startSize + 2;=0A=
+    break;=0A=
+=0A=
+  case 'decr':=0A=
+    newSize =3D startSize - 2;=0A=
+    break;=0A=
+=0A=
+  case 'reset':=0A=
+    if (rs) {newSize =3D rs;} else {newSize =3D 16;}=0A=
+    break;=0A=
+=0A=
+  default:=0A=
+    try{=0A=
+      newSize =3D parseInt(ndeReadCookie("nde-textsize"));=0A=
+    }=0A=
+    catch(e){=0A=
+      alert(e);=0A=
+    }=0A=
+    =0A=
+    if (!newSize || newSize =3D=3D 'NaN')=0A=
+    {=0A=
+      newSize =3D startSize;=0A=
+    }=0A=
+    break;=0A=
+=0A=
+  }=0A=
+=0A=
+  if (newSize < 10) =0A=
+  {=0A=
+    newSize =3D 10;=0A=
+  }=0A=
+=0A=
+  newSize +=3D 'px';=0A=
+=0A=
+  document.getElementsByTagName('html')[0].style.fontSize =3D newSize;=0A=
+  document.getElementsByTagName('body')[0].style.fontSize =3D newSize;=0A=
+=0A=
+  ndeCreateCookie("nde-textsize", newSize, 365);=0A=
+}=0A=
+=0A=
+function ndeGetDocTextSize() =0A=
+{=0A=
+  if (!checkBrowser)=0A=
+  {=0A=
+    return 0;=0A=
+  }=0A=
+=0A=
+  var size =3D 0;=0A=
+  var body =3D document.getElementsByTagName('body')[0];=0A=
+=0A=
+  if (body.style && body.style.fontSize)=0A=
+  {=0A=
+    size =3D body.style.fontSize;=0A=
+  }=0A=
+  else if (typeof(getComputedStyle) !=3D 'undefined')=0A=
+  {=0A=
+    size =3D getComputedStyle(body,'').getPropertyValue('font-size');=0A=
+  }=0A=
+  else if (body.currentStyle)=0A=
+  {=0A=
+   size =3D body.currentStyle.fontSize;=0A=
+  }=0A=
+=0A=
+  //fix IE bug=0A=
+  if( isNaN(size)){=0A=
+    if(size.substring(size.length-1)=3D=3D"%"){=0A=
+      return=0A=
+    }=0A=
+=0A=
+  }=0A=
+=0A=
+  return size;=0A=
+=0A=
+}=0A=
+=0A=
+=0A=
+=0A=
+function ndeCreateCookie(name,value,days) =0A=
+{=0A=
+  var cookie =3D name + "=3D" + value + ";";=0A=
+=0A=
+  if (days) =0A=
+  {=0A=
+    var date =3D new Date();=0A=
+    date.setTime(date.getTime()+(days*24*60*60*1000));=0A=
+    cookie +=3D " expires=3D" + date.toGMTString() + ";";=0A=
+  }=0A=
+  cookie +=3D " path=3D/";=0A=
+=0A=
+  document.cookie =3D cookie;=0A=
+=0A=
+}=0A=
+=0A=
+function ndeReadCookie(name) =0A=
+{=0A=
+  var nameEQ =3D name + "=3D";=0A=
+  var ca =3D document.cookie.split(';');=0A=
+=0A=
+ =0A=
+  for(var i =3D 0; i < ca.length; i++) =0A=
+  {=0A=
+    var c =3D ca[i];=0A=
+    while (c.charAt(0) =3D=3D ' ') =0A=
+    {=0A=
+      c =3D c.substring(1, c.length);=0A=
+    }=0A=
+=0A=
+    ctest =3D c.substring(0,name.length);=0A=
+ =0A=
+    if(ctest =3D=3D name){=0A=
+      return c.substring(nameEQ.length,c.length);=0A=
+    }=0A=
+  }=0A=
+  return null;=0A=
+}=0A=
+
+------=_NextPart_000_0000_01CD8080.C661F490
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://hadoop.apache.org/common/docs/r0.19.2/cn/skin/breadcrumbs.js
+
+/*=0A=
+* Licensed to the Apache Software Foundation (ASF) under one or more=0A=
+* contributor license agreements.  See the NOTICE file distributed with=0A=
+* this work for additional information regarding copyright ownership.=0A=
+* The ASF licenses this file to You under the Apache License, Version 2.0=0A=
+* (the "License"); you may not use this file except in compliance with=0A=
+* the License.  You may obtain a copy of the License at=0A=
+*=0A=
+*     http://www.apache.org/licenses/LICENSE-2.0=0A=
+*=0A=
+* Unless required by applicable law or agreed to in writing, software=0A=
+* distributed under the License is distributed on an "AS IS" BASIS,=0A=
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or =
+implied.=0A=
+* See the License for the specific language governing permissions and=0A=
+* limitations under the License.=0A=
+*/=0A=
+/**=0A=
+ * This script, when included in a html file, builds a neat breadcrumb =
+trail=0A=
+ * based on its url. That is, if it doesn't contains bugs (I'm relatively=0A=
+ * sure it does).=0A=
+ *=0A=
+ * Typical usage:=0A=
+ * <script type=3D"text/javascript" language=3D"JavaScript" =
+src=3D"breadcrumbs.js"></script>=0A=
+ */=0A=
+=0A=
+/**=0A=
+ * IE 5 on Mac doesn't know Array.push.=0A=
+ *=0A=
+ * Implement it - courtesy to fritz.=0A=
+ */=0A=
+var abc	=3D new Array();=0A=
+if (!abc.push) {=0A=
+  Array.prototype.push	=3D function(what){this[this.length]=3Dwhat}=0A=
+}=0A=
+=0A=
+/* =
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=0A=
+	CONSTANTS=0A=
+   =
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D */=0A=
+=0A=
+/**=0A=
+ * Two-dimensional array containing extra crumbs to place at the front of=0A=
+ * the trail. Specify first the name of the crumb, then the URI that =
+belongs=0A=
+ * to it. You'll need to modify this for every domain or subdomain where=0A=
+ * you use this script (you can leave it as an empty array if you wish)=0A=
+ */=0A=
+var PREPREND_CRUMBS =3D new Array();=0A=
+=0A=
+var link1 =3D "@skinconfig.trail.link1.name@";=0A=
+var link2 =3D "@skinconfig.trail.link2.name@";=0A=
+var link3 =3D "@skinconfig.trail.link3.name@";=0A=
+=0A=
+var href1 =3D "@skinconfig.trail.link1.href@";=0A=
+var href2 =3D "@skinconfig.trail.link2.href@";=0A=
+var href3 =3D "@skinconfig.trail.link3.href@";=0A=
+=0A=
+   if(!(link1=3D=3D"")&&!link1.indexOf( "@" ) =3D=3D 0){=0A=
+     PREPREND_CRUMBS.push( new Array( link1, href1 ) );=0A=
+   }=0A=
+   if(!(link2=3D=3D"")&&!link2.indexOf( "@" ) =3D=3D 0){=0A=
+     PREPREND_CRUMBS.push( new Array( link2, href2 ) );=0A=
+   }=0A=
+   if(!(link3=3D=3D"")&&!link3.indexOf( "@" ) =3D=3D 0){=0A=
+     PREPREND_CRUMBS.push( new Array( link3, href3 ) );=0A=
+   }=0A=
+=0A=
+/**=0A=
+ * String to include between crumbs:=0A=
+ */=0A=
+var DISPLAY_SEPARATOR =3D " &gt; ";=0A=
+/**=0A=
+ * String to include at the beginning of the trail=0A=
+ */=0A=
+var DISPLAY_PREPREND =3D " &gt; ";=0A=
+/**=0A=
+ * String to include at the end of the trail=0A=
+ */=0A=
+var DISPLAY_POSTPREND =3D "";=0A=
+=0A=
+/**=0A=
+ * CSS Class to use for a single crumb:=0A=
+ */=0A=
+var CSS_CLASS_CRUMB =3D "breadcrumb";=0A=
+=0A=
+/**=0A=
+ * CSS Class to use for the complete trail:=0A=
+ */=0A=
+var CSS_CLASS_TRAIL =3D "breadcrumbTrail";=0A=
+=0A=
+/**=0A=
+ * CSS Class to use for crumb separator:=0A=
+ */=0A=
+var CSS_CLASS_SEPARATOR =3D "crumbSeparator";=0A=
+=0A=
+/**=0A=
+ * Array of strings containing common file extensions. We use this to=0A=
+ * determine what part of the url to ignore (if it contains one of the=0A=
+ * string specified here, we ignore it).=0A=
+ */=0A=
+var FILE_EXTENSIONS =3D new Array( ".html", ".htm", ".jsp", ".php", =
+".php3", ".php4" );=0A=
+=0A=
+/**=0A=
+ * String that separates parts of the breadcrumb trail from each other.=0A=
+ * When this is no longer a slash, I'm sure I'll be old and grey.=0A=
+ */=0A=
+var PATH_SEPARATOR =3D "/";=0A=
+=0A=
+/* =
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=0A=
+	UTILITY FUNCTIONS=0A=
+   =
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D */=0A=
+/**=0A=
+ * Capitalize first letter of the provided string and return the modified=0A=
+ * string.=0A=
+ */=0A=
+function sentenceCase( string )=0A=
+{        return string;=0A=
+	//var lower =3D string.toLowerCase();=0A=
+	//return lower.substr(0,1).toUpperCase() + lower.substr(1);=0A=
+}=0A=
+=0A=
+/**=0A=
+ * Returns an array containing the names of all the directories in the=0A=
+ * current document URL=0A=
+ */=0A=
+function getDirectoriesInURL()=0A=
+{=0A=
+	var trail =3D document.location.pathname.split( PATH_SEPARATOR );=0A=
+=0A=
+	// check whether last section is a file or a directory=0A=
+	var lastcrumb =3D trail[trail.length-1];=0A=
+	for( var i =3D 0; i < FILE_EXTENSIONS.length; i++ )=0A=
+	{=0A=
+		if( lastcrumb.indexOf( FILE_EXTENSIONS[i] ) )=0A=
+		{=0A=
+			// it is, remove it and send results=0A=
+			return trail.slice( 1, trail.length-1 );=0A=
+		}=0A=
+	}=0A=
+=0A=
+	// it's not; send the trail unmodified=0A=
+	return trail.slice( 1, trail.length );=0A=
+}=0A=
+=0A=
+/* =
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=0A=
+	BREADCRUMB FUNCTIONALITY=0A=
+   =
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D */=0A=
+/**=0A=
+ * Return a two-dimensional array describing the breadcrumbs based on the=0A=
+ * array of directories passed in.=0A=
+ */=0A=
+function getBreadcrumbs( dirs )=0A=
+{=0A=
+	var prefix =3D "/";=0A=
+	var postfix =3D "/";=0A=
+=0A=
+	// the array we will return=0A=
+	var crumbs =3D new Array();=0A=
+=0A=
+	if( dirs !=3D null )=0A=
+	{=0A=
+		for( var i =3D 0; i < dirs.length; i++ )=0A=
+		{=0A=
+			prefix +=3D dirs[i] + postfix;=0A=
+			crumbs.push( new Array( dirs[i], prefix ) );=0A=
+		}=0A=
+	}=0A=
+=0A=
+	// preprend the PREPREND_CRUMBS=0A=
+	if(PREPREND_CRUMBS.length > 0 )=0A=
+	{=0A=
+		return PREPREND_CRUMBS.concat( crumbs );=0A=
+	}=0A=
+=0A=
+	return crumbs;=0A=
+}=0A=
+=0A=
+/**=0A=
+ * Return a string containing a simple text breadcrumb trail based on the=0A=
+ * two-dimensional array passed in.=0A=
+ */=0A=
+function getCrumbTrail( crumbs )=0A=
+{=0A=
+	var xhtml =3D DISPLAY_PREPREND;=0A=
+=0A=
+	for( var i =3D 0; i < crumbs.length; i++ )=0A=
+	{=0A=
+		xhtml +=3D '<a href=3D"' + crumbs[i][1] + '" >';=0A=
+		xhtml +=3D unescape( crumbs[i][0] ) + '</a>';=0A=
+		if( i !=3D (crumbs.length-1) )=0A=
+		{=0A=
+			xhtml +=3D DISPLAY_SEPARATOR;=0A=
+		}=0A=
+	}=0A=
+=0A=
+	xhtml +=3D DISPLAY_POSTPREND;=0A=
+=0A=
+	return xhtml;=0A=
+}=0A=
+=0A=
+/**=0A=
+ * Return a string containing an XHTML breadcrumb trail based on the=0A=
+ * two-dimensional array passed in.=0A=
+ */=0A=
+function getCrumbTrailXHTML( crumbs )=0A=
+{=0A=
+	var xhtml =3D '<span class=3D"' + CSS_CLASS_TRAIL  + '">';=0A=
+	xhtml +=3D DISPLAY_PREPREND;=0A=
+=0A=
+	for( var i =3D 0; i < crumbs.length; i++ )=0A=
+	{=0A=
+		xhtml +=3D '<a href=3D"' + crumbs[i][1] + '" class=3D"' + =
+CSS_CLASS_CRUMB + '">';=0A=
+		xhtml +=3D unescape( crumbs[i][0] ) + '</a>';=0A=
+		if( i !=3D (crumbs.length-1) )=0A=
+		{=0A=
+			xhtml +=3D '<span class=3D"' + CSS_CLASS_SEPARATOR + '">' + =
+DISPLAY_SEPARATOR + '</span>';=0A=
+		}=0A=
+	}=0A=
+=0A=
+	xhtml +=3D DISPLAY_POSTPREND;=0A=
+	xhtml +=3D '</span>';=0A=
+=0A=
+	return xhtml;=0A=
+}=0A=
+=0A=
+/* =
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=0A=
+	PRINT BREADCRUMB TRAIL=0A=
+   =
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D */=0A=
+=0A=
+// check if we're local; if so, only print the PREPREND_CRUMBS=0A=
+if( document.location.href.toLowerCase().indexOf( "http://" ) =3D=3D -1 )=0A=
+{=0A=
+	document.write( getCrumbTrail( getBreadcrumbs() ) );=0A=
+}=0A=
+else=0A=
+{=0A=
+	document.write( getCrumbTrail( getBreadcrumbs( getDirectoriesInURL() ) =
+) );=0A=
+}=0A=
+=0A=
+
+------=_NextPart_000_0000_01CD8080.C661F490--

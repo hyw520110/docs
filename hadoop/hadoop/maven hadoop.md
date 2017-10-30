@@ -1,0 +1,1 @@
+http://blog.fens.me/hadoop-maven-eclipse/
