@@ -1,0 +1,13 @@
+version: '3'
+services:
+  m3e_api:
+    container_name: m3e
+    environment:
+      TZ: Asia/Shanghai
+      # 容器里的执行脚本中，判断了key是不是等于 “sk-aaabbbcccdddeeefffggghhhiiijjjkkk”，key不一致会出现401错误。
+      #       sk-key: 'sk-aaabbbcccdddeeefffggghhhiiijjjkkk'
+    image: registry.cn-hangzhou.aliyuncs.com/fastgpt_docker/m3e-large-api:latest
+    restart: always
+    network_mode: host
+    ports:
+      - "6008:6008"
